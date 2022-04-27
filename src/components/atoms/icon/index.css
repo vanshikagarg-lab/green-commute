@@ -1,0 +1,6 @@
+.icon > div {
+  display: flex;
+}
+.icon {
+  width: fit-content;
+}
