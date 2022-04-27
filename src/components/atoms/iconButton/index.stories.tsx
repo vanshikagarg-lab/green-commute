@@ -25,10 +25,6 @@ export default {
         },
       },
     },
-    size: {
-      control: "radio",
-      options: ["small", "large"],
-    },
   },
 } as ComponentMeta<typeof IconButtonComponent>;
 
