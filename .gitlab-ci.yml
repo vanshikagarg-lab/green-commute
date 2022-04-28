@@ -9,8 +9,37 @@ sonarcloud-check:
     key: "${CI_JOB_NAME}"
     paths:
       - .sonar/cache
-  script:
-    - sonar-scanner
+  stages:
+    - dependency-install
+    - test-run
+    - sonarcloud-scan
   only:
     - merge_requests
     - main
+
+dependency-install:
+  stage: dependency-install
+  script:
+    - npm install
+  cache:
+    paths:
+      - node_modules/
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+    paths:
+      - node_modules/
+
+test-run:
+  stage: test-run
+  dependencies:
+    - npm
+  script:
+    - npm run test
+  
+sonarcloud-scan:
+  stage: sonarcloud-scan
+  dependencies:
+    - npm
+  script:
+    - sonar-scanner
