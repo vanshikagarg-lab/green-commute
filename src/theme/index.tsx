@@ -6,6 +6,7 @@ declare module "@mui/material/styles" {
     heading2: React.CSSProperties;
     caption1: React.CSSProperties;
     caption2: React.CSSProperties;
+    aqiText: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
@@ -13,6 +14,7 @@ declare module "@mui/material/styles" {
     heading2: React.CSSProperties;
     caption1: React.CSSProperties;
     caption2: React.CSSProperties;
+    aqiText: React.CSSProperties;
   }
 
   interface Palette {
@@ -72,6 +74,7 @@ declare module "@mui/material/Typography" {
     heading2: true;
     caption1: true;
     caption2: true;
+    aqiText: true;
   }
 }
 
@@ -83,7 +86,7 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: "48px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     },
 
     heading2: {
@@ -91,7 +94,7 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "30px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     },
 
     subtitle1: {
@@ -99,7 +102,7 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: "24px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     },
 
     subtitle2: {
@@ -107,7 +110,7 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "24px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     },
 
     body1: {
@@ -115,7 +118,7 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: "22px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     },
 
     body2: {
@@ -123,7 +126,7 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "22px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     },
 
     caption1: {
@@ -131,7 +134,7 @@ const theme = createTheme({
       fontWeight: 700,
       lineHeight: "16px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     },
 
     caption2: {
@@ -139,7 +142,15 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "16px",
       textTransform: "none",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
+    },
+
+    aqiText: {
+      fontSize: "48px",
+      fontWeight: 600,
+      lineHeight: "48px",
+      textTransform: "none",
+      fontFamily: "Montserrat",
     },
   },
 
