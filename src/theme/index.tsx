@@ -139,6 +139,7 @@ const theme = createTheme({
     primary: {
       main: "#0B6D62",
       main500: "#1B877A",
+      main400: "#30A193",
       main300: "#4ABAAD",
       main200: "#77EDDF",
       main100: "#B2FFF6",
