@@ -83,6 +83,7 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: "48px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
 
     heading2: {
@@ -90,6 +91,7 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "30px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
 
     subtitle1: {
@@ -97,6 +99,7 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: "24px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
 
     subtitle2: {
@@ -104,6 +107,7 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "24px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
 
     body1: {
@@ -111,6 +115,7 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: "22px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
 
     body2: {
@@ -118,6 +123,7 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "22px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
 
     caption1: {
@@ -125,6 +131,7 @@ const theme = createTheme({
       fontWeight: 700,
       lineHeight: "16px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
 
     caption2: {
@@ -132,6 +139,7 @@ const theme = createTheme({
       fontWeight: 500,
       lineHeight: "16px",
       textTransform: "none",
+      fontFamily: "Montserrat"
     },
   },
 
@@ -139,6 +147,7 @@ const theme = createTheme({
     primary: {
       main: "#0B6D62",
       main500: "#1B877A",
+      main400: "#30A193",
       main300: "#4ABAAD",
       main200: "#77EDDF",
       main100: "#B2FFF6",
