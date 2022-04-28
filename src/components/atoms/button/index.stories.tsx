@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof ButtonComponent> = args => (
 
 export const ContainedButton = Template.bind({});
 ContainedButton.args = {
-  text: "Next",
+  children: "Next",
   variant: "contained",
   style: {
     textTransform: "none",
@@ -32,7 +32,7 @@ ContainedButton.args = {
 
 export const OutlinedButton = Template.bind({});
 OutlinedButton.args = {
-  text: "Back",
+  children: "Back",
   variant: "outlined",
   style: {
     textTransform: "none",
