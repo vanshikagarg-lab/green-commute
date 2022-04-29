@@ -34,5 +34,5 @@ const Template: ComponentStory<typeof IconButtonComponent> = args => (
 
 export const CarIconStory = Template.bind({});
 CarIconStory.args = {
-  icon: CarIcon,
+  children:<img src={CarIcon} alt="carIcon" />,
 };
