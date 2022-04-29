@@ -1,15 +1,15 @@
 import React from "react";
-import CircledNumeber from ".";
+import CircledBox from ".";
 import theme from "../../../theme";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import DoneSvg from '../../../assets/icons/done.svg';
-import Icon from '../../atoms/icon';
+import Icon from '../icon';
 export default {
   title: "Atoms/CircledBox",
-  component: CircledNumeber,
-} as ComponentMeta<typeof CircledNumeber>;
+  component: CircledBox,
+} as ComponentMeta<typeof CircledBox>;
 
-const Template: ComponentStory<typeof CircledNumeber> = (args) => <CircledNumeber {...args} />;
+const Template: ComponentStory<typeof CircledBox> = (args) => <CircledBox {...args} />;
 export const Numbered = Template.bind({});
 export const Done = Template.bind({});
 
