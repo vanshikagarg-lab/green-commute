@@ -4,10 +4,11 @@ import { ThemeProvider } from "@mui/material";
 import theme from "../../../theme/index";
 
 interface ButtonProps {
-  text: String;
+  children: React.ReactNode;
   variant: "contained" | "outlined" | "text";
   style?: React.CSSProperties;
   onClick?: () => void;
+  className?: string;
 }
 
 const ButtonComponent = (props: ButtonProps) => {
@@ -17,8 +18,11 @@ const ButtonComponent = (props: ButtonProps) => {
         variant={props.variant}
         style={props.style}
         onClick={props.onClick}
+        sx={{
+          textTransfrom: "none",
+        }}
       >
-        {props.text}
+        {props.children}
       </Button>
     </ThemeProvider>
   );
