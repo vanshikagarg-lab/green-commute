@@ -12,7 +12,7 @@ type Props = {
   brandName: string;
 };
 
-const TransitOption = ({ cost, brandName,brandLogo }: Props) => {
+const TransitOption = ({ cost, brandName, brandLogo }: Props) => {
   return (
     <Box
       data-testid="transitOption"
@@ -37,7 +37,7 @@ const TransitOption = ({ cost, brandName,brandLogo }: Props) => {
             >
               Approximately
             </Typography>
-            <Icon src={rupeeIcon} />
+            <Icon src={rupeeIcon} fill={THEME.palette.textColor.highEmphasis} />
             <Typography
               variant="caption2"
               color="textColor.highEmphasis"
@@ -46,7 +46,11 @@ const TransitOption = ({ cost, brandName,brandLogo }: Props) => {
           </Box>
         </Box>
       </Box>
-      <Button variant="text"><Typography variant="caption1" color="primary.main400">Book Now</Typography></Button>
+      <Button variant="text">
+        <Typography variant="caption1" color="primary.main400">
+          Book Now
+        </Typography>
+      </Button>
     </Box>
   );
 };
