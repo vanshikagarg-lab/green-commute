@@ -16,7 +16,7 @@ interface VehiclePropsType {
   train?: boolean;
 }
 
-interface JobListCardProps extends BoxProps {
+export interface JobListCardProps extends BoxProps {
   jobId: string | number;
   height: string | number;
   width: string | number;
@@ -44,10 +44,8 @@ const ParentBox = styled((props: ParentBoxPropsType) => {
   width: width,
   borderRadius: "12px",
   padding: "16px 19px 16px 19px",
-  border: selected
-    ? `2px solid ${theme.palette.primary.main200}`
-    : "none",
-  margin: "10px"
+  border: selected ? `2px solid ${theme.palette.primary.main200}` : "none",
+  margin: "10px",
 }));
 
 const StyledGridIcon = styled(Grid)({
@@ -136,42 +134,42 @@ const JobListCard = (props: JobListCardProps) => {
               width="auto"
               flexDirection="row"
             >
-                {vehicle?.bike && (
-                    <StyledGridIcon item padding="">
-                    <Icon
-                        src={BikeSvg}
-                        fill={theme.palette.textColor.lowEmphasis}
-                        data-testid="vehicle-icon"
-                    />
-                    </StyledGridIcon>
-                )}
-                {vehicle?.bus && (
-                    <StyledGridIcon item>
-                    <Icon
-                        src={BusSvg}
-                        fill={theme.palette.textColor.lowEmphasis}
-                        data-testid="vehicle-icon"
-                    />
-                    </StyledGridIcon>
-                )}
-                {vehicle?.car && (
-                    <StyledGridIcon item>
-                        <Icon
-                            src={CarSvg}
-                            fill={theme.palette.textColor.lowEmphasis}
-                            data-testid="vehicle-icon"
-                        />
-                    </StyledGridIcon>
-                )}
-                {vehicle?.train && (
-                    <StyledGridIcon item>
-                    <Icon
-                        src={TrainSvg}
-                        fill={theme.palette.textColor.lowEmphasis}
-                        data-testid="vehicle-icon"
-                    />
-                    </StyledGridIcon>
-                )}
+              {vehicle?.bike && (
+                <StyledGridIcon item padding="">
+                  <Icon
+                    src={BikeSvg}
+                    fill={theme.palette.textColor.lowEmphasis}
+                    data-testid="vehicle-icon"
+                  />
+                </StyledGridIcon>
+              )}
+              {vehicle?.bus && (
+                <StyledGridIcon item>
+                  <Icon
+                    src={BusSvg}
+                    fill={theme.palette.textColor.lowEmphasis}
+                    data-testid="vehicle-icon"
+                  />
+                </StyledGridIcon>
+              )}
+              {vehicle?.car && (
+                <StyledGridIcon item>
+                  <Icon
+                    src={CarSvg}
+                    fill={theme.palette.textColor.lowEmphasis}
+                    data-testid="vehicle-icon"
+                  />
+                </StyledGridIcon>
+              )}
+              {vehicle?.train && (
+                <StyledGridIcon item>
+                  <Icon
+                    src={TrainSvg}
+                    fill={theme.palette.textColor.lowEmphasis}
+                    data-testid="vehicle-icon"
+                  />
+                </StyledGridIcon>
+              )}
             </Grid>
             <Typography variant="caption1" color="textColor.mediumEmphasis">
               {time}
