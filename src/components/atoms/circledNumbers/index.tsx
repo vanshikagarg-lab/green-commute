@@ -1,20 +1,28 @@
 import React from "react";
 import theme from "../../../theme";
-import StyledTypography from './style';
+import {TypographyProps, Typography, styled} from '@mui/material';
+
 type PropsType = {
-  num: number;
-};
+  backgroundColor: string;
+} & TypographyProps;
 
+const StyledTypography = styled(Typography)({
+    height: '40px',
+    width: '40px',
+    borderRadius: '50%',
+    backgroundColor: theme.palette.primary.main300,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+});
 
-const CircledNumebers = ({ num }: PropsType) => {
+const CircledBox = ({...remProps}: PropsType) => {
   return (
     <StyledTypography
       variant="subtitle1"
-      color={theme.palette.structural.main}
-    >
-      {num}
-    </StyledTypography>
+      {...remProps}
+    />
   );
 };
 
-export default CircledNumebers;
+export default CircledBox;

@@ -55,7 +55,7 @@ test("border should be rendered when selected = true", () => {
   )
   let parentBoxElement = screen.getByTestId("job-1");
   expect(parentBoxElement).toHaveStyle({
-    border:  `2px solid ${theme.palette.primary.main200}`
+    border: `2px solid ${theme.palette.primary.main200}`
   });
 });
 
