@@ -17,7 +17,7 @@ import Button from "@mui/material/Button";
 import RouteInfo from "../../molecules/routeInfo";
 import TransitOption from "../../molecules/transitOption";
 
-type Props = {
+export type RouteMapProps = {
   startLocation: string;
   destination: string;
   cost: number | string;
@@ -35,7 +35,7 @@ const RouteMaps = ({
   time,
   onBackButtonClick,
   transitOptions,
-}: Props) => {
+}: RouteMapProps) => {
   const [option, setOption] = useState(2);
 
   const onBusClick = () => {
