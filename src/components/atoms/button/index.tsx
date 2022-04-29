@@ -18,6 +18,9 @@ const ButtonComponent = (props: ButtonProps) => {
         variant={props.variant}
         style={props.style}
         onClick={props.onClick}
+        sx={{
+          textTransfrom: "none",
+        }}
       >
         {props.children}
       </Button>

@@ -14,7 +14,9 @@ const Icon = ({ src, fill }: Props) => {
       src={src}
       wrapper="div"
       className={"icon"}
-      fill={fill}
+      style={{
+        fill:fill
+      }}
     />
   );
 };
