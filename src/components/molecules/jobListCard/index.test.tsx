@@ -27,7 +27,7 @@ test("border should not be rendered when selected = false", () => {
   )
   let parentBoxElement = screen.getByTestId("job-1");
   expect(parentBoxElement).toHaveStyle({
-    boxShadow: 'none'
+    border: 'none'
   });
 });
 
@@ -55,7 +55,7 @@ test("border should be rendered when selected = true", () => {
   )
   let parentBoxElement = screen.getByTestId("job-1");
   expect(parentBoxElement).toHaveStyle({
-    boxShadow: `inset 0 0 2px ${theme.palette.primary.main200}`
+    border:  `2px solid ${theme.palette.primary.main200}`
   });
 });
 
