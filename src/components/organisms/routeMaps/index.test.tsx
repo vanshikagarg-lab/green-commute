@@ -2,7 +2,6 @@ import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
 import RouteMaps from "./index";
-import olaLogo from "../../../assets/images/olaLogo.png";
 import { transitOptions } from "./dataList";
 
 it("renders the RouteMaps", () => {
