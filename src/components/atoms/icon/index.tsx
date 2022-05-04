@@ -5,9 +5,10 @@ import "./index.css";
 type Props = {
   src: string;
   fill?: string;
+  stroke?: string;
 };
 
-const Icon = ({ src, fill }: Props) => {
+const Icon = ({ src, fill, stroke }: Props) => {
   return (
     <ReactSVG
       data-testid="icon"
@@ -15,7 +16,8 @@ const Icon = ({ src, fill }: Props) => {
       wrapper="div"
       className={"icon"}
       style={{
-        fill:fill
+        fill:fill,
+        stroke:stroke
       }}
     />
   );
