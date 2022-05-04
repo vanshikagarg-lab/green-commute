@@ -4,9 +4,8 @@ import radioTrueIcon from "../../../assets/icons/radioTrue.svg";
 import radioFalseIcon from "../../../assets/icons/radioFalse.svg";
 import Icon from "../icon";
 
-type Props = {} & RadioProps;
 
-const RadioButton = ({ sx, ...remProps }: Props) => {
+const RadioButton = ({ sx, ...remProps }: RadioProps) => {
   return (
     <Radio
       data-testid="radioButton"

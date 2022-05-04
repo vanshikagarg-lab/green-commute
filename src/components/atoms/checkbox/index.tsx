@@ -5,9 +5,7 @@ import checkboxChecked from "../../../assets/icons/checkboxChecked.svg";
 import checkboxUnchecked from "../../../assets/icons/checkboxUnchecked.svg";
 
 
-type Props = {} & CheckboxProps;
-
-const CheckBox = ({ ...remProps}) => {
+const CheckBox = ({ ...remProps}: CheckboxProps) => {
     return (
         <Checkbox 
         icon={<Icon src={checkboxUnchecked} /> }

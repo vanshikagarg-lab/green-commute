@@ -1,13 +1,12 @@
 import React, {useState, useRef} from 'react';
 import {Box, BoxProps, styled, Grid} from '@mui/material'
 import Button from '../../atoms/button';
-import TextField from '../../atoms/textField';
 import theme from '../../../theme';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import DoneIcon from '@mui/icons-material/Done';
 import Typography from '../../atoms/typography';
 type PropsType = {
-    setDisplay : () => void;
+    setDisplay : any;
 } & BoxProps;
 
 const ParentBox = styled(Box)({
