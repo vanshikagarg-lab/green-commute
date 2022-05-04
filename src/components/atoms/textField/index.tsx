@@ -37,10 +37,13 @@ const StyledTextField = styled((props: PropsType) => {
         fontSize: "12px",
         "&::placeholder": {
           color: placeholderColor,
+          opacity: 1,
         },
-        "& .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline":{
-            border: border ? `1px solid ${theme.palette.greyColors.main400} !important` : "none",
-        }
+        "& .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline": {
+          border: border
+            ? `1px solid ${theme.palette.greyColors.main400} !important`
+            : "none",
+        },
       },
       "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
         border: border ? `1px solid ${theme.palette.primary.main200}` : "none",
@@ -50,7 +53,7 @@ const StyledTextField = styled((props: PropsType) => {
     "& .MuiOutlinedInput-notchedOutline": {
       borderRadius: "8px",
       border: border ? `1px solid ${theme.palette.greyColors.main400}` : "none",
-    }
+    },
   })
 );
 const TextFieldComponent: React.FC<PropsType> = ({
