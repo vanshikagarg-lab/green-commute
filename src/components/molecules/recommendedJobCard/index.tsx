@@ -81,7 +81,7 @@ const RecommendedJobCard = (props: PropsType) => {
       <ParentStyle>
         <InnerFrame>
           <HeaderFrame>
-            <Box height="45px" width="45px">
+            <Box height="45px" width="45px" alignSelf="center" padding="9px">
               <Image
                 id={`logo-${props.jobId}`}
                 source={props.logo}
