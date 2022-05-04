@@ -10,7 +10,7 @@ import rightArrow from "../../../assets/icons/arrowRight.svg";
 import RouteMaps from "../routeMaps";
 import { RouteMapProps } from "../routeMaps/index";
 
-interface JobDescriptionCardProps extends BoxProps, RouteMapProps {
+export interface JobDescriptionCardProps extends BoxProps, RouteMapProps {
   jobId: string | number;
   logo: string;
   jobName: string;
