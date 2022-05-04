@@ -1,4 +1,6 @@
 variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar" # Defines the location of the analysis task cache
   GIT_DEPTH: "0" # Tells git to fetch all the branches of the project, required by the analysis task
 sonarcloud-check:
@@ -10,6 +12,10 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
+    - sonar-scanner
+  only:
+    - merge_requests
+    - main
     - npm install
     - npm test -- --coverage --testResultsProcessor=jest-sonar-reporter
     - sonar-scanner
