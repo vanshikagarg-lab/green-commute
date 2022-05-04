@@ -57,7 +57,7 @@ const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
   return (
     <ParentBox {...remProps}>
       <CloseOutlinedIcon
-        data-testid="close-icon"
+        data-testid='close-icon'
         onClick={setDisplay}
         sx={{
           position: "absolute",
@@ -69,36 +69,36 @@ const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
       />
       {!isSubmitted && (
         <Grid
-          data-testid="resume-not-submitted"
+          data-testid='resume-not-submitted'
           container
-          direction="column"
-          width="auto"
+          direction='column'
+          width='auto'
         >
           <Typography
-            color="textColor.mediumEmphasis"
-            variant="heading2"
+            color='textColor.mediumEmphasis'
+            variant='heading2'
             mb={1}
           >
             File Upload
           </Typography>
           <UploadGridBox>
             <Button
-              data-testid="submit-resume"
+              data-testid='submit-resume'
               style={{
                 width: "281px",
                 height: "40px",
                 borderRadius: "8px",
                 margin: "auto",
               }}
-              variant="contained"
+              variant='contained'
               onClick={statusHandler}
             >
-              <Typography variant="caption1">
+              <Typography variant='caption1'>
                 Click Here to Upload Files
               </Typography>
               <input
-                data-test-id="file-upload"
-                type="file"
+                data-test-id='file-upload'
+                type='file'
                 hidden
                 ref={inputFile}
                 onChange={changeFileHandler}
@@ -109,22 +109,22 @@ const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
       )}
       {isSubmitted && (
         <Grid
-          data-testId="resume-submitted"
+          data-testId='resume-submitted'
           container
-          justifyItems="center"
-          alignItems="center"
-          direction="column"
-          height="250px"
+          justifyItems='center'
+          alignItems='center'
+          direction='column'
+          height='250px'
         >
           <SuccessButton m={1}>
             <DoneIcon sx={{ height: "80px", width: "80px" }} />
           </SuccessButton>
-          <Typography m={1} variant="heading2">
+          <Typography m={1} variant='heading2'>
             <b>Hi Gayatri!</b> Your Resume got Uploaded Successfully !
           </Typography>
           <Button
             style={{ margin: "10px" }}
-            variant="contained"
+            variant='contained'
             onClick={setDisplay}
           >
             Okay
