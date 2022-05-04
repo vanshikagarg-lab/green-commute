@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ChipProps } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { Chip, styled } from "@mui/material";
@@ -37,5 +38,43 @@ const FilterChip = (props: Props) => {
     ></Chip>
   );
 };
+=======
+
+import { ChipProps } from '@material-ui/core';
+import { Chip} from '@mui/material';
+import React from 'react';
+import theme from '../../../theme';
+import Delete from './deleteIcon';
+
+type Props = {
+    label?: string,
+    backgroundColor?: boolean,
+    deleteHandler: any
+} & ChipProps;
+
+const FilterChip = (props: Props) => {
+
+
+    const colorForBackground = (background: boolean | undefined) => {
+        if(background) {
+            return `${theme.palette.structural.color1}`;
+        }
+        else {
+            return `${theme.palette.structural.main}`;
+        }
+    }
+
+    return (
+        <Chip 
+        data-testid="filter-chip"
+        label={props.label} 
+        onDelete={props.deleteHandler} 
+        deleteIcon={<Delete></Delete>}
+        style={{ backgroundColor: colorForBackground(props.backgroundColor), borderRadius: "8px", padding: "4px 12px", margin: '3px' }}
+        ></Chip>
+
+    );
+}
+>>>>>>> e9d8a9dcaee7a383ef039043889cfde7f09a98f3
 
 export default FilterChip;

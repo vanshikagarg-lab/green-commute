@@ -21,6 +21,7 @@ const ButtonComponent = (props: ButtonProps) => {
         sx={{
           textTransfrom: "none",
         }}
+        className={props.className}
       >
         {props.children}
       </Button>

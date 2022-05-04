@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof UploadResume> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  setDisplay: () => {},
+  setDisplay: () => {console.log("display")},
   height: '400px',
   width: '700px'
 };

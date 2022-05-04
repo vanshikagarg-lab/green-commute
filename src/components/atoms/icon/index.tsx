@@ -16,8 +16,8 @@ const Icon = ({ src, fill, stroke }: Props) => {
       wrapper="div"
       className={"icon"}
       style={{
-        fill:fill,
-        stroke:stroke
+        fill: fill,
+        stroke: stroke,
       }}
     />
   );

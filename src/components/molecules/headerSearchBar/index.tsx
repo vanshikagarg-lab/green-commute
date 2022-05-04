@@ -6,11 +6,7 @@ const icon = {
     startAdornment: <LocationOnIcon sx={{marginRight: '10px'}}/>
 }
 
-type PropsType = {
-
-} & TextFieldProps;
-
-const HeaderSearchBar = ({...remProps}: PropsType) => {
+const HeaderSearchBar = ({...remProps}: TextFieldProps) => {
     
     return (
         <TextField 
