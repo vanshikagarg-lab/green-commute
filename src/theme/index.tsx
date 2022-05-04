@@ -47,6 +47,7 @@ declare module "@mui/material/styles" {
     color1?: string;
     color2?: string;
     color3?: string;
+    color4?: string;
   }
 
   interface SimplePaletteColorOptions {
@@ -65,6 +66,7 @@ declare module "@mui/material/styles" {
     color1?: string;
     color2?: string;
     color3?: string;
+    color4?: string;
   }
 }
 
@@ -184,6 +186,7 @@ const theme = createTheme({
       color1: "#E8FFFC",
       color2: "#E7FCE0",
       color3: "#F5FFF7",
+      color4: "#EFFFFD"
     },
 
     accent: {
