@@ -24,7 +24,7 @@ const FilterChip = (props: Props) => {
       data-testid="filter-chip"
       label={props.label}
       onDelete={props.deleteHandler}
-      deleteIcon={<Delete></Delete>}
+      deleteIcon={<Delete onClick={props.deleteHandler}></Delete>}
       style={{
         backgroundColor: colorForBackground(props.backgroundColor),
         borderRadius: "8px",

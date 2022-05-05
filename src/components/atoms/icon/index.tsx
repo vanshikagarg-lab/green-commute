@@ -6,9 +6,10 @@ type Props = {
   src: string;
   fill?: string;
   stroke?: string;
+  onClick?: any;
 };
 
-const Icon = ({ src, fill, stroke }: Props) => {
+const Icon = ({ src, fill, stroke, onClick }: Props) => {
   return (
     <ReactSVG
       data-testid="icon"
@@ -19,6 +20,7 @@ const Icon = ({ src, fill, stroke }: Props) => {
         fill: fill,
         stroke: stroke,
       }}
+      onClick={onClick}
     />
   );
 };
