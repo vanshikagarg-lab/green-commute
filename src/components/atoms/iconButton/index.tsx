@@ -4,18 +4,23 @@ import { ThemeProvider } from "@mui/material";
 import theme from "../../../theme/index";
 
 interface IconButtonProps {
-  children: React.ReactNode;
-  icon: string;
+  children?: React.ReactNode;
+  icon?: string;
   size?: "large" | "small";
   style?: React.CSSProperties;
-  alt: string;
+  alt?: string;
+  onClick?: any;
 }
 
 const IconButtonComponent = (props: IconButtonProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <IconButton style={props.style} size={props.size}>
-        <img src={props.icon} alt={props.alt} />
+      <IconButton data-testid="iconButton" style={props.style} size={props.size} onClick={props.onClick}>
+        {props.children ? (
+          props.children
+        ) : (
+          <img src={props.icon} alt={props.alt} />
+        )}
       </IconButton>
     </ThemeProvider>
   );
