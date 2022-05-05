@@ -44,7 +44,7 @@ const JobSearch = ({ filterClick, searchButtonClick }: Props) => {
 
   return (
     <Box data-testid="jobSearch">
-      <Typography variant="heading1" color="textColor.highEmphasis">
+      <Typography variant="heading2" color="textColor.highEmphasis">
         Find Jobs
       </Typography>
       <Box display="flex" alignItems={"center"}>

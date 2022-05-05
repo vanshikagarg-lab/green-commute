@@ -2,7 +2,7 @@ import { ChipProps } from "@material-ui/core";
 import { Chip } from "@mui/material";
 import React from "react";
 import theme from "../../../theme";
-import Delete from "./deleteIcon";
+import { Delete } from "./deleteIcon";
 
 export type Props = {
   label?: string;

@@ -20,9 +20,6 @@ const AutocompleteComponent = ({
   deleteOptions,
   ...remProps
 }: PropsType) => {
-  const deleteHandler = (e: any, value1: any) => {
-    // setOptions(options.filter(curr) => curr.value !== value);
-  };
 
   return (
     <Autocomplete

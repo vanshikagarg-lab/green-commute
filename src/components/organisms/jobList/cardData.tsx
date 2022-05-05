@@ -6,7 +6,7 @@ import TwitterLogo from "../../../assets/images/twitterLogo.svg";
 import WiproLogo from "../../../assets/images/wiproLogo.svg";
 import { transitOptions } from "../routeMaps/dataList";
 
-const CardDataList = [
+export const CardDataList = [
   {
     jobId: 1,
     logo: MyntraLogo,
@@ -200,5 +200,3 @@ const CardDataList = [
     },
   },
 ];
-
-export default CardDataList;

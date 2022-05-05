@@ -42,7 +42,7 @@ const SuccessButton = styled(Typography)({
 
 const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
   const inputFile: any = useRef<HTMLInputElement>(null);
-  const [selectedFile, setSelectedFile] = useState<String>();
+  const [selectedFile, setSelectedFile] = useState<string>();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const changeFileHandler = (event: any) => {
     setSelectedFile((event.target as HTMLInputElement).value);
