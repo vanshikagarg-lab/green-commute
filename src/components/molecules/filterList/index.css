@@ -1,0 +1,16 @@
+.MuiFormControlLabel-label {
+    font-size: 14px;
+    line-height: 22px;
+    color: #656e66;
+    font-weight: 500;
+    margin: 0px 8px;
+}
+
+.MuiFormLabel-root {
+    font-size: 14px;
+    line-height: 22px;
+    color: #373c38;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
