@@ -6,7 +6,6 @@ import logo from "../../../assets/icons/logo.svg";
 import Typography from "../../atoms/typography";
 import TextField from "../../atoms/textField";
 import { NextButton, SkipButton, BackButton } from "./style";
-import Chip from "@mui/material/Chip";
 import LandingStage from "../../molecules/landingStage";
 import DoneSvg from "../../../assets/icons/done.svg";
 import Autocomplete from "../autocomplete";

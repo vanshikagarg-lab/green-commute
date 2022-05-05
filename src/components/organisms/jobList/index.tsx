@@ -1,16 +1,15 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { styled, Box, Dialog, DialogContent } from "@mui/material";
 import Typography from "../../atoms/typography";
 import theme from "../../../theme";
-import CardDataList from "./cardData";
+import { CardDataList } from "./cardData";
 import JobListCard from "../../molecules/jobListCard";
-import JobDescriptionCard from "../../organisms/jobDescriptionCard";
-import { JobDescriptionCardProps } from "../../organisms/jobDescriptionCard";
+import JobDescriptionCard, {
+  JobDescriptionCardProps,
+} from "../../organisms/jobDescriptionCard";
 import UploadResume from "../../organisms/uploadResume";
 import ButtonComponent from "../../atoms/button";
-import FilterChip from "../../molecules/filterChip";
-import { Props } from "../../molecules/filterChip";
+import FilterChip, { Props } from "../../molecules/filterChip";
 
 interface CardProps {
   jobId: number;
@@ -93,16 +92,16 @@ const JobList = (props: FilterProps) => {
   }, []);
 
   const handleSelect = (index: number) => {
-    const selectedCard = cardList?.find(card => card.jobId === index + 1);
+    const selectedCard = cardList?.find((card) => card.jobId === index + 1);
     setSelect(selectedCard);
     setDescription(CardDataList[index]);
   };
 
   const saveJobsHandler = (index: string) => {
     const selectedCard = cardList?.find(
-      card => card.jobId === parseInt(index) + 1
+      (card) => card.jobId === parseInt(index) + 1
     );
-    setDescription(prevState => ({
+    setDescription((prevState) => ({
       ...prevState,
       saved: prevState.saved ? false : true,
     }));

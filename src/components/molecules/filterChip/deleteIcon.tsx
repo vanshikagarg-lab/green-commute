@@ -7,8 +7,6 @@ type props = {
   onClick?: any;
 };
 
-const Delete = ({ onClick }: props) => {
+export const Delete = ({ onClick }: props) => {
   return <Icon src={CloseIcon} onClick={onClick}></Icon>;
 };
-
-export default Delete;
