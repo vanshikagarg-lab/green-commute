@@ -30,6 +30,7 @@ const FilterChip = (props: Props) => {
         borderRadius: "8px",
         padding: "4px 12px",
         margin: "3px",
+        cursor: "pointer"
       }}
     ></Chip>
   );
