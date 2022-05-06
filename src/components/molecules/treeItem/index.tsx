@@ -1,108 +1,94 @@
-import React from 'react';
-import {styled, Box, BoxProps, Grid} from '@mui/material';
-import Icon from '../../atoms/icon';
-import theme from '../../../theme';
-import Typography from '../../atoms/typography';
-interface PropsType extends BoxProps{
-    selected?: boolean;
-    text: string;
-    icon: string;
+import React from "react";
+import { styled, Box, BoxProps, Grid } from "@mui/material";
+import Icon from "../../atoms/icon";
+import theme from "../../../theme";
+import Typography from "../../atoms/typography";
+interface PropsType extends BoxProps {
+  selected?: boolean;
+  text: string;
+  icon: string;
 }
 
-interface IconBoxPropsType extends BoxProps{
-    selected?: boolean;
+interface IconBoxPropsType extends BoxProps {
+  selected?: boolean;
 }
-
 
 const StyledBox = styled((props: PropsType) => {
-    const {selected, ...other } =
-      props;
-    return <Box {...other} />;
-  })(
-    ({
-      selected
-    }) => ({
-        height: '48px',
-        width: '270px',
-        backgroundColor: `${selected ? theme.palette.structural.color1: theme.palette.structural.main}`,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative'
-    })
-  );
+  const { selected, ...other } = props;
+  return <Box {...other} />;
+})(({ selected }) => ({
+  height: "48px",
+  backgroundColor: `${
+    selected ? theme.palette.structural.color1 : theme.palette.structural.main
+  }`,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+}));
 
 const IconBox = styled((props: IconBoxPropsType) => {
-    const {selected, ...other } =
-      props;
-    return <Box {...other} />;
-  })(
-    ({
-      selected
-    }) => ({
-        height: '40px',
-        width: '40px',
-        backgroundColor: `${!selected ? theme.palette.greyColors.main100: 'transparent'}`,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: '50%',
-        marginRight: '10px'
-    })
-  );
+  const { selected, ...other } = props;
+  return <Box {...other} />;
+})(({ selected }) => ({
+  height: "40px",
+  width: "40px",
+  backgroundColor: `${
+    !selected ? theme.palette.greyColors.main100 : "transparent"
+  }`,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "50%",
+  marginRight: "10px",
+}));
 
-  const BorderBox = styled((props: IconBoxPropsType) => {
-    const {selected, ...other } =
-      props;
-    return <Box {...other} />;
-  })(
-    ({
-      selected
-    }) => ({
-        height: '48px',
-        width: '4px',
-        backgroundColor: `${selected ? theme.palette.primary.main500: 'transparent'}`,
-        borderRadius: '8px 0px 0px 8px',
-        position: 'absolute',
-        right: 0,
-        top: 0
-    })
-  );
+const BorderBox = styled((props: IconBoxPropsType) => {
+  const { selected, ...other } = props;
+  return <Box {...other} />;
+})(({ selected }) => ({
+  height: "48px",
+  width: "4px",
+  backgroundColor: `${
+    selected ? theme.palette.primary.main500 : "transparent"
+  }`,
+  borderRadius: "8px 0px 0px 8px",
+  position: "absolute",
+  right: 0,
+  top: 0,
+}));
 
-const TreeItem = ({selected=false, text, icon, ...remProps}: PropsType) => {
-    return (
-        <StyledBox 
-            selected={selected}
-            text={text}
-            icon={icon}
-            {...remProps}
+const TreeItem = ({ selected = false, text, icon, ...remProps }: PropsType) => {
+  return (
+    <StyledBox selected={selected} text={text} icon={icon} {...remProps}>
+      <Grid
+        container
+        direction="row"
+        justifyContent="start"
+        alignItems="center"
+        height="48px"
+      >
+        <IconBox selected={selected}>
+          <Icon
+            src={icon}
+            fill={
+              selected
+                ? theme.palette.primary.main500
+                : theme.palette.textColor.lowEmphasis
+            }
+          />
+        </IconBox>
+
+        <Typography
+          variant="body2"
+          color={selected ? "primary.main500" : "textColor.highEmphasis"}
         >
-            <Grid
-                container
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                height="48px"
-            >
-                <IconBox
-                    selected={selected}
-                >
-                    <Icon 
-                        src={icon}
-                        fill={selected ? theme.palette.primary.main500 : theme.palette.textColor.lowEmphasis}
-                    />
-                </IconBox>
-                
-                <Typography 
-                    variant="body2" 
-                    color={selected ? "primary.main500": "textColor.highEmphasis"}
-                >
-                    {text}
-                </Typography>
-            </Grid>
-            <BorderBox data-testid="border-box" selected={selected}/>
-        </StyledBox>
-    )
-}
+          {text}
+        </Typography>
+      </Grid>
+      <BorderBox data-testid="border-box" selected={selected} />
+    </StyledBox>
+  );
+};
 
 export default TreeItem;
