@@ -17,10 +17,6 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
-    - sonar-scanner
-  only:
-    - merge_requests
-    - main
     - npm install
     - npm test -- --coverage --testResultsProcessor=jest-sonar-reporter
     - npm run build-storybook
