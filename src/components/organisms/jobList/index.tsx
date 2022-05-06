@@ -97,7 +97,7 @@ const JobList = (props: FilterProps) => {
     setDescription(CardDataList[index]);
   };
 
-  const saveJobsHandler = (index: string) => {
+  const saveJobsHandler = () => {
     setDescription((prevState) => ({
       ...prevState,
       saved: prevState.saved ? false : true,
@@ -224,7 +224,7 @@ const JobList = (props: FilterProps) => {
               distance={description.distance}
               time={description.time}
               transitOptions={description.transitOptions}
-              onSaveClick={() => saveJobsHandler(description.jobId.toString())}
+              onSaveClick={() => saveJobsHandler()}
               onApplyClick={() => applyJobsHandler()}
               data-testid={"card-1"}
             />

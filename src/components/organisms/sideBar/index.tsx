@@ -26,13 +26,13 @@ const sideBar = ({ list1, list2 }: Props) => {
 
   return (
     <Box
-      width={270}
+      width={"fit-content"}
       sx={{ boxShadow: "0px 2px 8px rgba(125, 125, 125, 0.12);" }}
       bgcolor={THEME.palette.structural.main}
       display={"flex"}
       flexDirection={"column"}
       pt={5}
-      data-testid = {"side-bar"}
+      data-testid={"side-bar"}
     >
       {list1.map((item: any, index: number) => (
         <TreeItem
