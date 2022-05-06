@@ -17,19 +17,6 @@ const Template: ComponentStory<typeof ButtonComponent> = args => (
   <ButtonComponent {...args} />
 );
 
-export const ContainedButton = Template.bind({});
-ContainedButton.args = {
-  children: "Next",
-  variant: "contained",
-  style: {
-    textTransform: "none",
-    width: "140px",
-    height: "46px",
-    borderRadius: "8px",
-    background: "#30A193",
-  },
-};
-
 export const OutlinedButton = Template.bind({});
 OutlinedButton.args = {
   children: "Back",

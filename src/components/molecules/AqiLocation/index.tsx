@@ -16,7 +16,6 @@ const WrapperStyle = styled("div")({
   alignItems: "center",
   width: "320px",
   height: "174px",
-  background: theme.palette.structural.linear1,
 });
 
 const AQIStyle = styled("div")({
@@ -34,6 +33,7 @@ const AQIValue = styled("div")({
 
 const LocationStyle = styled("div")({
   color: theme.palette.accent.color2,
+  width: "114px",
 });
 
 const AqiLocation = (props: Props) => {
@@ -46,7 +46,14 @@ const AqiLocation = (props: Props) => {
           </AQIValue>
         </AQIStyle>
         <LocationStyle>
-          <Typography variant="heading2" children={props.location} />
+          <Typography
+            variant="heading2"
+            children={
+              props.location.length > 9
+                ? props.location.substring(0, 9).concat("...")
+                : props.location
+            }
+          />
         </LocationStyle>
       </WrapperStyle>
     </>
