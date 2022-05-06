@@ -98,9 +98,6 @@ const JobList = (props: FilterProps) => {
   };
 
   const saveJobsHandler = (index: string) => {
-    const selectedCard = cardList?.find(
-      (card) => card.jobId === parseInt(index) + 1
-    );
     setDescription((prevState) => ({
       ...prevState,
       saved: prevState.saved ? false : true,
@@ -115,7 +112,9 @@ const JobList = (props: FilterProps) => {
     setFilters([]);
   };
 
-  const deleteFilterChip = (index: number) => {};
+  const deleteFilterChip = (index: number) => {
+    console.log(index);
+  };
 
   return (
     <>

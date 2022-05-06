@@ -1,4 +1,4 @@
-const data = [
+export const options = [
     {
         name : "Distance",
         disabled: false,
@@ -59,4 +59,3 @@ const data = [
     }
 
 ]
-export default data;

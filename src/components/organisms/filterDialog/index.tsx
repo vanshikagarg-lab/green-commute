@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Box, Grid, FormControl,  Button, FormGroup, FormControlLabel, RadioGroup, GridProps, styled} from '@mui/material';
 import Typography from "../../atoms/typography";
-import options from './options';
+import {options} from './options';
 import Icon from "../../atoms/icon";
 import CheckBox from '../../atoms/checkbox';
 import RadioButton from '../../atoms/radioButton';
