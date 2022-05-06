@@ -1,9 +1,11 @@
 import React from 'react';
 import TextField from '../../atoms/textField';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LocationOnIcon from '../../../assets/icons/locationHeader.svg';
 import {TextFieldProps} from "@mui/material";
+import Icon from '../../atoms/icon';
+
 const icon = {
-    startAdornment: <LocationOnIcon sx={{marginRight: '10px'}}/>
+    startAdornment: <Icon src={LocationOnIcon}/>
 }
 
 const HeaderSearchBar = ({...remProps}: TextFieldProps) => {

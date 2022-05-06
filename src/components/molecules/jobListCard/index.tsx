@@ -46,6 +46,7 @@ const ParentBox = styled((props: ParentBoxPropsType) => {
   padding: "16px 19px 16px 19px",
   border: selected ? `2px solid ${theme.palette.primary.main200}` : "none",
   margin: "10px",
+  boxSizing: "border-box"
 }));
 
 const StyledGridIcon = styled(Grid)({

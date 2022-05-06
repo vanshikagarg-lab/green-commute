@@ -12,4 +12,6 @@ const Template: ComponentStory<typeof Header> = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  value: "East Marredpally, Secunderabad"
+};
