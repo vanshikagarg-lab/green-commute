@@ -20,8 +20,14 @@ const StyledGrid = styled(Grid)({
     width: '100vw',
     minWidth: '1386px'
 });
+interface Props extends GridProps{
+    value: string;
+}
 
-const Header = ({...remProps} : GridProps) => {
+
+
+
+const Header = ({value, ...remProps} : Props) => {
     return (
         <StyledGrid
             height="80px"
@@ -32,19 +38,26 @@ const Header = ({...remProps} : GridProps) => {
             {...remProps}
             data-testid="header"
         >
-            <Box>
-                <Icon src={Logo} fill="white"/>
-            </Box>
-            <Box>
-                <SearchBar 
-                    value="Green Comute"
-                />
-            </Box>
+            
+            <Grid
+                container
+                alignItems="center"
+                width="800px"
+            >
+                <Box>
+                    <Icon src={Logo} fill="white"/>
+                </Box>
+                <Box sx={{marginLeft:'150px'}}>
+                    <SearchBar 
+                        value={value}
+                    />
+                </Box>
+            </Grid>
             <Grid
                 container
                 justifyContent="space-between"
                 alignItems="center"   
-                width="104px"
+                width="124px"
             >
                 <Icon src={Message} fill="white" stroke="white"/>
                 <Icon src={Notification} fill="white"/>

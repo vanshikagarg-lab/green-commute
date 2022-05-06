@@ -128,7 +128,7 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
                         height="160px"
                     >
                         <FormControl sx={{ m: 3 }} component="fieldset">
-                            <Typography variant="body1">{options[3].name}</Typography>
+                            <Typography variant="body1">{options[index].name}</Typography>
                             {getGroupsType(index)}
                         </FormControl>
                     </Grid>

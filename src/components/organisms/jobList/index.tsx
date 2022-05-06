@@ -197,8 +197,8 @@ const JobList = (props: FilterProps) => {
                   companyAddress={card.companyAddress}
                   time={`${card.postTime} ago`}
                   vehicle={card.vehicle}
-                  width="529px"
-                  height="123px"
+                  height='159px'
+                  width='571px'
                   selected={select?.jobId === card.jobId ? true : false}
                   style={{ cursor: "pointer" }}
                   onClick={() => handleSelect(index)}
