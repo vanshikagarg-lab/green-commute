@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Grid, FormControl,  Button, FormGroup, FormControlLabel, RadioGroup, GridProps} from '@mui/material';
+import {Box, Grid, FormControl,  Button, FormGroup, FormControlLabel, RadioGroup, GridProps, styled} from '@mui/material';
 import Typography from "../../atoms/typography";
 import options from './options';
 import Icon from "../../atoms/icon";
@@ -7,9 +7,21 @@ import CheckBox from '../../atoms/checkbox';
 import RadioButton from '../../atoms/radioButton';
 import closeIcon from "../../../assets/icons/close.svg";
 import './style.css';
+import theme from '../../../theme';
 interface Props extends GridProps{
     openStatus: boolean;
 }
+
+const StyledBox = styled(Box)({
+    position: 'absolute',
+    top : '10px', 
+    right: '10px', 
+    height: '24px', 
+    width: '24px', 
+    cursor: 'pointer'
+});
+
+
 
 const FilterDialog = ({openStatus,...remProps}:Props) => {
     const [open, setOpen] = useState(openStatus);
@@ -28,6 +40,64 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
         console.log(formData);
         setFormData([false, false, false, false]);
     }
+
+    const getChoiceType = (parentIndex: number, index: number) => {
+        if(parentIndex === 0){
+            return (
+                <CheckBox 
+                    data-testid="checkbox-change"
+                    name={options[parentIndex].name} value={options[parentIndex].options[index]} checked={formData[index]}
+                    onChange={() => {handleChange(index)}}
+                />
+            )
+        }else if(parentIndex !== 2){
+            return (
+                <CheckBox 
+                    data-testid="checkbox-change"
+                    name={options[parentIndex].name} value={options[parentIndex].options[index]} 
+                />
+            )
+        }
+        return (
+            <RadioButton
+                name={options[2].name} value={options[2].options[index]}
+                sx={{marginRight: '7px'}}
+            />   
+        )
+    }
+
+    const getGroups = (parentIndex: number)=> {
+        return (
+            options[parentIndex].options.map((_data, index) => (
+                <FormControlLabel
+                    control={
+                        getChoiceType(parentIndex, index)
+                    }
+                    label={<Typography variant='body2' color={`textColor.mediumEmphasis`}>{_data}</Typography>}
+                />
+            ))
+        )
+    }
+
+    const getGroupsType = (parentIndex: number) => {
+        if(parentIndex !== 2){
+            return (
+                <FormGroup>
+                    {
+                        getGroups(parentIndex)
+                    }
+                </FormGroup>
+            )
+        }
+        return (
+            <RadioGroup style={{padding: '0px 0px 0px 10px'}}>
+                 {
+                    getGroups(parentIndex)
+                }
+            </RadioGroup>
+        )
+    }
+
     return(
         <Grid
             width="546px"
@@ -40,146 +110,30 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
                 padding: '25px'  
             }}
             data-testid="filter-box"
+            {...remProps}
         >
-        <Box style={{position: 'absolute', top : '10px', right: '10px', height: '24px', width: '24px', cursor: 'pointer'}} onClick={() => {setOpen(false)}}>
+        <StyledBox onClick={() => {setOpen(false)}}>
             <Icon src={closeIcon} />
-          </Box>
+        </StyledBox>
         <Grid
             width="498px"
             height="416px"
             container
             justifyContent="center"
         >
-                <Grid item md={4}
-                    width="148px"
-                    height="160px"
-                >
-                    <FormControl sx={{ m: 3 }} component="fieldset">
-                        <Typography variant="body1">{options[0].name}</Typography>
-                        <FormGroup>
-                            {
-                                options[0].options.map((_data, i) => (
-                                    <FormControlLabel
-                                        control={
-                                        <CheckBox 
-                                            data-testid="checkbox-change"
-                                            name={options[0].name} value={_data} checked={formData[i]}
-                                            onChange={() => { handleChange(i)}}
-                                        />}
-                                        label={<Typography variant='body2' color={`textColor.mediumEmphasis`}>{_data}</Typography>}
-                                    />
-                                ))
-                            }
-                        </FormGroup>
-                    </FormControl>
-                </Grid>
-                <Grid item md={4}
-                    width="148px"
-                    height="160px"
-                >
-                    <FormControl sx={{ m: 3 }} component="fieldset">
-                        <Typography variant="body1">{options[1].name}</Typography>
-                        <FormGroup>
-                            {
-                                options[1].options.map((_data) => (
-                                    <FormControlLabel
-                                        control={
-                                        <CheckBox 
-                                            name={options[1].name} value={_data}
-                                        />}
-                                        label={<Typography variant='body2' color={`textColor.mediumEmphasis`}>{_data}</Typography>}
-                                    />
-                                ))
-                            }
-                        </FormGroup>
-                    </FormControl>
-                </Grid>
-                <Grid item md={4}
-                    width="148px"
-                    height="160px"
-                >
-                    <FormControl sx={{ m: 3 }} component="fieldset">
-                        <Typography variant="body1">{options[2].name}</Typography>
-                        <RadioGroup style={{padding: '0px 0px 0px 10px'}}>
-                            {
-                                options[2].options.map((_data) => (
-                                        <FormControlLabel
-                                        control={
-                                        <RadioButton
-                                            name={options[2].name} value={_data}
-                                            sx={{marginRight: '7px'}}
-                                        />}
-                                        label={<Typography variant='body2' color={`textColor.mediumEmphasis`}>{_data}</Typography>}
-                                    />
-                                    
-                                ))
-                            }
-                        </RadioGroup>
-                    </FormControl>
-                </Grid>
-                <Grid item md={4}
-                    width="148px"
-                    height="160px"
-                >
-                    <FormControl sx={{ m: 3 }} component="fieldset">
-                        <Typography variant="body1">{options[3].name}</Typography>
-                        <FormGroup>
-                            {
-                                options[3].options.map((_data) => (
-                                    <FormControlLabel
-                                        control={
-                                        <CheckBox 
-                                            name={options[3].name} value={_data}
-                                        />}
-                                        label={<Typography variant='body2' color={`textColor.mediumEmphasis`}>{_data}</Typography>}
-                                    />
-                                ))
-                            }
-                        </FormGroup>
-                    </FormControl>
-                </Grid>
-                <Grid item md={4}
-                    width="148px"
-                    height="160px"
-                >
-                    <FormControl sx={{ m: 3 }} component="fieldset">
-                        <Typography variant="body1">{options[4].name}</Typography>
-                        <FormGroup>
-                            {
-                                options[4].options.map((_data) => (
-                                    <FormControlLabel
-                                        control={
-                                        <CheckBox 
-                                            name={options[4].name} value={_data}
-                                        />}
-                                        label={<Typography variant='body2' color={`textColor.mediumEmphasis`}>{_data}</Typography>}
-                                    />
-                                ))
-                            }
-                        </FormGroup>
-                    </FormControl>
-                </Grid>
-                <Grid item md={4}
-                    width="148px"
-                    height="160px"
-                >
-                    <FormControl sx={{ m: 3 }} component="fieldset">
-                        <Typography variant="body1">{options[5].name}</Typography>
-                        <FormGroup>
-                            {
-                                options[5].options.map((_data) => (
-                                    <FormControlLabel
-                                        control={
-                                        <CheckBox 
-                                            name={options[5].name} value={_data}
-                                        />}
-                                        label={<Typography variant='body2' color={`textColor.mediumEmphasis`}>{_data}</Typography>}
-                                    />
-                                ))
-                            }
-                        </FormGroup>
-                    </FormControl>
-                </Grid>
+            {
+                options.map((_curr, index) => (
+                    <Grid item md={4}
+                        width="148px"
+                        height="160px"
+                    >
+                        <FormControl sx={{ m: 3 }} component="fieldset">
+                            <Typography variant="body1">{options[3].name}</Typography>
+                            {getGroupsType(index)}
+                        </FormControl>
+                    </Grid>
+                ))
+            }
             
             <Grid
                 container
@@ -189,7 +143,7 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
             >
              <Button
                 style={{
-                color: "#4ABAAD",
+                color: `${theme.palette.primary.main300}`,
                 minWidth: "0px",
                 }}
                 variant="text"

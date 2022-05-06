@@ -7,7 +7,6 @@ const Typography = ({...remProps }: PropsType) => {
     <MuiTypography 
         {...remProps} 
     />
-    // </MuiTypography>
   );
 }
 
