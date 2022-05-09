@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IconButton from "../../atoms/iconButton";
 import backIcon from "../../../assets/icons/backBlack.svg";
 import Typography from "../../atoms/typography";
@@ -25,6 +25,7 @@ export type RouteMapProps = {
   time: string;
   onBackButtonClick?: any;
   transitOptions: any;
+  vehicle: { bike: boolean; car: boolean; bus: boolean; train: boolean };
 };
 
 const RouteMaps = ({
@@ -35,20 +36,25 @@ const RouteMaps = ({
   time,
   onBackButtonClick,
   transitOptions,
+  vehicle,
 }: RouteMapProps) => {
-  const [option, setOption] = useState(2);
+  const [selectedOption, setSelectedOption] = useState([false, false]);
 
   const onBusClick = () => {
-    if (option != 2) {
-      setOption(2);
-    }
+    setSelectedOption([true, false]);
   };
 
   const onCarClick = () => {
-    if (option != 3) {
-      setOption(3);
-    }
+    setSelectedOption([false, true]);
   };
+
+  useEffect(() => {
+    if (vehicle.bus) {
+      setSelectedOption([true, false]);
+    } else if (vehicle.car) {
+      setSelectedOption([false, true]);
+    }
+  }, []);
 
   return (
     <Box pt={3.25} pb={3}>
@@ -69,50 +75,62 @@ const RouteMaps = ({
         <RouteInfo startLocation={startLocation} destination={destination} />
       </Box>
       <Box display="flex" alignItems="center" mt={1.5}>
-        <IconButton style={{ backgroundColor: "transparent" }}>
-          <Icon src={bikeIcon} fill={THEME.palette.textColor.lowEmphasis} />
-        </IconButton>
-        <IconButton
-          style={{
-            marginLeft: "8px",
-            backgroundColor: `${
-              option == 2 ? THEME.palette.primary.main400 : "transparent"
-            }`,
-          }}
-          onClick={onBusClick}
-        >
-          <Icon
-            src={busIcon}
-            fill={
-              option == 2
-                ? THEME.palette.structural.main
-                : THEME.palette.textColor.lowEmphasis
-            }
-          />
-        </IconButton>
-        <IconButton
-          style={{
-            marginLeft: "8px",
-            backgroundColor: `${
-              option == 3 ? THEME.palette.primary.main400 : "transparent"
-            }`,
-          }}
-          onClick={onCarClick}
-        >
-          <Icon
-            src={carIcon}
-            fill={
-              option == 3
-                ? THEME.palette.structural.main
-                : THEME.palette.textColor.lowEmphasis
-            }
-          />
-        </IconButton>
-        <IconButton
-          style={{ marginLeft: "8px", backgroundColor: "transparent" }}
-        >
-          <Icon src={trainIcon} fill={THEME.palette.textColor.lowEmphasis} />
-        </IconButton>
+        {vehicle.bike && (
+          <IconButton style={{ backgroundColor: "transparent" }}>
+            <Icon src={bikeIcon} fill={THEME.palette.textColor.lowEmphasis} />
+          </IconButton>
+        )}
+        {vehicle.bus && (
+          <IconButton
+            style={{
+              marginLeft: "8px",
+              backgroundColor: `${
+                selectedOption[0]
+                  ? THEME.palette.primary.main400
+                  : "transparent"
+              }`,
+            }}
+            onClick={onBusClick}
+          >
+            <Icon
+              src={busIcon}
+              fill={
+                selectedOption[0]
+                  ? THEME.palette.structural.main
+                  : THEME.palette.textColor.lowEmphasis
+              }
+            />
+          </IconButton>
+        )}
+        {vehicle.car && (
+          <IconButton
+            style={{
+              marginLeft: "8px",
+              backgroundColor: `${
+                selectedOption[1]
+                  ? THEME.palette.primary.main400
+                  : "transparent"
+              }`,
+            }}
+            onClick={onCarClick}
+          >
+            <Icon
+              src={carIcon}
+              fill={
+                selectedOption[1]
+                  ? THEME.palette.structural.main
+                  : THEME.palette.textColor.lowEmphasis
+              }
+            />
+          </IconButton>
+        )}
+        {vehicle.train && (
+          <IconButton
+            style={{ marginLeft: "8px", backgroundColor: "transparent" }}
+          >
+            <Icon src={trainIcon} fill={THEME.palette.textColor.lowEmphasis} />
+          </IconButton>
+        )}
       </Box>
       <Typography variant="body2" color="textColor.highEmphasis" mt={4}>
         Catch a blue line metro towards Raidurg{" "}
@@ -143,7 +161,7 @@ const RouteMaps = ({
           {time}
         </Typography>
       </Box>
-      {option == 2 && (
+      {selectedOption[0] && (
         <Box>
           <Box mt={1}>
             <Image id="mapView" source={mapView} altText="mapView" />
@@ -155,7 +173,7 @@ const RouteMaps = ({
           </Button>
         </Box>
       )}
-      {option == 3 && (
+      {selectedOption[1] && (
         <Box>
           {transitOptions.map((transitOption: any, index: number) => (
             <Box mt={index > 0 ? 1 : 0}>

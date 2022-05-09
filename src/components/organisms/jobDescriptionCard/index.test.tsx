@@ -5,7 +5,7 @@ import JobDescriptionCard from "./index";
 import myntraLogo from "../../../assets/images/myntraLogo.png";
 import { transitOptions } from "../routeMaps/dataList";
 
-const renderCard = (saved:boolean) => (
+const renderCard = (saved: boolean) => (
   <JobDescriptionCard
     jobId={1}
     logo={myntraLogo}
@@ -32,6 +32,7 @@ core Adobe Creative Suite products.`}
     distance={25}
     time="1 hr 20 mins"
     transitOptions={transitOptions}
+    vehicle={{ bike: true, car: true, bus: true, train: true }}
   />
 );
 

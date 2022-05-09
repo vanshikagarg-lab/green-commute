@@ -197,8 +197,8 @@ const JobList = (props: FilterProps) => {
                   companyAddress={card.companyAddress}
                   time={`${card.postTime} ago`}
                   vehicle={card.vehicle}
-                  height='159px'
-                  width='571px'
+                  height="159px"
+                  width="571px"
                   selected={select?.jobId === card.jobId ? true : false}
                   style={{ cursor: "pointer" }}
                   onClick={() => handleSelect(index)}
@@ -227,6 +227,7 @@ const JobList = (props: FilterProps) => {
               onSaveClick={() => saveJobsHandler()}
               onApplyClick={() => applyJobsHandler()}
               data-testid={"card-1"}
+              vehicle={description.vehicle}
             />
           </DescriptionStyle>
         </WrapCardStyle>
