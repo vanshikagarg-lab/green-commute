@@ -3,7 +3,8 @@ import { Container } from "@mui/material";
 import theme from "../../../theme";
 import { styled } from "@mui/system";
 import Typography from "../../atoms/typography";
-import "./index.css";
+// import "./index.css";
+import aqiSvg from "../../../assets/images/aqi.svg";
 
 interface Props {
   aqiValue: string;
@@ -23,6 +24,7 @@ const AQIStyle = styled("div")({
   margin: "0 auto",
   width: "212px",
   height: "214px",
+  backgroundImage: `url(${aqiSvg})`,
 });
 
 const AQIValue = styled("div")({
