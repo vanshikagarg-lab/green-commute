@@ -114,13 +114,7 @@ const LandingPage = () => {
             return (
               <AqiLocation
                 aqiValue={
-                  locations.map(loc => {
-                    console.log(loc.title + " " + input.title);
-                    if (loc.title === input.title) {
-                      console.log(loc.aqi);
-                      return loc.aqi;
-                    }
-                  })[0] ?? "884"
+                  locations.filter(loc => loc.title === input.title)[0].aqi
                 }
                 location={input.title}
                 key={index}
