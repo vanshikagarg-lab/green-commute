@@ -1,14 +1,12 @@
-import React from 'react';
-import Avatar from './components/atoms/avatar';
-import Image from './components/atoms/Image';
+import React from "react";
+import LandingPage from "./components/pages/landingPage";
 
-
-
-const App = ()=> {
+const App = () => {
   return (
-      <div>
-      </div>
+    <div>
+      <LandingPage />
+    </div>
   );
-}
+};
 
 export default App;
