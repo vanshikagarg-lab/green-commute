@@ -1,6 +1,6 @@
 import { Box, Divider } from "@mui/material";
 import React, { useState } from "react";
-import TreeItem from "../../molecules/treeItem";
+import TreeItem from "../../molecules/sidebarItem";
 import THEME from "../../../theme";
 
 type Props = {

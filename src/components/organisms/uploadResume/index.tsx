@@ -42,17 +42,14 @@ const SuccessButton = styled(Typography)({
 
 const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
   const inputFile: any = useRef<HTMLInputElement>(null);
-  const [selectedFile, setSelectedFile] = useState<string>();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const changeFileHandler = (event: any) => {
-    setSelectedFile((event.target as HTMLInputElement).value);
+  const changeFileHandler = () => {
+    setIsSubmitted(true);
   };
 
   const statusHandler = () => {
     inputFile.current.click();
-    setIsSubmitted(true);
   };
-  console.log(selectedFile);
 
   return (
     <ParentBox {...remProps}>
@@ -65,6 +62,7 @@ const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
           top: "20px",
           right: "20px",
           padding: "4px",
+          cursor: "pointer"
         }}
       />
       {!isSubmitted && (
@@ -96,14 +94,15 @@ const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
               <Typography variant='caption1'>
                 Click Here to Upload Files
               </Typography>
-              <input
-                data-test-id='file-upload'
+              
+            </Button>
+            <input
+                data-testid='file-upload'
                 type='file'
-                hidden
+                style={{'visibility': 'collapse', position: 'fixed'}}
                 ref={inputFile}
                 onChange={changeFileHandler}
               />
-            </Button>
           </UploadGridBox>
         </Grid>
       )}

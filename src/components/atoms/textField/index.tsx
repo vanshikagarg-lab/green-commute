@@ -7,10 +7,11 @@ type PropsType = {
   border?: boolean;
   boxShadow?: boolean;
   placeholderColor?: string;
+  textColor?: string;
 } & TextFieldProps;
 
 const StyledTextField = styled((props: PropsType) => {
-  const { height, width, border, placeholderColor, boxShadow, ...other } =
+  const { height, width, border, placeholderColor, boxShadow, textColor, ...other } =
     props;
   return <TextField {...other} />;
 })(
@@ -20,6 +21,7 @@ const StyledTextField = styled((props: PropsType) => {
     border,
     placeholderColor = theme.palette.textColor.lowEmphasis,
     boxShadow,
+    textColor
   }) => ({
     height: height,
     width: width,
@@ -27,11 +29,11 @@ const StyledTextField = styled((props: PropsType) => {
       "&:before, :after, :hover:not(.Mui-disabled):before": {
         borderBottom: border && `1px solid ${theme.palette.structural.main}`,
       },
-      color: theme.palette.structural.main,
+      color: textColor || theme.palette.structural.main,
     },
     "&.MuiTextField-root": {
       "& .MuiOutlinedInput-input": {
-        color: theme.palette.textColor.highEmphasis,
+        color: textColor || theme.palette.textColor.highEmphasis,
         fontWeight: 500,
         lineHeight: "16px",
         fontSize: "12px",

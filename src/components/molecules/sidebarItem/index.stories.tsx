@@ -5,7 +5,7 @@ import SettingsIcon from "../../../assets/icons/settings.svg";
 import { Box } from "@mui/material";
 
 export default {
-  title: "Molecules/TreeItem",
+  title: "Molecules/SidebarItem",
   component: TreeItem,
 } as ComponentMeta<typeof TreeItem>;
 

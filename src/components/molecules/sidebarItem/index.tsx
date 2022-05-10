@@ -48,7 +48,7 @@ const IconBox = styled(Box)<IconBoxPropsType>(({selected}) => ({
     })
   );
 
-const TreeItem = ({ selected = false, text, icon, ...remProps }: PropsType) => {
+const SidebarItem = ({ selected = false, text, icon, ...remProps }: PropsType) => {
   return (
     <StyledBox selected={selected} text={text} icon={icon} {...remProps}>
       <Grid
@@ -81,4 +81,4 @@ const TreeItem = ({ selected = false, text, icon, ...remProps }: PropsType) => {
   );
 };
 
-export default TreeItem;
+export default SidebarItem;
