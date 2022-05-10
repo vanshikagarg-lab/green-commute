@@ -45,7 +45,9 @@ const LandingPage = () => {
   const getOptions = (option: any) => option.title;
 
   const nextHandleChange = () => {
-    if (stage < 3) {
+    if (stage === 1 && inputVal.length >= 1) {
+      setStage(stage + 1);
+    } else if (stage === 2 && jobLocation.length >= 1) {
       setStage(stage + 1);
     }
   };
