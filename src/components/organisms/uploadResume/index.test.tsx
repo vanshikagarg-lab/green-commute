@@ -15,6 +15,14 @@ it("resume state change ", () => {
   expect(resumeNotSubmitted).toBeInTheDocument();
   const button = screen.getByRole("button");
   fireEvent.click(button);
+  const input = screen.getByTestId("file-upload");
+  const file = new File(['~/Documents/bootcamp2/bootcamp-32-green-commute/src/assets/images/'], 'avatarImage.png', {
+    type: 'image/png',
+  })
+  Object.defineProperty(input, 'files', {
+    value: [file]
+  })
+  fireEvent.change(input);
   expect(resumeNotSubmitted).not.toBeInTheDocument();
   const resumeSubmitted = screen.getByTestId("resume-submitted");
   expect(resumeSubmitted).toBeInTheDocument();

@@ -20,6 +20,9 @@ const ButtonComponent = (props: ButtonProps) => {
         onClick={props.onClick}
         sx={{
           textTransfrom: "none",
+          "&:hover":{
+            backgroundColor: `${props.variant === "contained" && theme.palette.primary.main300}`
+          }
         }}
         className={props.className}
       >

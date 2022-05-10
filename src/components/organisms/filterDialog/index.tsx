@@ -40,7 +40,9 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
         console.log(formData);
         setFormData([false, false, false, false]);
     }
-
+    const checked = (parentIndex: number, index: number) => {
+        return ((parentIndex !== 0 && index === 0) || parentIndex === 5);
+    }
     const getChoiceType = (parentIndex: number, index: number) => {
         if(parentIndex === 0){
             return (
@@ -55,6 +57,7 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
                 <CheckBox 
                     data-testid="checkbox-change"
                     name={options[parentIndex].name} value={options[parentIndex].options[index]} 
+                    defaultChecked={checked(parentIndex, index)}
                 />
             )
         }
@@ -62,6 +65,7 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
             <RadioButton
                 name={options[2].name} value={options[2].options[index]}
                 sx={{marginRight: '7px'}}
+                checked={checked(parentIndex, index)}
             />   
         )
     }
