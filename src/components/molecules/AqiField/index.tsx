@@ -3,7 +3,6 @@ import { Container } from "@mui/material";
 import theme from "../../../theme";
 import { styled } from "@mui/system";
 import Typography from "../../atoms/typography";
-// import "./index.css";
 import aqiSvg from "../../../assets/images/aqi.svg";
 
 interface Props {
