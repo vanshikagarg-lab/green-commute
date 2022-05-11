@@ -2,17 +2,24 @@ import React from 'react';
 import {Box, Grid, styled, BoxProps} from '@mui/material';
 import Header from '../../organisms/header';
 import Sidebar from '../../organisms/sideBar';
+import { list1, list2 } from "../../organisms/sideBar/sideBarList";
+import {EXTRA_COLORS} from '../../../theme';
 const StyledGrid = styled(Grid)({
     position: 'absolute',
     top: '80px',
     left: 0,
-    right: 0
+    right: 0,
+    backgroundColor: EXTRA_COLORS.greenGrey
 })
 
 interface PropsType extends BoxProps{
-    list1: any;
-    list2: any;
 }
+
+
+const ChildrenComponent = styled(Grid)({
+    width: 'auto',
+    margin: 'auto',
+})
 
 const GreenComute = (props:PropsType)=>{
     return (
@@ -23,10 +30,16 @@ const GreenComute = (props:PropsType)=>{
                 container
                 direction="row"
             >
-                <Sidebar list1={props.list1} list2={props.list2}/>
-                <Box>
+                <Sidebar list1={list1} list2={list2}/>
+                <ChildrenComponent
+                    container
+                    direction="column"
+                    alignContent="center"
+                    justifyItems="space-between"
+                    pt="40px"
+                >
                     {props.children}
-                </Box>
+                </ChildrenComponent>
             </StyledGrid >
         </Box>
     )

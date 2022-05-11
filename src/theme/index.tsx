@@ -198,3 +198,6 @@ const theme = createTheme({
 });
 
 export default theme;
+export const EXTRA_COLORS = {
+  greenGrey : '#E5E5E5'
+}

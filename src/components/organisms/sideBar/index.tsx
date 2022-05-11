@@ -27,7 +27,7 @@ const sideBar = ({ list1, list2 }: Props) => {
   return (
     <Box
       width={"fit-content"}
-      sx={{ boxShadow: "0px 2px 8px rgba(125, 125, 125, 0.12);" }}
+      sx={{ boxShadow: "0px 2px 8px rgba(125, 125, 125, 0.12);", height: 'inherit' }}
       bgcolor={THEME.palette.structural.main}
       display={"flex"}
       flexDirection={"column"}
