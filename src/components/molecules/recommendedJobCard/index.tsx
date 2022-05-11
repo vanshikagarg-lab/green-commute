@@ -23,6 +23,7 @@ const ParentStyle = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignContent: "center",
+  backgroundColor: theme.palette.structural.main
 });
 
 const InnerFrame = styled(Box)({

@@ -1,4 +1,4 @@
-import { Box } from "@mui/system";
+import { Box, BoxProps } from "@mui/system";
 import React, { useState } from "react";
 import Typography from "../../atoms/typography";
 import THEME from "../../../theme/index";
@@ -15,7 +15,7 @@ import locIcon from "../../../assets/icons/location.svg";
 type Props = {
   filterClick?: any;
   searchButtonClick?: any;
-};
+} & BoxProps;
 
 const FilterButton = styled(Button)({
   backgroundColor: THEME.palette.structural.main,
@@ -30,7 +30,7 @@ const FilterButton = styled(Button)({
   },
 });
 
-const JobSearch = ({ filterClick, searchButtonClick }: Props) => {
+const JobSearch = ({ filterClick, searchButtonClick, ...remProps }: Props) => {
   const [locValue, setLocValue] = useState("");
   const [skillValue, setSkillValue] = useState("");
 
@@ -43,7 +43,7 @@ const JobSearch = ({ filterClick, searchButtonClick }: Props) => {
   };
 
   return (
-    <Box data-testid="jobSearch">
+    <Box data-testid="jobSearch" {...remProps}>
       <Typography variant="heading2" color="textColor.highEmphasis">
         Find Jobs
       </Typography>

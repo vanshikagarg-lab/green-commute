@@ -14,7 +14,7 @@ const StyledGrid = styled(Grid)({
     top: 0,
     left: 0,
     right: 0,
-    padding: '20px',
+    padding: '20px 30px',
     zIndex: 99999,
     boxSizing: 'border-box',
     width: '100vw',
