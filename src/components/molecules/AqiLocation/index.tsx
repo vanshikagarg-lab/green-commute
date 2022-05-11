@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "@mui/system";
 import theme from "../../../theme";
 import Typography from "../../atoms/typography";
-import "./index.css";
+import aqiSvg from "../../../assets/images/aqiLocation.svg";
 
 interface Props {
   location: string;
@@ -21,6 +21,7 @@ const WrapperStyle = styled("div")({
 const AQIStyle = styled("div")({
   width: "174px",
   height: "174px",
+  backgroundImage: `url(${aqiSvg})`,
 });
 
 const AQIValue = styled("div")({
