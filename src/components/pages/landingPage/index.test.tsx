@@ -30,6 +30,8 @@ test("Should change the Aqi frame after entering the job location at stage 2", (
 
   const nextButton = screen.getByText("Next");
   expect(nextButton).toBeInTheDocument();
+  const textElement = screen.getByRole("textbox");
+  fireEvent.change(textElement, { target: { value: "Hyderabad" } });
   fireEvent.click(nextButton);
   const backButton = screen.getByText("Back");
   expect(backButton).toBeInTheDocument();
