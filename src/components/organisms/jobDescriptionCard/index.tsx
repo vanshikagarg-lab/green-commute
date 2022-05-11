@@ -48,6 +48,7 @@ const JobDescriptionCard = ({
   distance,
   time,
   transitOptions,
+  vehicle,
 }: JobDescriptionCardProps) => {
   const [displayRoutes, setDisplayRoutes] = useState<boolean>(false);
   return (
@@ -203,6 +204,7 @@ const JobDescriptionCard = ({
               onBackButtonClick={() => {
                 setDisplayRoutes(false);
               }}
+              vehicle={vehicle}
             />
           </Box>
         )}
