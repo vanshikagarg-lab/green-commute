@@ -24,6 +24,7 @@ const ChildrenComponent = styled(Grid)({
 const GreenComute = (props:PropsType)=>{
     return (
         <Box
+        data-testid="green-template"
         >
             <Header value={'East Marredpally, Secunderabad'} />
             <StyledGrid  
