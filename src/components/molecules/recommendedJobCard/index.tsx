@@ -79,7 +79,7 @@ const IconsFrame = styled(Box)({
 const RecommendedJobCard = (props: PropsType) => {
   return (
     <>
-      <ParentStyle>
+      <ParentStyle onClick={props.onClick} data-testid="recommended-box">
         <InnerFrame>
           <HeaderFrame>
             <Box height="45px" width="45px" alignSelf="center" padding="9px">

@@ -5,7 +5,7 @@ import RecommendedJobsGrid from '.';
 
 test("renders recommended job grid", () => {
     render(
-        <RecommendedJobsGrid></RecommendedJobsGrid>
+        <RecommendedJobsGrid setIndex={jest.fn()}></RecommendedJobsGrid>
     );
     const ReactElement = screen.getByTestId("recommendedJobGrid");
     expect(ReactElement).toBeInTheDocument();
