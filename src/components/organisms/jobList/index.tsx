@@ -138,6 +138,7 @@ const JobList = (props: FilterProps) => {
             flexDirection: "row",
             justifyContent: "center",
             alignContent: "center",
+            padding: 0,
           }}
         >
           <UploadResume setDisplay={() => setShowResumeDialog(false)} />
