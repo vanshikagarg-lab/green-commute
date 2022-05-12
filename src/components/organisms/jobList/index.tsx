@@ -30,14 +30,14 @@ interface FilterProps {
   filters: Array<Props>;
 }
 
-const WrapCardStyle = styled(Box)({
+export const WrapCardStyle = styled(Box)({
   display: "flex",
   flexDirection: "row",
   gap: "16px",
   flexWrap: "wrap",
 });
 
-const DescriptionStyle = styled(Box)({
+export const DescriptionStyle = styled(Box)({
   width: "404px",
   height: "734px",
 });
@@ -92,13 +92,13 @@ const JobList = (props: FilterProps) => {
   }, []);
 
   const handleSelect = (index: number) => {
-    const selectedCard = cardList?.find((card) => card.jobId === index + 1);
+    const selectedCard = cardList?.find(card => card.jobId === index + 1);
     setSelect(selectedCard);
     setDescription(CardDataList[index]);
   };
 
   const saveJobsHandler = () => {
-    setDescription((prevState) => ({
+    setDescription(prevState => ({
       ...prevState,
       saved: prevState.saved ? false : true,
     }));

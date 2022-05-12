@@ -21,7 +21,7 @@ export const CardDataList = [
     multi-disciplinary team of professionals that are responsible for
     enhancing the UX of the company’s collective product suites
     worldwide.`,
-    saved: false,
+    saved: true,
     about1: `High level of proficiency with leading UX Design software packages,
     such as Axure, Sketch, InVision, or Experience Design including the
     core Adobe Creative Suite products.`,
@@ -85,7 +85,7 @@ export const CardDataList = [
     multi-disciplinary team of professionals that are responsible for
     enhancing the UX of the company’s collective product suites
     worldwide.`,
-    saved: false,
+    saved: true,
     about1: `High level of proficiency with leading UX Design software packages,
     such as Axure, Sketch, InVision, or Experience Design including the
     core Adobe Creative Suite products.`,
@@ -149,7 +149,7 @@ export const CardDataList = [
     multi-disciplinary team of professionals that are responsible for
     enhancing the UX of the company’s collective product suites
     worldwide.`,
-    saved: false,
+    saved: true,
     about1: `High level of proficiency with leading UX Design software packages,
     such as Axure, Sketch, InVision, or Experience Design including the
     core Adobe Creative Suite products.`,
