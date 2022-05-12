@@ -1,14 +1,11 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import UploadResume from "./index";
 
-it("resume state change ", () => {
-  render(
-    <UploadResume
-        setDisplay = { () => jest.fn()}
-    />
-  );
+it("resume state change ", async () => {
+  render(<UploadResume setDisplay={() => jest.fn()} />);
   const CloseIcon = screen.getByTestId("close-icon");
   fireEvent.click(CloseIcon);
   const resumeNotSubmitted = screen.getByTestId("resume-not-submitted");
@@ -16,13 +13,14 @@ it("resume state change ", () => {
   const button = screen.getByRole("button");
   fireEvent.click(button);
   const input = screen.getByTestId("file-upload");
-  const file = new File(['~/Documents/bootcamp2/bootcamp-32-green-commute/src/assets/images/'], 'avatarImage.png', {
-    type: 'image/png',
-  })
-  Object.defineProperty(input, 'files', {
-    value: [file]
-  })
-  fireEvent.change(input);
+  const file = new File(
+    ["hello"],
+    "test.pdf",
+    {
+      type: "application/pdf",
+    }
+  );
+  fireEvent.change(input, { target: { file: file } });
   expect(resumeNotSubmitted).not.toBeInTheDocument();
   const resumeSubmitted = screen.getByTestId("resume-submitted");
   expect(resumeSubmitted).toBeInTheDocument();
