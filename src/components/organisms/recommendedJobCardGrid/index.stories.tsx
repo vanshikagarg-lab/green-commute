@@ -16,5 +16,5 @@ const Template: ComponentStory<typeof RecommendedJobsGrid> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    setIndex: jest.fn()
+    setIndex: () => {console.log("clicked")}
 }

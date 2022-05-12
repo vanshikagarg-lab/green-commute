@@ -28,6 +28,7 @@ interface CardProps {
 
 interface FilterProps {
   filters: Array<Props>;
+  setFilters: any;
 }
 
 export const WrapCardStyle = styled(Box)({
@@ -82,8 +83,8 @@ const JobList = (props: FilterProps) => {
     CardDataList[0]
   );
   const [showResumeDialog, setShowResumeDialog] = useState(false);
-  const [filters, setFilters] = useState<Props[]>();
-
+  const filters = props.filters || [];
+  const setFilters = props.setFilters;
   useEffect(() => {
     setCardList(CardDataList);
     setSelect(CardDataList[0]);
@@ -113,7 +114,11 @@ const JobList = (props: FilterProps) => {
   };
 
   const deleteFilterChip = (index: number) => {
-    console.log(index);
+    console.log(filters.slice(index - 1, 1));
+    setFilters(filters.slice().filter((curr, currIndex) => {
+      console.log(curr);
+      return index !== currIndex
+    }));
   };
 
   return (
@@ -187,7 +192,15 @@ const JobList = (props: FilterProps) => {
         )}
         <WrapCardStyle>
           <CardListStyle data-testId="cardId">
-            {cardList?.map((card, index) => {
+            {cardList?.filter((curr:any) => {
+              if(filters.length === 0){
+                return true;
+              }
+              return filters?.filter((filter:any) => {
+                const range = filter?.label.split(" ")[0].split("-");
+                return range.length == 2 && parseInt(range[0]) <=  curr?.distance && parseInt(range[1]) >= curr?.distance;
+              }).length > 0;
+            }).map((card, index) => {
               return (
                 <JobListCard
                   key={index}

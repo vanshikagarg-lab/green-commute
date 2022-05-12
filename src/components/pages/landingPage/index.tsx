@@ -56,7 +56,7 @@ const LandingPage = () => {
     } else if (stage === 2 && jobLocation.length >= 1) {
       setStage(stage + 1);
     } else if (stage === 3 && jobSkills.length >= 1) {
-      navigate("/search-jobs", {
+      navigate("/find-jobs", {
         state: {
           currLocation: inputVal,
           jobLocation: jobLocation,

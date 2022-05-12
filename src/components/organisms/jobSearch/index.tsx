@@ -99,7 +99,7 @@ const JobSearch = ({ filterClick, searchButtonClick, ...remProps }: Props) => {
             <Icon src={SearchIcon} />
           </IconButton>
         </Box>
-        <FilterButton variant="contained" onClick={filterClick}>
+        <FilterButton variant="contained" onClick={filterClick} data-testid="filter-button">
           <Box display="flex" alignItems="center">
             <Icon src={filterIcon} />
             <Typography variant="body2" color="textColor.highEmphasis" ml={1.5}>

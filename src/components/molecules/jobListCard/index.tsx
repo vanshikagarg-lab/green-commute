@@ -45,7 +45,8 @@ const ParentBox = styled((props: ParentBoxPropsType) => {
   borderRadius: "12px",
   padding: "16px 19px 16px 19px",
   border: selected ? `2px solid ${theme.palette.primary.main200}` : "none",
-  margin: "10px",
+  marginBottom: "10px",
+  marginRight: "15px",
   boxSizing: "border-box",
   cursor: "pointer",
   backgroundColor: theme.palette.structural.main

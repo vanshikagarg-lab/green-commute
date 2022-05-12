@@ -7,6 +7,8 @@ it("should hide the box display", () => {
   render(
     <FilterDialog
         openStatus={true}
+        openStatusHandler={() => {}}
+        setFilters={() => {}}
     />
   );
   const checkBox = screen.getAllByTestId("checkbox-change");
