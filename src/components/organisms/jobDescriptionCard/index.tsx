@@ -26,6 +26,7 @@ export interface JobDescriptionCardProps extends BoxProps, RouteMapProps {
   about2?: string;
   onSaveClick?: any;
   onApplyClick?: any;
+  vehicle: any;
 }
 
 const JobDescriptionCard = ({

@@ -5,7 +5,7 @@ import myntraLogo from '../../../assets/images/myntraaLogo.svg';
 import twitterLogo from '../../../assets/images/twitterLogo.svg';
 import wiproLogo from '../../../assets/images/wiproLogo.svg';
 
-export const data = [
+export const Data = [
     {
         jobId: 1,
         logo: hpLogo,

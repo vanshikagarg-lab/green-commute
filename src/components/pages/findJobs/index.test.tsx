@@ -9,3 +9,9 @@ it("the recommended box disappers when recommended-box is clicked", () => {
   fireEvent.click(ReactElement[0]);
   expect(ReactElement[0]).not.toBeInTheDocument();
 });
+
+test("the search results are displayed", () => {
+  render(<FindJobs />);
+  const ReactElement = screen.queryByTestId("recommendedJobGrid");
+  expect(ReactElement).toBeInTheDocument();
+});

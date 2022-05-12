@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import RecommendedJobsGrid from '.';
+import { Data } from './data'
 
 export default {
     title: 'organisms/RecommendedJobsGrid',
