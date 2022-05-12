@@ -30,10 +30,10 @@ const StyledBox = styled(Box)({
 });
 
 const data = [
-    { label: "10-20 kms", deleteHandler: () => {} },
+    { label: "0-10 kms", deleteHandler: () => {} },
+    { label: "11-20 kms", deleteHandler: () => {} },
     { label: "21-30 kms", deleteHandler: () => {} },
-    { label: "31-40 kms", deleteHandler: () => {} },
-    { label: "41-51 Kms", deleteHandler: () => {} }
+    { label: "31-40 kms", deleteHandler: () => {} }
   ];
 
 const FilterDialog = ({openStatus, openStatusHandler, setFilters, ...remProps}:Props) => {

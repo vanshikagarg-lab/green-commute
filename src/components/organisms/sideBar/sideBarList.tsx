@@ -11,37 +11,22 @@ export const list1 = [
   {
     text: "Dashboard",
     icon: Dashboard,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
   {
     text: "Find Jobs",
     icon: Work,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
   {
     text: "Saved Jobs",
     icon: Save,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
   {
     text: "Practice Test",
     icon: Test,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
   {
     text: "News & Events",
     icon: News,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
 ];
 
@@ -49,22 +34,13 @@ export const list2 = [
   {
     text: "Need Help ?",
     icon: Help,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
   {
     text: "Contact us",
     icon: Contact,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
   {
     text: "Settings",
     icon: Settings,
-    onClick: () => {
-      console.log("clicked");
-    },
   },
 ];

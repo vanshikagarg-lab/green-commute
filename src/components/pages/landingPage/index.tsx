@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import LandingStageTemplate from "../../templates/landingStageTemplate";
 import LandingInput from "../../molecules/landingInput";
@@ -10,34 +10,40 @@ import LandingImage1 from "../../../assets/images/landingImage1.svg";
 import LandingImage2 from "../../../assets/images/landingImage2.svg";
 import LandingImage3 from "../../../assets/images/landingImage3.svg";
 import theme from "../../../theme";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const locations = [
-  {
-    title: "Hyderabad",
-    aqi: "894",
-  },
-  {
-    title: "Mumbai",
-    aqi: "953",
-  },
-];
-
-const skills = [
-  {
-    title: "UI/UX Designer",
-  },
-  {
-    title: "Graphic Designer",
-  },
-];
 
 const LandingPage = () => {
   const [inputVal, setInputVal] = React.useState<any>([]);
   const [jobLocation, setJobLocation] = React.useState<any>([]);
   const [jobSkills, setJobSkills] = useState<any>([]);
   const [stage, setStage] = React.useState(1);
+  const [jobCount, setJobCount] = useState<number>(0);
+  const [data, setData] = useState<{ locations: any; skills: any; jobs: any }>({
+    locations: [],
+    skills: [],
+    jobs: [],
+  });
+
   const navigate = useNavigate();
+
+  const getData = async () => {
+    const locations = await axios.get("http://18.217.145.156:3004/locations");
+    const skills = await axios.get("http://18.217.145.156:3004/skills");
+    const jobs = await axios.get("http://18.217.145.156:3004/jobs");
+
+    return { locations: locations.data, skills: skills.data, jobs: jobs.data };
+  };
+
+  useEffect(() => {
+    getData().then((res) => {
+      setData({
+        locations: res.locations,
+        skills: res.skills,
+        jobs: res.jobs,
+      });
+    });
+  }, []);
 
   const onChange = (event: any, value: any) => {
     if (stage === 1) {
@@ -46,14 +52,34 @@ const LandingPage = () => {
       setJobLocation(value);
     } else if (stage === 3) {
       setJobSkills(value);
+      const foundJobs = data.jobs.slice().filter((job: any) => {
+        let flag;
+        for (const skill of value) {
+          flag = job.skill.includes(skill.skill);
+          if (flag) {
+            break;
+          }
+        }
+        return flag;
+      });
+      setJobCount(foundJobs.length);
     }
   };
-  const getOptions = (option: any) => option.title;
 
   const nextHandleChange = () => {
     if (stage === 1 && inputVal.length >= 1) {
       setStage(stage + 1);
     } else if (stage === 2 && jobLocation.length >= 1) {
+      data.jobs.slice().filter((job: any) => {
+        let flag;
+        for (const location of jobLocation) {
+          if (job.location.includes(location.location)) {
+            flag = true;
+            break;
+          }
+        }
+        return flag;
+      });
       setStage(stage + 1);
     } else if (stage === 3 && jobSkills.length >= 1) {
       navigate("/find-jobs", {
@@ -80,10 +106,10 @@ const LandingPage = () => {
       landingInputComponent = (
         <LandingInput
           stage={1}
-          skillsOptions={skills}
+          skillsOptions={data.skills}
           inputFieldValue={inputVal}
           inputFieldOnChange={onChange}
-          locationOptions={locations}
+          locationOptions={data.locations}
           onNextClick={nextHandleChange}
         />
       );
@@ -124,16 +150,18 @@ const LandingPage = () => {
       const deleteOption = (index: number) => {
         let tempValue = jobLocation.slice();
         tempValue.splice(index, 1);
-        setJobLocation(tempValue);
+        onChange(null, tempValue);
       };
+
+      const getOptions = (option: any) => option.location;
 
       landingInputComponent = (
         <LandingInput
           stage={2}
-          skillsOptions={skills}
+          skillsOptions={data.skills}
           inputFieldValue={jobLocation}
           inputFieldOnChange={onChange}
-          locationOptions={locations}
+          locationOptions={data.locations}
           getOptionLabel={getOptions}
           onBackClick={backHandleChange}
           deleteOptions={deleteOption}
@@ -148,10 +176,11 @@ const LandingPage = () => {
                 return (
                   <AqiLocation
                     aqiValue={
-                      locations.filter((loc) => loc.title === input.title)[0]
-                        .aqi
+                      data.locations.filter((loc: any) => {
+                        return loc.location === input.location;
+                      })[0].aqi
                     }
-                    location={input.title}
+                    location={input.location}
                     key={index}
                   />
                 );
@@ -190,15 +219,18 @@ const LandingPage = () => {
       const deleteOption = (index: number) => {
         let tempValue = jobSkills.slice();
         tempValue.splice(index, 1);
-        setJobSkills(tempValue);
+        onChange(null, tempValue);
       };
+
+      const getOptions = (option: any) => option.skill;
+
       landingInputComponent = (
         <LandingInput
           stage={3}
-          skillsOptions={skills}
+          skillsOptions={data.skills}
           inputFieldValue={jobSkills}
           inputFieldOnChange={onChange}
-          locationOptions={locations}
+          locationOptions={data.locations}
           getOptionLabel={getOptions}
           onBackClick={backHandleChange}
           onNextClick={nextHandleChange}
@@ -208,11 +240,11 @@ const LandingPage = () => {
       if (jobSkills.length >= 1) {
         aqiFrame = (
           <AqiField
-            aqiValue="1500"
+            aqiValue={`${jobCount}`}
             description={
               jobLocation.length == 1
-                ? `Jobs found in ${jobLocation[0].title}.`
-                : `Jobs found in ${jobLocation[0].title} and ${jobLocation[1].title}.`
+                ? `Jobs found in ${jobLocation[0].location}.`
+                : `Jobs found in ${jobLocation[0].location} and ${jobLocation[1].location}.`
             }
             style={{
               display: "flex",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GreenComute from "../../templates/greenComute";
 import JobSearch from "../../organisms/jobSearch";
 import RecommendedJobsGrid from "../../organisms/recommendedJobCardGrid";
@@ -6,8 +6,8 @@ import Typography from "../../atoms/typography";
 import JobList from "../../organisms/jobList";
 import { Box, DialogContent, Dialog } from "@mui/material";
 import FilterBox from "../../organisms/filterDialog";
-import { list1, list2 } from "../../organisms/sideBar/sideBarList";
-import { Data } from "./cardData";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface FilterType {
   label: string;
@@ -15,46 +15,117 @@ interface FilterType {
 }
 
 const FindJobs = () => {
-  const [query, setQuery] = useState("");
-  const [filteredList, setFilteredList] = useState({});
+  // const [dataList, setDataList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [filterBoxStatus, setFilterBoxStatus] = useState(false);
   const [filters, setFilters] = useState<FilterType[]>([]);
-  const searchItems = (searchValue: any) => {
-    setQuery(searchValue);
-    if (query !== "") {
-      const filteredData = Data.filter((item) => {
-        return item.skill.toLowerCase().includes(query.toLowerCase());
+  // const [jobLocation, setJobLocation] = React.useState<any>([]);
+  // const [jobSkills, setJobSkills] = useState<any>([]);
+  // const [currLocation, setCurrLocaiton] = useState<string>("");
+  const [data, setData] = useState<{
+    jobLocations: any;
+    jobSkills: any;
+    dataList: any;
+    currLocation: any;
+  }>({
+    jobLocations: [],
+    jobSkills: [],
+    dataList: [],
+    currLocation: "",
+  });
+
+  const landingData: any = useLocation();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const tempJobLocation = landingData.state.jobLocation;
+    const tempJobSkills = landingData.state.jobSkills;
+    axios.get("http://18.217.145.156:3004/jobs").then((res) => {
+      const tempJobs = res.data;
+      const locFilteredJobs = tempJobs.slice().filter((job: any) => {
+        let flag;
+        for (const location of tempJobLocation) {
+          if (job.location.includes(location.location)) {
+            flag = true;
+            break;
+          }
+        }
+        return flag;
       });
-      setFilteredList(filteredData);
-    } else {
-      setFilteredList(Data);
-    }
+      const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
+        let flag;
+        for (const skill of tempJobSkills) {
+          flag = job.skill.includes(skill.skill);
+          if (flag) {
+            break;
+          }
+        }
+        return flag;
+      });
+      setData({
+        jobLocations: landingData.state.jobLocation,
+        jobSkills: landingData.state.jobSkills,
+        currLocation: landingData.state.currLocation,
+        dataList: skillsFilteredJobs,
+      });
+    });
+  }, []);
+
+  const searchItems = (skillValue: any, locValue: any) => {
+    const tempJobs = data.dataList;
+    const locFilteredJobs = tempJobs.slice().filter((job: any) => {
+      if (locValue.length < 1) {
+        return true;
+      }
+      return job.location.includes(locValue);
+    });
+    const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
+      if (skillValue.length < 1) {
+        return true;
+      }
+      return job.skill.includes(skillValue);
+    });
+    setFilteredList(skillsFilteredJobs);
   };
   const filterHandler = () => {
     setFilterBoxStatus(true);
   };
+
+  const onSavedJobClick = () => {
+    navigate("/saved-jobs", {
+      state: {
+        currLocation: data.currLocation,
+        jobLocation: data.jobLocations,
+        jobSkills: data.jobSkills,
+      },
+    });
+  };
   return (
     <GreenComute
-      currentLocation={"East Marredpally, Secunderabad"}
-      sidebar1={list1}
-      sidebar2={list2}
+      currentLocation={data.currLocation}
+      savedJobsOnClick={onSavedJobClick}
+      selected={1}
     >
-      {selectedIndex >= 0 && (
-        <Box marginLeft={"46px"}>
-          <JobSearch mb="40px" filterClick={filterHandler} />
-          <JobList filters={filters} setFilters={setFilters} />
-        </Box>
-      )}
-      {selectedIndex === -1 && (
-        <Box marginLeft={"46px"} marginBottom={"204px"}>
-          <JobSearch
-            mb="40px"
-            searchButtonClick={(e: any) => {
-              searchItems(e);
-            }}
-            filterClick={filterHandler}
+      <Box marginLeft={"46px"}>
+        <JobSearch
+          mb="40px"
+          filterClick={filterHandler}
+          searchButtonClick={searchItems}
+        />
+        {selectedIndex >= 0 && (
+          <JobList
+            cardProps={filteredList.length > 0 ? filteredList : data.dataList}
+            filterProps={filters}
+            setFilters={setFilters}
+            selectedIndex={selectedIndex}
           />
+        )}
+      </Box>
+
+      {selectedIndex === -1 && (
+        <Box marginLeft={"46px"}>
           <Typography
             variant="heading2"
             color="textColor.highEmphasis"
@@ -72,7 +143,7 @@ const FindJobs = () => {
           <Box>
             <RecommendedJobsGrid
               setIndex={setSelectedIndex}
-              dataList={query.length > 1 ? filteredList : Data}
+              jobsList={filteredList.length > 0 ? filteredList : data.dataList}
             />
           </Box>
         </Box>

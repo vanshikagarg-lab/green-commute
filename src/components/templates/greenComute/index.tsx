@@ -3,19 +3,22 @@ import { Box, Grid, styled, BoxProps } from "@mui/material";
 import Header from "../../organisms/header";
 import Sidebar from "../../organisms/sideBar";
 import { EXTRA_COLORS } from "../../../theme";
+import { list1, list2 } from "../../organisms/sideBar/sideBarList";
+
 const StyledGrid = styled(Grid)({
   position: "absolute",
   top: "80px",
   left: 0,
   right: 0,
   backgroundColor: EXTRA_COLORS.greenGrey,
-  minHeight: "91.5vh"
+  minHeight: "91.5vh",
 });
 
-interface PropsType extends BoxProps{
-    currentLocation: string;
-    sidebar1: any;
-    sidebar2: any;
+interface PropsType extends BoxProps {
+  currentLocation: string;
+  findJobsOnClick?: any;
+  savedJobsOnClick?: any;
+  selected: number;
 }
 
 interface PropsType extends BoxProps {}
@@ -24,30 +27,37 @@ const ChildrenComponent = styled(Grid)({
   width: "auto",
 });
 
-const GreenComute = ({currentLocation, sidebar1, sidebar2, children, ...remProps}:PropsType)=>{
-    return (
-        <Box
-        data-testid="green-template"
-        {...remProps}
+const GreenComute = ({
+  currentLocation,
+  findJobsOnClick,
+  savedJobsOnClick,
+  children,
+  selected,
+  ...remProps
+}: PropsType) => {
+  return (
+    <Box data-testid="green-template" {...remProps}>
+      <Header value={currentLocation} />
+      <StyledGrid container direction="row">
+        <Sidebar
+          list1={list1}
+          list2={list2}
+          findJobsOnClick={findJobsOnClick}
+          savedJobsOnClick={savedJobsOnClick}
+          selected={selected}
+        />
+        <ChildrenComponent
+          container
+          direction="column"
+          alignContent="center"
+          justifyItems="space-between"
+          pt="40px"
         >
-            <Header value={'East Marredpally, Secunderabad'} />
-            <StyledGrid  
-                container
-                direction="row"
-            >
-                <Sidebar list1={sidebar1} list2={sidebar2} />
-                <ChildrenComponent
-                    container
-                    direction="column"
-                    alignContent="center"
-                    justifyItems="space-between"
-                    pt="40px"
-                >
-                    {children}
-                </ChildrenComponent>
-            </StyledGrid >
-        </Box>
-    )
-}
+          {children}
+        </ChildrenComponent>
+      </StyledGrid>
+    </Box>
+  );
+};
 
 export default GreenComute;

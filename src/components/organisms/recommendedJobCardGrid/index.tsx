@@ -1,40 +1,46 @@
-import { Box } from '@mui/material';
-import React, { useState } from 'react';
-import RecommendedJobCard from '../../molecules/recommendedJobCard';
-import { Data } from './data';
-import theme from '../../../theme';
+import { Box } from "@mui/material";
+import React from "react";
+import RecommendedJobCard from "../../molecules/recommendedJobCard";
+import theme from "../../../theme";
 
 interface PropsType {
-    setIndex?: any;
-    dataList?: any;
+  setIndex: any;
+  jobsList: any;
 }
 
-const RecommendedJobsGrid = ({dataList = Data, setIndex}: PropsType) => {
+const RecommendedJobsGrid = (props: PropsType) => {
+  return (
+    <Box
+      data-testid="recommendedJobGrid"
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: `${theme.spacing(2)}`,
+        columnWidth: 320,
+      }}
+    >
+      {props.jobsList.map((value: any, index: number) => {
         return (
-            <Box 
-            data-testid = "recommendedJobGrid"
-            sx = 
-            {{ display:'grid', 
-            gridTemplateColumns: 'repeat(3, 1fr)', 
-            gap: `${theme.spacing(2)}`,
-            columnWidth: 320 }}>
-                {dataList.map((value:any, index:any) => {
-                    return(
-                    <RecommendedJobCard
-                            onClick={() => {setIndex(index); console.log(index);}}
-                            routesTitle={value.routesTitle}
-                            jobId={value.jobId}
-                            logo={value.logo}
-                            jobName={value.jobName}
-                            companyName={value.companyName}
-                            companyAddress={value.companyAddress}
-                            time={value.time}
-                            vehicle={value.vehicle} 
-                            height={''} width={''}></RecommendedJobCard>
-                );
-            })
-                }
-            </Box>
-)}
+          <RecommendedJobCard
+            onClick={() => {
+              props.setIndex(index);
+              console.log(index);
+            }}
+            routesTitle={"Commute routes available :"}
+            jobId={value.id}
+            logo={value.companyLogo}
+            jobName={value.designation}
+            companyName={value.companyName}
+            companyAddress={value.location}
+            time={value.posted}
+            vehicle={value.routes}
+            height={""}
+            width={""}
+          ></RecommendedJobCard>
+        );
+      })}
+    </Box>
+  );
+};
 
 export default RecommendedJobsGrid;

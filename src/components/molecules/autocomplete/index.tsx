@@ -20,7 +20,6 @@ const AutocompleteComponent = ({
   deleteOptions,
   ...remProps
 }: PropsType) => {
-
   return (
     <Autocomplete
       data-testid="autocomplete"
@@ -49,7 +48,7 @@ const AutocompleteComponent = ({
           <FilterChip
             deleteHandler={() => deleteOptions(index)}
             variant="outlined"
-            label={option.title}
+            label={option.location ? option.location : option.skill}
             size="small"
             backgroundColor={true}
             {...getTagProps({ index })}
