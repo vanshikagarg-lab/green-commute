@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { styled, Box, Dialog, DialogContent } from "@mui/material";
 import Typography from "../../atoms/typography";
 import theme from "../../../theme";
-import { CardDataList } from "./cardData";
 import JobListCard from "../../molecules/jobListCard";
-import JobDescriptionCard, {
-  JobDescriptionCardProps,
-} from "../../organisms/jobDescriptionCard";
+import JobDescriptionCard from "../../organisms/jobDescriptionCard";
 import UploadResume from "../../organisms/uploadResume";
 import ButtonComponent from "../../atoms/button";
 import FilterChip, { Props } from "../../molecules/filterChip";
 import { transitOptions } from "../routeMaps/dataList";
 import axios from "axios";
+import { getJobsUrl } from "../../../constants";
 
 interface CardProps {
   id: number | string;
@@ -107,7 +105,7 @@ const JobList = (props: MainProps) => {
     const tempDesc = description;
     tempDesc.saved = description.saved ? false : true;
     axios
-      .put(`http://18.217.145.156:3004/jobs/${description.id}`, {
+      .put(`${getJobsUrl}/${description.id}`, {
         ...tempDesc,
       })
       .then((res) => {
@@ -134,6 +132,26 @@ const JobList = (props: MainProps) => {
     );
   };
 
+  const renderJobCard = (card: any, index: number) => {
+    return (
+      <JobListCard
+        key={index}
+        jobId={card.id}
+        logo={card.companyLogo}
+        jobName={card.designation}
+        companyName={card.companyName}
+        companyAddress={card.location}
+        time={`${card.posted} ago`}
+        vehicle={card.routes}
+        height="159px"
+        width="571px"
+        selected={select === index ? true : false}
+        style={{ cursor: "pointer" }}
+        onClick={() => handleSelect(index)}
+      />
+    );
+  };
+
   const RenderFilteredList = () => {
     const filteredList = props.cardProps?.filter((curr: any) => {
       if (filters.length === 0) {
@@ -152,43 +170,11 @@ const JobList = (props: MainProps) => {
     });
     if (filteredList.length > 0) {
       return filteredList.map((card, index) => {
-        return (
-          <JobListCard
-            key={index}
-            jobId={card.id}
-            logo={card.companyLogo}
-            jobName={card.designation}
-            companyName={card.companyName}
-            companyAddress={card.location}
-            time={`${card.posted} ago`}
-            vehicle={card.routes}
-            height="159px"
-            width="571px"
-            selected={select === index ? true : false}
-            style={{ cursor: "pointer" }}
-            onClick={() => handleSelect(index)}
-          />
-        );
+        return renderJobCard(card, index);
       });
     } else {
       return props.cardProps.map((card, index) => {
-        return (
-          <JobListCard
-            key={index}
-            jobId={card.id}
-            logo={card.companyLogo}
-            jobName={card.designation}
-            companyName={card.companyName}
-            companyAddress={card.location}
-            time={`${card.posted} ago`}
-            vehicle={card.routes}
-            height="159px"
-            width="571px"
-            selected={select === index ? true : false}
-            style={{ cursor: "pointer" }}
-            onClick={() => handleSelect(index)}
-          />
-        );
+        return renderJobCard(card, index);
       });
     }
   };

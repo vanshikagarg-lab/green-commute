@@ -4,7 +4,6 @@ import { Box, Dialog, DialogContent } from "@mui/material";
 import GreenCommute from "../../templates/greenComute";
 import Typography from "../../atoms/typography";
 import JobListCard from "../../molecules/jobListCard";
-import { list1, list2 } from "../../organisms/sideBar/sideBarList";
 import JobDescriptionCard, {
   JobDescriptionCardProps,
 } from "../../organisms/jobDescriptionCard";
@@ -13,6 +12,7 @@ import UploadResume from "../../organisms/uploadResume";
 import axios from "axios";
 import { CardDataList } from "../../organisms/jobList/cardData";
 import { useNavigate, useLocation } from "react-router-dom";
+import { getJobsUrl } from "../../../constants";
 
 const SaveJobsPage = () => {
   const [showResumeDialog, setShowResumeDialog] = useState(false);
@@ -46,7 +46,7 @@ const SaveJobsPage = () => {
   };
 
   useEffect(() => {
-    axios.get("http://18.217.145.156:3004/jobs").then((res) => {
+    axios.get(getJobsUrl).then((res) => {
       const cardDataList = res.data;
       setData({
         cardList: cardDataList.filter((card: any) => card.saved === true),
@@ -86,12 +86,10 @@ const SaveJobsPage = () => {
       select: tempArray?.find((card: any) => card.saved === true),
     });
     unsavedCard.saved = false;
-    axios
-      .put(`http://18.217.145.156:3004/jobs/${id}`, { ...unsavedCard })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
+    axios.put(`${getJobsUrl}/${id}`, { ...unsavedCard }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
   };
 
   const applyJobsHandler = () => {
@@ -158,32 +156,32 @@ const SaveJobsPage = () => {
                 );
               })}
             </Box>
-            {data.description ? (
+            {data.description&&data.description.id ? (
               <DescriptionStyle
                 style={{ background: "#FFFFFF", borderRadius: "12px" }}
                 data-testid={"description"}
               >
                 <JobDescriptionCard
-                  jobId={data.description!.id}
-                  logo={data.description!.companyLogo}
-                  jobName={data.description!.designation}
-                  companyName={data.description!.companyName}
-                  companyAddress={data.description!.location}
-                  postTime={data.description!.posted}
-                  saved={data.description!.saved}
+                  jobId={data.description.id}
+                  logo={data.description.companyLogo}
+                  jobName={data.description.designation}
+                  companyName={data.description.companyName}
+                  companyAddress={data.description.location}
+                  postTime={data.description.posted}
+                  saved={data.description.saved}
                   description={CardDataList[0].description}
                   about1={CardDataList[0].about1}
                   about2={CardDataList[0].about2}
                   startLocation={data.currLocation}
-                  destination={data.description!.location}
+                  destination={data.description.location}
                   cost={100}
-                  distance={data.description!.distance}
+                  distance={data.description.distance}
                   time={CardDataList[0].time}
                   transitOptions={CardDataList[0].transitOptions}
-                  onSaveClick={() => saveJobsHandler(data.description!.id)}
+                  onSaveClick={() => saveJobsHandler(data.description.id)}
                   onApplyClick={() => applyJobsHandler()}
                   data-testid={"card-1"}
-                  vehicle={data.description!.routes}
+                  vehicle={data.description.routes}
                 />
               </DescriptionStyle>
             ) : null}

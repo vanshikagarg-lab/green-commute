@@ -11,20 +11,22 @@ it("renders the SideBar", () => {
   expect(ReactElement).toBeInTheDocument();
 });
 
-it("fire onClick for list1 elements", () => {
-  render(<SideBar list1={list1} list2={list2} />);
-  const ReactElement = screen.getAllByTestId("border-box");
-  fireEvent.click(ReactElement[0]);
-  expect(ReactElement[0]).toHaveStyle({
-    backgroundColor: theme.palette.primary.main500,
-  });
+it("fire onClick for savedJobs", () => {
+  const mockFunction = jest.fn();
+  render(
+    <SideBar list1={list1} list2={list2} savedJobsOnClick={mockFunction} />
+  );
+  const ReactElement = screen.getByText("Saved Jobs");
+  fireEvent.click(ReactElement);
+  expect(mockFunction).toHaveBeenCalled();
 });
 
-it("fire onClick for list2 elements", () => {
-  render(<SideBar list1={list1} list2={list2} />);
-  const ReactElement = screen.getAllByTestId("border-box");
-  fireEvent.click(ReactElement[ReactElement.length - 1]);
-  expect(ReactElement[ReactElement.length - 1]).toHaveStyle({
-    backgroundColor: theme.palette.primary.main500,
-  });
+it("fire onClick for findJobs", () => {
+  const mockFunction = jest.fn();
+  render(
+    <SideBar list1={list1} list2={list2} findJobsOnClick={mockFunction} />
+  );
+  const ReactElement = screen.getByText("Find Jobs");
+  fireEvent.click(ReactElement);
+  expect(mockFunction).toHaveBeenCalled();
 });

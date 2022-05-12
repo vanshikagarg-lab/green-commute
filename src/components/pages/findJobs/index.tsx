@@ -8,6 +8,7 @@ import { Box, DialogContent, Dialog } from "@mui/material";
 import FilterBox from "../../organisms/filterDialog";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getJobsUrl } from "../../../constants";
 
 interface FilterType {
   label: string;
@@ -15,14 +16,10 @@ interface FilterType {
 }
 
 const FindJobs = () => {
-  // const [dataList, setDataList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [filterBoxStatus, setFilterBoxStatus] = useState(false);
   const [filters, setFilters] = useState<FilterType[]>([]);
-  // const [jobLocation, setJobLocation] = React.useState<any>([]);
-  // const [jobSkills, setJobSkills] = useState<any>([]);
-  // const [currLocation, setCurrLocaiton] = useState<string>("");
   const [data, setData] = useState<{
     jobLocations: any;
     jobSkills: any;
@@ -42,7 +39,7 @@ const FindJobs = () => {
   useEffect(() => {
     const tempJobLocation = landingData.state.jobLocation;
     const tempJobSkills = landingData.state.jobSkills;
-    axios.get("http://18.217.145.156:3004/jobs").then((res) => {
+    axios.get(getJobsUrl).then((res) => {
       const tempJobs = res.data;
       const locFilteredJobs = tempJobs.slice().filter((job: any) => {
         let flag;

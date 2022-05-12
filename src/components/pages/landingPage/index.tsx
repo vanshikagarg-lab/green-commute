@@ -12,6 +12,7 @@ import LandingImage3 from "../../../assets/images/landingImage3.svg";
 import theme from "../../../theme";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getJobsUrl, getLocationsUrl, getSkillsUrl } from "../../../constants";
 
 const LandingPage = () => {
   const [inputVal, setInputVal] = React.useState<any>([]);
@@ -28,9 +29,9 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const getData = async () => {
-    const locations = await axios.get("http://18.217.145.156:3004/locations");
-    const skills = await axios.get("http://18.217.145.156:3004/skills");
-    const jobs = await axios.get("http://18.217.145.156:3004/jobs");
+    const locations = await axios.get(getLocationsUrl);
+    const skills = await axios.get(getSkillsUrl);
+    const jobs = await axios.get(getJobsUrl);
 
     return { locations: locations.data, skills: skills.data, jobs: jobs.data };
   };
@@ -70,15 +71,18 @@ const LandingPage = () => {
     if (stage === 1 && inputVal.length >= 1) {
       setStage(stage + 1);
     } else if (stage === 2 && jobLocation.length >= 1) {
-      data.jobs.slice().filter((job: any) => {
-        let flag;
-        for (const location of jobLocation) {
-          if (job.location.includes(location.location)) {
-            flag = true;
-            break;
+      setData({
+        ...data,
+        jobs: data.jobs.slice().filter((job: any) => {
+          let flag;
+          for (const location of jobLocation) {
+            if (job.location.includes(location.location)) {
+              flag = true;
+              break;
+            }
           }
-        }
-        return flag;
+          return flag;
+        }),
       });
       setStage(stage + 1);
     } else if (stage === 3 && jobSkills.length >= 1) {
