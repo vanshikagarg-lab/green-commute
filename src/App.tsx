@@ -1,10 +1,10 @@
 import React from "react";
-import LandingPage from "./components/pages/landingPage";
+import SaveJobsPage from "./components/pages/saveJobsPage";
 
 const App = () => {
   return (
     <div>
-      <LandingPage />
+      <SaveJobsPage />
     </div>
   );
 };
