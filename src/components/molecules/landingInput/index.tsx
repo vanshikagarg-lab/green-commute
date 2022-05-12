@@ -108,7 +108,7 @@ const LandingInput = ({
             placeholder={
               inputFieldValue && inputFieldValue.length > 0
                 ? ""
-                : "Enter your job location"
+                : "Enter your skills"
             }
             deleteOptions={deleteOptions}
           />

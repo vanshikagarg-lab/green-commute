@@ -8,7 +8,9 @@ import DisplayAqi from "../../molecules/DisplayAqi";
 import AqiLocation from "../../molecules/AqiLocation";
 import LandingImage1 from "../../../assets/images/landingImage1.svg";
 import LandingImage2 from "../../../assets/images/landingImage2.svg";
+import LandingImage3 from "../../../assets/images/landingImage3.svg";
 import theme from "../../../theme";
+import { useNavigate } from "react-router-dom";
 
 const locations = [
   {
@@ -31,15 +33,19 @@ const skills = [
 ];
 
 const LandingPage = () => {
-  const [inputVal, setInputVal] = useState<any>([]);
-  const [jobLocation, setJobLocation] = useState<any>([]);
+  const [inputVal, setInputVal] = React.useState<any>([]);
+  const [jobLocation, setJobLocation] = React.useState<any>([]);
+  const [jobSkills, setJobSkills] = useState<any>([]);
   const [stage, setStage] = React.useState(1);
+  const navigate = useNavigate();
 
   const onChange = (event: any, value: any) => {
     if (stage === 1) {
       setInputVal(event.target.value);
     } else if (stage === 2) {
       setJobLocation(value);
+    } else if (stage === 3) {
+      setJobSkills(value);
     }
   };
   const getOptions = (option: any) => option.title;
@@ -49,6 +55,14 @@ const LandingPage = () => {
       setStage(stage + 1);
     } else if (stage === 2 && jobLocation.length >= 1) {
       setStage(stage + 1);
+    } else if (stage === 3 && jobSkills.length >= 1) {
+      navigate("/search-jobs", {
+        state: {
+          currLocation: inputVal,
+          jobLocation: jobLocation,
+          jobSkills: jobSkills,
+        },
+      });
     }
   };
 
@@ -134,7 +148,8 @@ const LandingPage = () => {
                 return (
                   <AqiLocation
                     aqiValue={
-                      locations.filter(loc => loc.title === input.title)[0].aqi
+                      locations.filter((loc) => loc.title === input.title)[0]
+                        .aqi
                     }
                     location={input.title}
                     key={index}
@@ -159,6 +174,63 @@ const LandingPage = () => {
           <ImageTypography
             children={<img src={LandingImage2} alt="loading" />}
             description="Enter Location to know Time AQI (Air Quality Index)"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignContent: "center",
+              width: "574px",
+              height: "768px",
+              background: theme.palette.structural.linear1,
+            }}
+          />
+        );
+      }
+    } else if (stage === 3) {
+      const deleteOption = (index: number) => {
+        let tempValue = jobSkills.slice();
+        tempValue.splice(index, 1);
+        setJobSkills(tempValue);
+      };
+      landingInputComponent = (
+        <LandingInput
+          stage={3}
+          skillsOptions={skills}
+          inputFieldValue={jobSkills}
+          inputFieldOnChange={onChange}
+          locationOptions={locations}
+          getOptionLabel={getOptions}
+          onBackClick={backHandleChange}
+          onNextClick={nextHandleChange}
+          deleteOptions={deleteOption}
+        />
+      );
+      if (jobSkills.length >= 1) {
+        aqiFrame = (
+          <AqiField
+            aqiValue="1500"
+            description={
+              jobLocation.length == 1
+                ? `Jobs found in ${jobLocation[0].title}.`
+                : `Jobs found in ${jobLocation[0].title} and ${jobLocation[1].title}.`
+            }
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignContent: "center",
+              width: "574px",
+              height: "768px",
+              background: theme.palette.structural.linear1,
+            }}
+          />
+        );
+      } else {
+        aqiFrame = (
+          <ImageTypography
+            children={<img src={LandingImage3} alt="loading" />}
+            description="Enter your Skills to know how many
+          jobs are in this Location"
             style={{
               display: "flex",
               flexDirection: "row",
