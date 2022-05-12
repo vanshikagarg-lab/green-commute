@@ -1,12 +1,15 @@
 import React from "react";
 import LandingPage from "./components/pages/landingPage";
-import FindJobs from './components/pages/findJobs';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 const App = () => {
   return (
-    <div>
-      {/* <LandingPage /> */}
-      <FindJobs />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/search-jobs" />
+      </Routes>
+    </Router>
   );
 };
 

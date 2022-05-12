@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import * as React from "react";
 import UploadResume from ".";
@@ -9,13 +10,14 @@ export default {
 
 const Template: ComponentStory<typeof UploadResume> = (args) => {
   return (
-    <UploadResume {...args} />
+    <Box width={700}>
+      <UploadResume {...args} />
+    </Box>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  setDisplay: () => {console.log("display")},
-  height: '400px',
-  width: '700px'
+  height: "400px",
+  width: "700px",
 };

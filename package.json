@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest -c jest.config.ts --passWithNoTests --coverage",
     "start": "webpack serve  --config webpack.config.js --port 3000",
+    "start-server": "json-server --watch db.json --port 3004",
     "build": "webpack --config webpack.config.js --mode production",
     "storybook": "start-storybook -p 6006 ",
     "build-storybook": "build-storybook"
@@ -56,8 +57,10 @@
     "babel-jest": "^27.5.1",
     "jest-canvas-mock": "^2.3.1",
     "jest-transform-stub": "^2.0.0",
+    "json-server": "^0.17.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-router-dom": "^6.3.0",
     "react-svg": "^14.1.19",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0"

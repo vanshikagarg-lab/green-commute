@@ -31,7 +31,8 @@
       "posted": "36 min ago",
       "routes": { "bike": true, "bus": true, "train": true, "car": false },
       "distance": 5,
-      "skill": "Graphic Designer"
+      "skill": "Graphic Designer",
+      "saved": false
     },
     {
       "id": 2,
@@ -42,7 +43,8 @@
       "posted": "10 days ago",
       "routes": { "bike": true, "bus": true, "car": true, "train": true },
       "distance": 5,
-      "skill": "Graphic Designer"
+      "skill": "Graphic Designer",
+      "saved": false
     },
     {
       "id": 3,
@@ -53,7 +55,8 @@
       "posted": "45 days ago",
       "routes": { "bike": true, "car": true, "bus": false, "train": false },
       "distance": 15,
-      "skill": "Graphic Designer"
+      "skill": "Graphic Designer",
+      "saved": false
     },
     {
       "id": 4,
@@ -64,7 +67,8 @@
       "posted": "46 days ago",
       "routes": { "bike": true, "bus": true, "train": true, "car": false },
       "distance": 25,
-      "skill": "UI/UX Designer"
+      "skill": "UI/UX Designer",
+      "saved": false
     },
     {
       "id": 5,
@@ -75,7 +79,8 @@
       "posted": "1 week ago",
       "routes": { "bike": true, "bus": true, "car": true, "train": true },
       "distance": 35,
-      "skill": "UI/UX Designer"
+      "skill": "UI/UX Designer",
+      "saved": false
     },
     {
       "id": 6,
@@ -86,7 +91,8 @@
       "posted": "10 days ago",
       "routes": { "bike": true, "bus": true, "car": true, "train": true },
       "distance": 35,
-      "skill": "UI/UX Designer"
+      "skill": "UI/UX Designer",
+      "saved": false
     }
   ]
 }
