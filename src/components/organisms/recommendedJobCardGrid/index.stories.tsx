@@ -7,10 +7,13 @@ export default {
     component: RecommendedJobsGrid
 } as ComponentMeta<typeof RecommendedJobsGrid>
 
-const Template: ComponentStory<typeof RecommendedJobsGrid> = () => {
+const Template: ComponentStory<typeof RecommendedJobsGrid> = (args) => {
     return (
-        <RecommendedJobsGrid />
+        <RecommendedJobsGrid {...args}/>
     )
 }
 
 export const Default = Template.bind({});
+Default.args = {
+    setIndex: jest.fn()
+}

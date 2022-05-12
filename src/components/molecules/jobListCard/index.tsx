@@ -47,7 +47,8 @@ const ParentBox = styled((props: ParentBoxPropsType) => {
   border: selected ? `2px solid ${theme.palette.primary.main200}` : "none",
   margin: "10px",
   boxSizing: "border-box",
-  cursor: "pointer"
+  cursor: "pointer",
+  backgroundColor: theme.palette.structural.main
 }));
 
 const StyledGridIcon = styled(Grid)({

@@ -58,6 +58,7 @@ const JobDescriptionCard = ({
       borderRadius={3}
       boxSizing={"border-box"}
       data-testid="JobDescriptionCard"
+      bgcolor={THEME.palette.structural.main}
     >
       <Box px={2.75}>
         <Box
