@@ -8,8 +8,16 @@ import RadioButton from '../../atoms/radioButton';
 import closeIcon from "../../../assets/icons/close.svg";
 import './style.css';
 import theme from '../../../theme';
+
+interface FilterType {
+    label: string;
+    deleteHandler: any;
+}
+
 interface Props extends GridProps{
     openStatus: boolean;
+    openStatusHandler: any;
+    setFilters: any;
 }
 
 const StyledBox = styled(Box)({
@@ -18,14 +26,21 @@ const StyledBox = styled(Box)({
     right: '10px', 
     height: '24px', 
     width: '24px', 
-    cursor: 'pointer'
+    cursor: 'pointer',
 });
 
+const data = [
+    { label: "10-20 kms", deleteHandler: () => {} },
+    { label: "21-30 kms", deleteHandler: () => {} },
+    { label: "31-40 kms", deleteHandler: () => {} },
+    { label: "41-51 Kms", deleteHandler: () => {} }
+  ];
 
-
-const FilterDialog = ({openStatus,...remProps}:Props) => {
-    const [open, setOpen] = useState(openStatus);
-    const [formData, setFormData] = useState<boolean[]>([false, false, false, false])
+const FilterDialog = ({openStatus, openStatusHandler, setFilters, ...remProps}:Props) => {
+    const [formData, setFormData] = useState<boolean[]>([false, false, false, false]);
+    const filter = () => {
+        return data.slice().filter((curr, currIndex) =>{return(curr !== null && formData[currIndex])});
+    }
     const handleChange = (index : number) =>{
        let newData = formData.slice();
        newData[index] = !newData[index];
@@ -34,11 +49,13 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
 
     const handleClear= () => {
         setFormData([false, false, false, false]);
+        setFilters([]);
     }
 
     const handleSubmit= () => {
-        console.log(formData);
+        setFilters(filter());
         setFormData([false, false, false, false]);
+        openStatusHandler(false);
     }
     const checked = (parentIndex: number, index: number) => {
         return ((parentIndex !== 0 && index === 0) || parentIndex === 5);
@@ -110,13 +127,14 @@ const FilterDialog = ({openStatus,...remProps}:Props) => {
             justifyContent="center"
             sx={{
                 position: 'relative',
-                display: `${open ? 'block' : 'none'}`  ,
-                padding: '25px'  
+                display: `${openStatus ? 'block' : 'none'}`  ,
+                padding: '25px',
+                borderRadius: '8px',
             }}
             data-testid="filter-box"
             {...remProps}
         >
-        <StyledBox onClick={() => {setOpen(false)}}>
+        <StyledBox onClick={() => {openStatusHandler(false)}}>
             <Icon src={closeIcon} />
         </StyledBox>
         <Grid

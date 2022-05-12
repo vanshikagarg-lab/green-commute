@@ -5,6 +5,7 @@ import GreenCommute from "../../templates/greenComute";
 import {CardDataList} from "../../organisms/jobList/cardData";
 import Typography from "../../atoms/typography";
 import JobListCard from "../../molecules/jobListCard";
+import {list1, list2} from '../../organisms/sideBar/sideBarList'
 import JobDescriptionCard, {
   JobDescriptionCardProps,
 } from "../../organisms/jobDescriptionCard";
@@ -64,7 +65,7 @@ const SaveJobsPage = () => {
   };
   return (
     <>
-      <GreenCommute>
+      <GreenCommute currentLocation={"East Marredpally, Secunderabad"} sidebar1={list1} sidebar2={list2} >
         <Dialog
           data-testid="dialog"
           open={showResumeDialog}

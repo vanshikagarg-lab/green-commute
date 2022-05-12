@@ -12,7 +12,7 @@ const filterArray = [
 ];
 
 test("Should render the title", () => {
-  render(<JobList filters={[]} />);
+  render(<JobList filters={[]} setFilters={() => {}} />);
 
   const text1 = screen.getByText("Job list");
   const text2 = screen.getByText("Based on your search");
@@ -25,7 +25,7 @@ test("Should render the title", () => {
 });
 
 test("Should render the cards", () => {
-  render(<JobList filters={[]} />);
+  render(<JobList filters={[]} setFilters={() => {}} />);
 
   const cardList = screen.getByTestId("cardId");
   const cardLength = cardList.childElementCount;
@@ -42,13 +42,13 @@ test("Should render the cards", () => {
 });
 
 test("Should render Description card", () => {
-  render(<JobList filters={[]} />);
+  render(<JobList filters={[]} setFilters={() => {}}/>);
   const descriptionCard = screen.getByTestId("JobDescriptionCard");
   expect(descriptionCard).toBeInTheDocument();
 });
 
 test("Should render Filter Chips and Resume Dialog", () => {
-  render(<JobList filters={filterArray} />);
+  render(<JobList filters={filterArray} setFilters={() => {}}/>);
   const filterChip = screen.getAllByTestId("filter-chip");
   expect(filterChip.length).toBe(5);
 

@@ -10,8 +10,15 @@ it("the recommended box disappers when recommended-box is clicked", () => {
   expect(ReactElement[0]).not.toBeInTheDocument();
 });
 
-test("the search results are displayed", () => {
+it("the search results are displayed", () => {
   render(<FindJobs />);
   const ReactElement = screen.queryByTestId("recommendedJobGrid");
   expect(ReactElement).toBeInTheDocument();
+});
+
+it("filter box appers when the filter-button is clicked", () => {
+  render(<FindJobs />);
+  const ReactElement = screen.getByText("Filter");
+  fireEvent.click(ReactElement);
+  expect(screen.getByTestId("filter-box")).toBeInTheDocument();
 });
