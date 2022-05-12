@@ -4,7 +4,7 @@ import InstagramLogo from "../../../assets/images/instagramLogo.svg";
 import HpLogo from "../../../assets/images/hpLogo.svg";
 import TwitterLogo from "../../../assets/images/twitterLogo.svg";
 import WiproLogo from "../../../assets/images/wiproLogo.svg";
-import { transitOptions } from "../routeMaps/dataList";
+import { transitOptions } from "../../organisms/routeMaps/dataList";
 
 export const CardDataList = [
   {

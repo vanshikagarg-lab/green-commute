@@ -1,14 +1,15 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import RecommendedJobCard from '../../molecules/recommendedJobCard';
-import { data } from './data';
+import { Data } from './data';
 import theme from '../../../theme';
 
 interface PropsType {
-    setIndex: any
+    setIndex?: any;
+    dataList?: any;
 }
 
-const RecommendedJobsGrid = (props: PropsType) => {
+const RecommendedJobsGrid = ({dataList = Data, setIndex}: PropsType) => {
         return (
             <Box 
             data-testid = "recommendedJobGrid"
@@ -17,10 +18,10 @@ const RecommendedJobsGrid = (props: PropsType) => {
             gridTemplateColumns: 'repeat(3, 1fr)', 
             gap: `${theme.spacing(2)}`,
             columnWidth: 320 }}>
-                {data.map((value, index) => {
+                {dataList.map((value:any, index:any) => {
                     return(
                     <RecommendedJobCard
-                            onClick={() => {props.setIndex(index); console.log(index);}}
+                            onClick={() => {setIndex(index); console.log(index);}}
                             routesTitle={value.routesTitle}
                             jobId={value.jobId}
                             logo={value.logo}
