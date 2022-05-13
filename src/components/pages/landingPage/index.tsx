@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LandingStageTemplate from "../../templates/landingStageTemplate";
 import LandingInput from "../../molecules/landingInput";
 import AqiField from "../../molecules/AqiField";

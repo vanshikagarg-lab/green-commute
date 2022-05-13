@@ -3,7 +3,7 @@ import Icon from "../../atoms/icon";
 import TextFieldComponent from "../../atoms/textField";
 import theme from "../../../theme";
 import { styled } from "@mui/system";
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/material";
 
 const styles = {
   input: {

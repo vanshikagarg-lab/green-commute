@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Dialog, DialogContent } from "@mui/material";
 import GreenCommute from "../../templates/greenComute";
 import Typography from "../../atoms/typography";
@@ -156,7 +155,7 @@ const SaveJobsPage = () => {
                 );
               })}
             </Box>
-            {data.description&&data.description.id ? (
+            {data.description && data.description.id ? (
               <DescriptionStyle
                 style={{ background: "#FFFFFF", borderRadius: "12px" }}
                 data-testid={"description"}

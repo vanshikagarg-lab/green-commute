@@ -1,7 +1,6 @@
 import React from "react";
 import Icon from "../../atoms/icon";
 
-// const CloseIcon = require("../../../assets/icons/close.svg");
 import CloseIcon from "../../../assets/icons/close.svg";
 
 type props = {
