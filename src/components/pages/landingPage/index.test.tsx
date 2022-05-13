@@ -1,8 +1,76 @@
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  within,
+  findByText,
+  waitFor,
+} from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom";
 import LandingPage from ".";
 import { BrowserRouter as Router } from "react-router-dom";
+import axios, { AxiosResponse } from "axios";
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
+
+beforeEach(() => {
+  const locations = {
+    data: [
+      {
+        id: 1,
+        location: "Hyderabad",
+        aqi: 894,
+      },
+      {
+        id: 2,
+        location: "Mumbai",
+        aqi: 953,
+      },
+    ],
+  } as AxiosResponse;
+
+  const skills = {
+    data: [
+      {
+        id: 1,
+        skill: "UI/UX Designer",
+      },
+      {
+        id: 2,
+        skill: "Graphic Designer",
+      },
+    ],
+  } as AxiosResponse;
+  const jobs = {
+    data: [
+      {
+        id: 1,
+        designation: "User Experience Designer",
+        companyLogo: "./images/myntraLogo.svg",
+        companyName: "Myntra",
+        location: "Hitech city, Hyderabad - 500072",
+        posted: "36 min ago",
+        routes: { bike: true, bus: true, train: true, car: false },
+        distance: 5,
+        skill: "Graphic Designer",
+        saved: false,
+      },
+    ],
+  };
+  const mockGet = jest.spyOn(axios, "get");
+  mockGet.mockImplementation((url) => {
+    if (url == "http://18.217.145.156:3004/locations") {
+      return Promise.resolve(locations);
+    } else if (url == "http://18.217.145.156:3004/skills") {
+      return Promise.resolve(skills);
+    } else {
+      return Promise.resolve(jobs);
+    }
+  });
+});
 
 test("Should change the Aqi frame while entering the location at stage 1", () => {
   render(
@@ -30,20 +98,25 @@ test("Should change the Aqi frame while entering the location at stage 1", () =>
   expect(aqiValue).toBeInTheDocument();
 });
 
-test("Should change the Aqi frame after entering the job location at stage 2", () => {
+test("Should change the Aqi frame after entering the job location at stage 2", async () => {
   render(
     <Router>
       <LandingPage />
     </Router>
   );
-
+  expect(await screen.findByText("Next")).toBeInTheDocument();
+  await waitFor(() => {
+    expect(screen.getByText("Next")).toBeInTheDocument();
+  });
   const nextButton = screen.getByText("Next");
   expect(nextButton).toBeInTheDocument();
   const textElement = screen.getByRole("textbox");
   fireEvent.change(textElement, { target: { value: "Hyderabad" } });
   fireEvent.click(nextButton);
-  const backButton = screen.getByText("Back");
-  expect(backButton).toBeInTheDocument();
+  await waitFor(() => {
+    const backButton = screen.getByText("Back");
+    expect(backButton).toBeInTheDocument();
+  });
   const imageElement = screen.getByAltText("loading");
   expect(imageElement).toBeInTheDocument();
   const descriptionElement = screen.getByText(
@@ -72,14 +145,14 @@ test("Should change the Aqi frame after entering the job location at stage 2", (
   expect(descriptionElement1).toBeInTheDocument();
 });
 
-test("Should change the Aqi frame after entering the skills at stage 3", () => {
+test("Should change the Aqi frame after entering the skills at stage 3", async () => {
   render(
     <Router>
       <LandingPage />
     </Router>
   );
 
-  const nextButton = screen.getByText("Next");
+  const nextButton = await screen.findByText("Next");
   expect(nextButton).toBeInTheDocument();
   const textElement = screen.getByRole("textbox");
   fireEvent.change(textElement, { target: { value: "Hyderabad" } });
@@ -94,14 +167,14 @@ test("Should change the Aqi frame after entering the skills at stage 3", () => {
   expect(imageElement).toBeInTheDocument();
   const jobsInput = screen.getByRole("combobox");
   fireEvent.focus(jobsInput);
-  fireEvent.change(jobsInput, { target: { value: ["UI/UX Designer"] } });
+  fireEvent.change(jobsInput, { target: { value: ["Graphic Designer"] } });
   fireEvent.keyDown(jobsInput, { key: "ArrowDown" });
   fireEvent.keyDown(jobsInput, { key: "Enter" });
   const chips = screen.getAllByTestId("filter-chip");
   const deleteButton = within(chips[0]).getByTestId("icon");
   fireEvent.click(deleteButton);
   fireEvent.focus(jobsInput);
-  fireEvent.change(jobsInput, { target: { value: ["UI/UX Designer"] } });
+  fireEvent.change(jobsInput, { target: { value: ["Graphic Designer"] } });
   fireEvent.keyDown(jobsInput, { key: "ArrowDown" });
   fireEvent.keyDown(jobsInput, { key: "Enter" });
   expect(chips.length).toBe(1);

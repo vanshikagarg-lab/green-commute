@@ -1,12 +1,20 @@
-import React from 'react';
-import {screen, render} from '@testing-library/react';
-import '@testing-library/jest-dom';
-import RecommendedJobsGrid from '.';
+import React from "react";
+import { screen, render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import RecommendedJobsGrid from ".";
+import { Data } from "./data";
 
 test("renders recommended job grid", () => {
-    render(
-        <RecommendedJobsGrid setIndex={jest.fn()} dataList={undefined}></RecommendedJobsGrid>
-    );
-    const ReactElement = screen.getByTestId("recommendedJobGrid");
-    expect(ReactElement).toBeInTheDocument();
+  const setIndexFunc = jest.fn();
+  render(
+    <RecommendedJobsGrid
+      setIndex={setIndexFunc}
+      jobsList={Data}
+    ></RecommendedJobsGrid>
+  );
+  const ReactElement = screen.getByTestId("recommendedJobGrid");
+  const recommendedCard = screen.getAllByTestId("recommended-box");
+  fireEvent.click(recommendedCard[0]);
+  expect(setIndexFunc);
+  expect(ReactElement).toBeInTheDocument();
 });

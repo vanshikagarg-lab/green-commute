@@ -6,28 +6,44 @@ import THEME from "../../../theme";
 type Props = {
   list1: any;
   list2: any;
+  selected?: number;
+  findJobsOnClick?: any;
+  savedJobsOnClick?: any;
 };
 
-const sideBar = ({ list1, list2 }: Props) => {
-  const [list1Selected, setList1Selected] = useState(1);
+const sideBar = ({
+  list1,
+  list2,
+  selected,
+  findJobsOnClick,
+  savedJobsOnClick,
+}: Props) => {
+  const [list1Selected, setList1Selected] = useState(selected);
   const [list2Selected, setList2Selected] = useState(-1);
 
   const list1Clicked = (index: number) => {
     setList1Selected(index);
     setList2Selected(-1);
-    list1[index].onClick();
+    console.log(index);
+    if (index == 1) {
+      findJobsOnClick();
+    } else if (index == 2) {
+      savedJobsOnClick();
+    }
   };
 
   const list2Clicked = (index: number) => {
     setList1Selected(-1);
     setList2Selected(index);
-    list2[index].onClick();
   };
 
   return (
     <Box
       width={"fit-content"}
-      sx={{ boxShadow: "0px 2px 8px rgba(125, 125, 125, 0.12);", height: 'inherit' }}
+      sx={{
+        boxShadow: "0px 2px 8px rgba(125, 125, 125, 0.12);",
+        height: "inherit",
+      }}
       bgcolor={THEME.palette.structural.main}
       display={"flex"}
       flexDirection={"column"}
