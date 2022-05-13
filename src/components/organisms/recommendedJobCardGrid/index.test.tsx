@@ -15,6 +15,6 @@ test("renders recommended job grid", () => {
   const ReactElement = screen.getByTestId("recommendedJobGrid");
   const recommendedCard = screen.getAllByTestId("recommended-box");
   fireEvent.click(recommendedCard[0]);
-  expect(setIndexFunc);
+  expect(setIndexFunc).toHaveBeenCalled();
   expect(ReactElement).toBeInTheDocument();
 });
