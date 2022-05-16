@@ -47,7 +47,7 @@ const JobSearch = ({ filterClick, searchButtonClick, ...remProps }: Props) => {
       <Typography variant="heading2" color="textColor.highEmphasis">
         Find Jobs
       </Typography>
-      <Box display="flex" alignItems={"center"}>
+      <Box display="flex" alignItems={"center"} mt={2}>
         <Box
           display="flex"
           bgcolor={THEME.palette.structural.main}
@@ -99,7 +99,11 @@ const JobSearch = ({ filterClick, searchButtonClick, ...remProps }: Props) => {
             <Icon src={SearchIcon} />
           </IconButton>
         </Box>
-        <FilterButton variant="contained" onClick={filterClick} data-testid="filter-button">
+        <FilterButton
+          variant="contained"
+          onClick={filterClick}
+          data-testid="filter-button"
+        >
           <Box display="flex" alignItems="center">
             <Icon src={filterIcon} />
             <Typography variant="body2" color="textColor.highEmphasis" ml={1.5}>

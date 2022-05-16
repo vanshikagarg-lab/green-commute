@@ -38,6 +38,19 @@ const OkayButton = styled(Button)({
   borderRadius: "8px",
   "&:hover": {
     backgroundColor: theme.palette.primary.main300,
+    boxShadow: "none",
+  },
+  boxShadow: "none",
+});
+
+const UploadButton = styled(Button)({
+  width: "281px",
+  height: "40px",
+  borderRadius: "8px",
+  margin: "auto",
+  backgroundColor: theme.palette.primary.main400,
+  "&:hover": {
+    backgroundColor: theme.palette.primary.main300,
   },
 });
 
@@ -90,21 +103,15 @@ const UploadResume = ({ setDisplay, ...remProps }: PropsType) => {
             File Upload
           </Typography>
           <UploadGridBox>
-            <Button
+            <UploadButton
               data-testid="submit-resume"
-              style={{
-                width: "281px",
-                height: "40px",
-                borderRadius: "8px",
-                margin: "auto",
-              }}
               variant="contained"
               onClick={statusHandler}
             >
               <Typography variant="caption1">
                 Click Here to Upload Files
               </Typography>
-            </Button>
+            </UploadButton>
             <input
               data-testid="file-upload"
               type="file"

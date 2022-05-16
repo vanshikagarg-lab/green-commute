@@ -14,6 +14,5 @@ const Template: ComponentStory<typeof RecommendedJobsGrid> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  setIndex: jest.fn(),
   jobsList: Data,
 };

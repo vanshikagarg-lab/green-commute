@@ -67,8 +67,6 @@ const CardListStyle = styled(Box)({
 });
 
 const FilterChipsStyle = styled(Box)({
-  width: "469px",
-  height: "72px",
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
@@ -78,7 +76,9 @@ const FilterChipsStyle = styled(Box)({
 const WrapFilterStyle = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  gap: "23px",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width:"54.6vw"
 });
 
 const JobList = (props: MainProps) => {
@@ -144,7 +144,7 @@ const JobList = (props: MainProps) => {
         time={`${card.posted} ago`}
         vehicle={card.routes}
         height="159px"
-        width="571px"
+        width="54.7vw"
         selected={select === index ? true : false}
         style={{ cursor: "pointer" }}
         onClick={() => handleSelect(index)}
@@ -239,7 +239,6 @@ const JobList = (props: MainProps) => {
                 color: theme.palette.primary.main300,
                 height: "22px",
                 padding: "6px 0px",
-                alignSelf: "flex-start",
                 textTransform: "none",
                 borderRadius: "0px",
                 borderBottom: `2px solid ${theme.palette.primary.main300}`,
