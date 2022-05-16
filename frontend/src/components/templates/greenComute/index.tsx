@@ -24,7 +24,7 @@ interface PropsType extends BoxProps {
 interface PropsType extends BoxProps {}
 
 const ChildrenComponent = styled(Grid)({
-  width: "auto",
+  width: "80vw",
 });
 
 const GreenComute = ({
@@ -46,13 +46,7 @@ const GreenComute = ({
           savedJobsOnClick={savedJobsOnClick}
           selected={selected}
         />
-        <ChildrenComponent
-          container
-          direction="column"
-          alignContent="center"
-          justifyItems="space-between"
-          pt="40px"
-        >
+        <ChildrenComponent container direction="column" pt="40px">
           {children}
         </ChildrenComponent>
       </StyledGrid>

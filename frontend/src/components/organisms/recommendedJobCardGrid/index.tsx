@@ -4,7 +4,7 @@ import RecommendedJobCard from "../../molecules/recommendedJobCard";
 import theme from "../../../theme";
 
 interface PropsType {
-  setIndex: any;
+  setIndex?: any;
   jobsList: any;
 }
 
@@ -14,7 +14,7 @@ const RecommendedJobsGrid = (props: PropsType) => {
       data-testid="recommendedJobGrid"
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
+        gridTemplateColumns: "repeat(auto-fill, minmax(320px, 320px))",
         gap: `${theme.spacing(2)}`,
         columnWidth: 320,
       }}

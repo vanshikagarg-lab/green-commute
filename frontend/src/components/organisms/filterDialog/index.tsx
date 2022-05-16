@@ -176,6 +176,7 @@ const FilterDialog = ({
             style={{
               color: `${theme.palette.primary.main300}`,
               minWidth: "0px",
+              marginRight: "16px",
             }}
             variant="text"
             data-testid="handleClearButton"
