@@ -1,5 +1,6 @@
 import React from "react";
 import { styled, Box } from "@mui/material";
+import theme from "../../../theme";
 
 interface Props {
   inputFrame: React.ReactNode;
@@ -7,26 +8,30 @@ interface Props {
 }
 
 const ParentBox = styled(Box)({
-  maxWidth: "1366px",
-  maxHeight: "768px",
   display: "flex",
   flexDirection: "row",
-  margin: "4vw auto",
+  margin: "0 auto",
   alignContent: "center",
   justifyContent: "center",
   gap: "20px",
+  height: "98vh",
 });
 
 const InputBox = styled(Box)({
-  width: "790px",
+  width: "fit",
   height: "736px",
-  marginLeft: "100px",
   paddingTop: "32px",
+  margin: "auto",
+  display: "flex",
+  justifyContent: "center",
+
 });
 
 const AqiBox = styled(Box)({
-  width: "574px",
-  height: "768px",
+  width: "42%",
+  display: "flex",
+  alignItems: "center",
+  background: theme.palette.structural.linear1,
 });
 
 const LandingStageTemplate = (props: Props) => {

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1652353611896" clover="3.2.0">
+  <project timestamp="1652353611896" name="All files">
+    <metrics statements="248" coveredstatements="213" conditionals="70" coveredconditionals="32" methods="44" coveredmethods="23" elements="362" coveredelements="268" complexity="0" loc="248" ncloc="248" packages="16" files="37" classes="37"/>
+    <package name="assets.icons">
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="arrowRight.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/arrowRight.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="backBlack.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/backBlack.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="bike.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/bike.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="bus.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/bus.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="car.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/car.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="close.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/close.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="current.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/current.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="destination.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/destination.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="ellipse.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/ellipse.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="rupee.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/rupee.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="successIcon.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/successIcon.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="swap.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/swap.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="train.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/icons/train.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="assets.images">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="bmwLogo.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/images/bmwLogo.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="instagramLogo.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/images/instagramLogo.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="mapview.png" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/images/mapview.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="myntraaLogo.svg" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/images/myntraaLogo.svg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="olaLogo.png" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/images/olaLogo.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="rapido.png" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/images/rapido.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="uber.png" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/assets/images/uber.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.atoms.Image">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/atoms/Image/index.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="20" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.atoms.button">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/atoms/button/index.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="31" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.atoms.icon">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.css" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/atoms/icon/index.css">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/atoms/icon/index.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="55" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.atoms.iconButton">
+      <metrics statements="7" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/atoms/iconButton/index.tsx">
+        <metrics statements="7" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.atoms.typography">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/atoms/typography/index.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="181" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.molecules.filterChip">
+      <metrics statements="16" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="deleteIcon.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/molecules/filterChip/deleteIcon.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/molecules/filterChip/index.tsx">
+        <metrics statements="11" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="16" type="stmt"/>
+        <line num="15" count="15" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="15" type="stmt"/>
+        <line num="22" count="16" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.molecules.jobListCard">
+      <metrics statements="20" coveredstatements="20" conditionals="11" coveredconditionals="10" methods="3" coveredmethods="3"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/molecules/jobListCard/index.tsx">
+        <metrics statements="20" coveredstatements="20" conditionals="11" coveredconditionals="10" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+        <line num="41" count="11" type="stmt"/>
+        <line num="42" count="11" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="74" count="11" type="stmt"/>
+        <line num="76" count="11" type="stmt"/>
+        <line num="188" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.molecules.routeInfo">
+      <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/molecules/routeInfo/index.tsx">
+        <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.molecules.transitOption">
+      <metrics statements="10" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/molecules/transitOption/index.tsx">
+        <metrics statements="10" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.organisms.jobDescriptionCard">
+      <metrics statements="16" coveredstatements="14" conditionals="9" coveredconditionals="7" methods="3" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/organisms/jobDescriptionCard/index.tsx">
+        <metrics statements="16" coveredstatements="14" conditionals="9" coveredconditionals="7" methods="3" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="54" count="9" type="stmt"/>
+        <line num="55" count="9" type="stmt"/>
+        <line num="207" count="0" type="stmt"/>
+        <line num="225" count="0" type="stmt"/>
+        <line num="245" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.organisms.jobList">
+      <metrics statements="59" coveredstatements="49" conditionals="12" coveredconditionals="9" methods="20" coveredmethods="11"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/organisms/jobList/index.tsx">
+        <metrics statements="59" coveredstatements="49" conditionals="12" coveredconditionals="9" methods="20" coveredmethods="11"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="10" type="stmt"/>
+        <line num="87" count="9" type="stmt"/>
+        <line num="88" count="9" type="stmt"/>
+        <line num="91" count="9" type="stmt"/>
+        <line num="92" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="93" count="9" type="stmt"/>
+        <line num="94" count="9" type="stmt"/>
+        <line num="95" count="4" type="stmt"/>
+        <line num="96" count="4" type="stmt"/>
+        <line num="97" count="4" type="stmt"/>
+        <line num="98" count="4" type="stmt"/>
+        <line num="101" count="9" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
+        <line num="107" count="9" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="114" count="9" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="118" count="9" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="122" count="9" type="stmt"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="130" count="9" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="175" count="15" type="stmt"/>
+        <line num="178" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="202" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="203" count="9" type="stmt"/>
+        <line num="205" count="6" type="stmt"/>
+        <line num="206" count="30" type="stmt"/>
+        <line num="207" count="30" type="cond" truecount="3" falsecount="0"/>
+        <line num="210" count="11" type="stmt"/>
+        <line num="224" count="1" type="stmt"/>
+        <line num="255" count="0" type="stmt"/>
+        <line num="256" count="1" type="stmt"/>
+        <line num="267" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.organisms.routeMaps">
+      <metrics statements="36" coveredstatements="24" conditionals="25" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="dataList.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/organisms/routeMaps/dataList.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/organisms/routeMaps/index.tsx">
+        <metrics statements="32" coveredstatements="20" conditionals="25" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="179" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="193" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.organisms.uploadResume">
+      <metrics statements="25" coveredstatements="18" conditionals="7" coveredconditionals="3" methods="3" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/components/organisms/uploadResume/index.tsx">
+        <metrics statements="25" coveredstatements="18" conditionals="7" coveredconditionals="3" methods="3" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="141" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="theme">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/mdsame/Documents/Bootcamp/Bootcamp32/bootcamp-32-green-commute/src/theme/index.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="200" count="1" type="stmt"/>
+        <line num="201" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
