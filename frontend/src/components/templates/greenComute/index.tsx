@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, styled, BoxProps } from "@mui/material";
 import Header from "../../organisms/header";
 import Sidebar from "../../organisms/sideBar";
-import { EXTRA_COLORS } from "../../../theme";
+import theme from "../../../theme";
 import { list1, list2 } from "../../organisms/sideBar/sideBarList";
 
 const StyledGrid = styled(Grid)({
@@ -10,7 +10,7 @@ const StyledGrid = styled(Grid)({
   top: "80px",
   left: 0,
   right: 0,
-  backgroundColor: EXTRA_COLORS.greenGrey,
+  backgroundColor: theme.palette.greyColors.main100,
   minHeight: "91.5vh",
 });
 
@@ -23,9 +23,6 @@ interface PropsType extends BoxProps {
 
 interface PropsType extends BoxProps {}
 
-const ChildrenComponent = styled(Grid)({
-  width: "80vw",
-});
 
 const GreenComute = ({
   currentLocation,
@@ -46,9 +43,9 @@ const GreenComute = ({
           savedJobsOnClick={savedJobsOnClick}
           selected={selected}
         />
-        <ChildrenComponent container direction="column" pt="40px">
+        <Box display={"flex"} flexDirection="column" pt="40px">
           {children}
-        </ChildrenComponent>
+        </Box>
       </StyledGrid>
     </Box>
   );

@@ -66,6 +66,7 @@ const LandingInput = ({
         color="textColor.highEmphasis"
         mt={9}
         display="block"
+        width={"555px"}
       >
         More than 2000 people are using Green Commute
       </Typography>

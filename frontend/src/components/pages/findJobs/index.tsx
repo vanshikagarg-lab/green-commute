@@ -122,7 +122,7 @@ const FindJobs = () => {
       </Box>
 
       {selectedIndex === -1 && (
-        <Box marginLeft={"46px"}>
+        <Box marginLeft={"46px"} width={"75vw"}>
           <Typography
             variant="heading2"
             color="textColor.highEmphasis"
