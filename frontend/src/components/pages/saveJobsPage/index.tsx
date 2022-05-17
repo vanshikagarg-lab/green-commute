@@ -146,7 +146,7 @@ const SaveJobsPage = () => {
                     time={`${card.posted}`}
                     vehicle={card.routes}
                     height="159px"
-                    width="54.7vw"
+                    width="calc(100vw - 845px)"
                     selected={data.select?.id === card.id ? true : false}
                     style={{ cursor: "pointer", backgroundColor: "#FFFFFF" }}
                     onClick={() => handleSelect(card.id)}
