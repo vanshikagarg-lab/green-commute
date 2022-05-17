@@ -1,2 +1,8 @@
-include: '/frontend/.gitlab-ci.yml' 
+include:
+  - "/frontend/.gitlab-ci.yml"
+  - "/Backend/GreenCommute/.gitlab-ci.yml"
 
+stages:
+  - sonar-backend
+  - sonar-frontend
+  - netlify
