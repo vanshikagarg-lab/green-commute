@@ -1,8 +1,10 @@
 include:
   - "/frontend/.gitlab-ci.yml"
   - "/Backend/GreenCommute/.gitlab-ci.yml"
+  - '/Backend/Skills-microservice/.gitlab-ci.yml'
 
 stages:
+  - sonar-skills
   - sonar-backend
   - sonar-frontend
   - netlify
