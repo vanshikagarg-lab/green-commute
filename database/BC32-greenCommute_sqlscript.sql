@@ -5,23 +5,22 @@ USE `BC32-GreenCommute`;
 
 DROP TABLE IF EXISTS `location`;
 CREATE TABLE `location` (
-  `loc_id` varchar(50) NOT NULL,
+  `id` varchar(50) NOT NULL,
   `location` varchar(50) NOT NULL,
   `aqi` varchar(50) NOT NULL,
-  PRIMARY KEY (`loc_id`)
+  PRIMARY KEY (`id`)
 );
 INSERT INTO `location` 
 VALUES 
 ('1','Hyderabad','894'),
 ('2','Mumbai','953');
 
-ALTER TABLE location RENAME COLUMN loc_id TO id;
 
 DROP TABLE IF EXISTS `skill`;
 CREATE TABLE `skill` (
-  `skill_id` varchar(50) NOT NULL,
+  `id` varchar(50) NOT NULL,
   `skill` varchar(50) NOT NULL,
-  PRIMARY KEY (`skill_id`)
+  PRIMARY KEY (`id`)
 );
 
 INSERT INTO `skill` 
@@ -29,13 +28,12 @@ VALUES
 ('1','UI/UX Designer'),
 ('2','Graphic Designer');
 
-ALTER TABLE skill RENAME COLUMN skill_id TO id;
 
 DROP TABLE IF EXISTS `route`;
 CREATE TABLE `route` (
-  `route_id` varchar(50) NOT NULL,
+  `id` varchar(50) NOT NULL,
   `route` varchar(50) NOT NULL,
-  PRIMARY KEY (`route_id`)
+  PRIMARY KEY (`id`)
 );
 
 INSERT INTO `route` 
@@ -45,24 +43,23 @@ VALUES
 ('3','Train'),
 ('4','Car');
 
-ALTER TABLE route RENAME COLUMN route_id TO id;
 
 DROP TABLE IF EXISTS `job`;
 CREATE TABLE `job` (
-  `job_id` varchar(50) NOT NULL,
+  `id` varchar(50) NOT NULL,
   `designation` varchar(50) NOT NULL,
-  `companyLogo` varchar(50) NOT NULL,
-  `companyName` varchar(50) NOT NULL,
-  `locationID` varchar(50) NOT NULL,
+  `company_logo` varchar(50) NOT NULL,
+  `company_name` varchar(50) NOT NULL,
+  `location_id` varchar(50) NOT NULL,
   `address` varchar(50),
   `pincode` varchar(50),
   `posted` varchar(50) NOT NULL,
   `distance` varchar(50) NOT NULL,
-  `skillID` varchar(50) NOT NULL,
+  `skill_id` varchar(50) NOT NULL,
   `saved` boolean NOT NULL,
-  PRIMARY KEY (`job_id`),
-  FOREIGN KEY (`locationID`) REFERENCES location(loc_id),
-  FOREIGN KEY (`skillID`) REFERENCES skill(skill_id)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`location_id`) REFERENCES location(id),
+  FOREIGN KEY (`skill_id`) REFERENCES skill(id)
 );
 
 INSERT INTO `job` 
@@ -79,14 +76,13 @@ VALUES
 ('7','User Experience Designer','./images/myntraLogo.svg','Myntra','1','Hitech city','500072','36 min ago','5','2',false),
 ('8','Product Designer','./images/bmwLogo.svg','BMW','1','Hitech city','500072','10 days ago','5','2',false);
 
-ALTER TABLE job RENAME COLUMN companyName TO company_name;
 
 DROP TABLE IF EXISTS `job_route`;
 CREATE TABLE `job_route` (
   `route_id` varchar(50) NOT NULL,
   `job_id` varchar(50) NOT NULL,
-  FOREIGN KEY (`route_id`) REFERENCES route(route_id),
-  FOREIGN KEY (`job_id`) REFERENCES job(job_id)
+  FOREIGN KEY (`route_id`) REFERENCES route(id),
+  FOREIGN KEY (`job_id`) REFERENCES job(id)
 );
 
 INSERT INTO `job_route` 
@@ -121,5 +117,6 @@ VALUES
 ('2','8'),
 ('3','8'),
 ('4','8');
+
 
 
