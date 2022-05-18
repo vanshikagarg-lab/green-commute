@@ -71,15 +71,16 @@ const FindJobs = () => {
   }, []);
 
   const searchItems = (skillValue: any, locValue: any) => {
+    console.log(skillValue,locValue);
     const tempJobs = data.dataList;
     const locFilteredJobs = tempJobs.slice().filter((job: any) => {
-      if (locValue.length < 1) {
+      if (locValue.length<1) {
         return true;
       }
       return job.location.includes(locValue);
     });
     const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
-      if (skillValue.length < 1) {
+      if (skillValue.length<1) {
         return true;
       }
       return job.skill.includes(skillValue);
@@ -110,6 +111,10 @@ const FindJobs = () => {
           mb="40px"
           filterClick={filterHandler}
           searchButtonClick={searchItems}
+          locationOptions={data.jobLocations}
+          skillsOptions={data.jobSkills}
+          getLocationLabel={(option: any) => option.location}
+          getSkillLabel={(option: any) => option.skill}
         />
         {selectedIndex >= 0 && (
           <JobList

@@ -3,7 +3,7 @@ import Icon from "../../atoms/icon";
 import TextFieldComponent from "../../atoms/textField";
 import theme from "../../../theme";
 import { styled } from "@mui/system";
-import { Box } from "@mui/material";
+import { Autocomplete, Box } from "@mui/material";
 
 const styles = {
   input: {
@@ -20,19 +20,25 @@ const WrapIcon = styled("span")({
 });
 
 type Props = {
-  onChange?: any;
+  textFieldOnChange?: any;
+  autoCompleteOnChange?: any;
   icon: string;
   iconFill?: string;
   iconStroke?: string;
   placeholder: string;
+  options: readonly any[];
+  getOptionLabel?: any;
 };
 
 const SkillSearch = ({
-  onChange,
+  textFieldOnChange,
+  autoCompleteOnChange,
   icon,
   iconFill,
   placeholder,
   iconStroke,
+  options,
+  getOptionLabel,
 }: Props) => {
   return (
     <Box
@@ -47,14 +53,25 @@ const SkillSearch = ({
       <WrapIcon>
         <Icon src={icon} fill={iconFill} stroke={iconStroke}></Icon>
       </WrapIcon>
-      <TextFieldComponent
-        border={false}
-        boxShadow={false}
-        placeholder={placeholder}
-        placeholderColor={theme.palette.textColor.mediumEmphasis}
-        width={"340px"}
-        onChange={onChange}
-      ></TextFieldComponent>
+      <Autocomplete
+        freeSolo
+        id="tags-outlined"
+        options={options}
+        getOptionLabel={getOptionLabel}
+        onChange={autoCompleteOnChange}
+        onInputChange={textFieldOnChange}
+        disableClearable
+        renderInput={(params) => (
+          <TextFieldComponent
+            border={false}
+            boxShadow={false}
+            placeholder={placeholder}
+            placeholderColor={theme.palette.textColor.mediumEmphasis}
+            width={"340px"}
+            {...params}
+          />
+        )}
+      ></Autocomplete>
     </Box>
   );
 };

@@ -6,6 +6,25 @@ import saveIcon from "../../../assets/icons/save.svg";
 import userEvent from "@testing-library/user-event";
 import THEME from "../../../theme";
 
+const locations = [
+  {
+    title: "Hyderabad",
+  },
+  {
+    title: "Mumbai",
+  },
+];
+
+const skills = [
+  {
+    title: "UI/UX Designer",
+  },
+  {
+    title: "Graphic Designer",
+  },
+];
+
+
 it("renders jobSearch", () => {
   render(<JobSearch />);
   const ReactElement = screen.getByTestId("jobSearch");
@@ -13,7 +32,7 @@ it("renders jobSearch", () => {
 });
 
 it("changes color of skills icon", () => {
-  render(<JobSearch />);
+  render(<JobSearch skillsOptions={skills}/>);
   const ReactElement = screen.getByPlaceholderText(
     "Search Skills"
   ) as HTMLInputElement;
@@ -28,7 +47,7 @@ it("changes color of skills icon", () => {
 });
 
 it("changes color of location icon", () => {
-  render(<JobSearch />);
+  render(<JobSearch locationOptions={locations}/>);
   const ReactElement = screen.getByPlaceholderText(
     "Location"
   ) as HTMLInputElement;

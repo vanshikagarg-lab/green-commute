@@ -4,6 +4,13 @@ import SkillSearch from '.';
 import workIcon from "../../../assets/icons/work.svg";
 import theme from '../../../theme';
 
+const data = [
+    { title: "Devops engineer" },
+    { title: "Backend developer" },
+    { title: "Frontend developer" },
+    { title: "UI/UX developer" },
+  ];
+
 export default {
     title: 'molecules/SkillSearch',
     component: SkillSearch,
@@ -21,4 +28,5 @@ Default.args = {
     icon: workIcon,
     placeholder: "Skill Search",
     iconFill: `${theme.palette.textColor.lowEmphasis}`,
+    options:data
 };
