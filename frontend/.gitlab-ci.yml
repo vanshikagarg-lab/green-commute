@@ -18,6 +18,7 @@ sonarcloud-check-frontend:
   script:
     - cd "${CI_PROJECT_DIR}/frontend"
     - npm install
+    - npm run build-storybook
     - npm test -- --coverage --testResultsProcessor=jest-sonar-reporter
     - sonar-scanner
   only:
