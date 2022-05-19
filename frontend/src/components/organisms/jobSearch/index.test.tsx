@@ -5,6 +5,7 @@ import JobSearch from "./index";
 import saveIcon from "../../../assets/icons/save.svg";
 import userEvent from "@testing-library/user-event";
 import THEME from "../../../theme";
+import { skills, locations } from "../../../constants";
 
 it("renders jobSearch", () => {
   render(<JobSearch />);
@@ -13,7 +14,7 @@ it("renders jobSearch", () => {
 });
 
 it("changes color of skills icon", () => {
-  render(<JobSearch />);
+  render(<JobSearch skillsOptions={skills} />);
   const ReactElement = screen.getByPlaceholderText(
     "Search Skills"
   ) as HTMLInputElement;
@@ -28,7 +29,7 @@ it("changes color of skills icon", () => {
 });
 
 it("changes color of location icon", () => {
-  render(<JobSearch />);
+  render(<JobSearch locationOptions={locations} />);
   const ReactElement = screen.getByPlaceholderText(
     "Location"
   ) as HTMLInputElement;

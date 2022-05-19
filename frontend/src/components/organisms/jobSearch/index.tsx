@@ -15,6 +15,10 @@ import locIcon from "../../../assets/icons/location.svg";
 type Props = {
   filterClick?: any;
   searchButtonClick?: any;
+  locationOptions?: any;
+  skillsOptions?: any;
+  getLocationLabel?: any;
+  getSkillLabel?: any;
 } & BoxProps;
 
 const FilterButton = styled(Button)({
@@ -30,17 +34,33 @@ const FilterButton = styled(Button)({
   },
 });
 
-const JobSearch = ({ filterClick, searchButtonClick, ...remProps }: Props) => {
+const JobSearch = ({
+  filterClick,
+  searchButtonClick,
+  locationOptions,
+  skillsOptions,
+  getLocationLabel,
+  getSkillLabel,
+  ...remProps
+}: Props) => {
   const [locValue, setLocValue] = useState("");
   const [skillValue, setSkillValue] = useState("");
 
-  const onLocValueChange = (e: any) => {
-    setLocValue(e.target.value);
+  const onLocTextFieldChange = (_e: any,value:string) => {
+    setLocValue(value);
   };
 
-  const onSkillValueChange = (e: any) => {
-    setSkillValue(e.target.value);
+  const onLocAutoCompleteChange = (_e:any,value:any)=>{
+    setLocValue(value.location);
+  }
+
+  const onSkillTextFieldChange = (_e: any,value:string) => {
+    setSkillValue(value);
   };
+
+  const onSkillAutoCompleteChange = (_e:any,value:any)=>{
+    setSkillValue(value.skill);
+  }
 
   return (
     <Box data-testid="jobSearch" {...remProps}>
@@ -66,7 +86,10 @@ const JobSearch = ({ filterClick, searchButtonClick, ...remProps }: Props) => {
                 : THEME.palette.textColor.lowEmphasis
             }
             placeholder={"Search Skills"}
-            onChange={onSkillValueChange}
+            textFieldOnChange={onSkillTextFieldChange}
+            autoCompleteOnChange={onSkillAutoCompleteChange}
+            options={skillsOptions}
+            getOptionLabel={getSkillLabel}
           />
           <Divider
             orientation="vertical"
@@ -84,7 +107,10 @@ const JobSearch = ({ filterClick, searchButtonClick, ...remProps }: Props) => {
                 : THEME.palette.textColor.lowEmphasis
             }
             placeholder={"Location"}
-            onChange={onLocValueChange}
+            textFieldOnChange={onLocTextFieldChange}
+            autoCompleteOnChange={onLocAutoCompleteChange}
+            options={locationOptions}
+            getOptionLabel={getLocationLabel}
           />
           <IconButton
             style={{
