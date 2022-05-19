@@ -1,0 +1,38 @@
+server:
+  port: 9005
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: SKILL-SERVICE
+          uri: lb://SKILL-SERVICE
+          predicates:
+            - Path=/skills/**
+        - id: ROUTE-SERVICE
+          uri: lb://ROUTE-SERVICE
+          predicates:
+            - Path=/routes/**
+        - id: LOCATION-SERVICE
+          uri: lb://LOCATION-SERVICE
+          predicates:
+            - Path=/locations/**
+        - id: JOB-SERVICE
+          uri: lb://JOB-SERVICE
+          predicates:
+            - Path=/jobs/**
+        - id: SEARCH-SERVICE
+          uri: lb://JOB-SERVICE
+          predicates:
+            - Path=/search/**
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9006/eureka/
+  instance:
+    hostname: localhost
