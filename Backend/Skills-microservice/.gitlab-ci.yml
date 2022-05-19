@@ -1,0 +1,15 @@
+image: maven:latest
+variables:
+  SONAR_TOKEN: "12e04100031fb2d2adafc1aac7e8affe8b336116"
+  SONAR_HOST_URL: "https://sonarcloud.io"
+  GIT_DEPTH: 0
+
+sonarcloud-backend-skills-microservice:
+  stage: sonar-skills
+  script:
+    - cd "${CI_PROJECT_DIR}/Backend/Skills-microservice"
+    - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=B32_GreenCommute-Skiils-microservice -Dsonar.qualitygate.wait=true
+  allow_failure: true
+  only:
+    - merge_requests
+    - main
