@@ -1,0 +1,15 @@
+image: maven:latest
+variables:
+  SONAR_TOKEN: "15da95ac109a0ea19d95e0639e9d0f791bd5be82"
+  SONAR_HOST_URL: "https://sonarcloud.io"
+  GIT_DEPTH: 0
+
+sonarcloud-backend-routes-microservice:
+  stage: sonar-routes
+  script:
+    - cd "${CI_PROJECT_DIR}/Backend/routes-microservice"
+    - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=routes-microservice -Dsonar.qualitygate.wait=true
+  allow_failure: true
+  only:
+    - merge_requests
+    - main
