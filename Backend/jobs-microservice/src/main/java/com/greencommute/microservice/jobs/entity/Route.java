@@ -19,8 +19,4 @@ public class Route {
 
     @Column(name="route")
     private String routeName;
-
-    public Route(String routeName){
-        this.routeName = routeName;
-    }
 }

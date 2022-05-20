@@ -19,7 +19,7 @@ public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "job_id")
+    @Column(name = "id")
     private int jobId;
 
     @Column(name="designation")
@@ -37,31 +37,29 @@ public class Job {
     @Column(name="saved")
     private boolean saved;
 
-    @ManyToOne
+    @Column(name="posted")
+    private String posted;
+
+    @Column(name="pincode")
+    private String pincode;
+
+    @Column(name="address")
+    private String address;
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
     @JoinColumn(name="location_id")
-    private String location;
+    private Location location;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
     @JoinColumn(name="skill_id")
-    private String skill;
+    private Skill skill;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "job_routes",
+            name = "job_route",
             joinColumns = @JoinColumn(name = "job_id"),
             inverseJoinColumns = @JoinColumn(name = "route_id")
     )
     private Set<Route> routes = new HashSet<>();
-
-    public Job(String designation,String companyLogo,String companyName,int distance,boolean saved,String location,String skill,Set<Route> routes){
-        this.designation = designation;
-        this.companyLogo = companyLogo;
-        this.companyName = companyName;
-        this.distance = distance;
-        this.saved = saved;
-        this.location = location;
-        this.skill = skill;
-        this.routes = routes;
-    }
 
 }

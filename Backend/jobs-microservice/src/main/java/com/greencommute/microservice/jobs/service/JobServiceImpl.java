@@ -27,8 +27,8 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Job getJob(int theId) {
-        Optional<Job> job = Optional.of(jobRepository.getById(theId));
-        return job.get();
+        Optional<Job> job = jobRepository.findById(theId);
+        return job.orElse(null);
     }
 
     @Override
@@ -52,5 +52,15 @@ public class JobServiceImpl implements JobService {
         Job job;
         job = modelMapper.map(jobDTO,Job.class);
         return job;
+    }
+
+    @Override
+    public JobDTO getDTO(Job theJob) {
+        return convertEntityToDto(theJob);
+    }
+
+    @Override
+    public Job getEntity(JobDTO theJob){
+        return convertDtoToEntity(theJob);
     }
 }

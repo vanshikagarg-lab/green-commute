@@ -12,4 +12,8 @@ public interface JobService {
 
     Job saveJob(JobDTO theJob);
 
+    JobDTO getDTO(Job theJob);
+
+    Job getEntity(JobDTO theJob);
+
 }
