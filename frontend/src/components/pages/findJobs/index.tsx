@@ -54,7 +54,7 @@ const FindJobs = () => {
       const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
         let flag;
         for (const skill of tempJobSkills) {
-          flag = job.skill.includes(skill.skill);
+          flag = job.skill.includes(skill.name);
           if (flag) {
             break;
           }
@@ -114,7 +114,7 @@ const FindJobs = () => {
           locationOptions={data.jobLocations}
           skillsOptions={data.jobSkills}
           getLocationLabel={(option: any) => option.location}
-          getSkillLabel={(option: any) => option.skill}
+          getSkillLabel={(option: any) => option.name}
         />
         {selectedIndex >= 0 && (
           <JobList

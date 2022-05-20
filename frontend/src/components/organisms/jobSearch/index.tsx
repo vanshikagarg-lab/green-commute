@@ -59,7 +59,7 @@ const JobSearch = ({
   };
 
   const onSkillAutoCompleteChange = (_e:any,value:any)=>{
-    setSkillValue(value.skill);
+    setSkillValue(value.name);
   }
 
   return (

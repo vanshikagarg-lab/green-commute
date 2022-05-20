@@ -55,7 +55,7 @@ const LandingPage = () => {
       const foundJobs = data.jobs.slice().filter((job: any) => {
         let flag;
         for (const skill of value) {
-          flag = job.skill.includes(skill.skill);
+          flag = job.skill.includes(skill.name);
           if (flag) {
             break;
           }
@@ -225,7 +225,7 @@ const LandingPage = () => {
         onChange(null, tempValue);
       };
 
-      const getOptions = (option: any) => option.skill;
+      const getOptions = (option: any) => option.name;
 
       landingInputComponent = (
         <LandingInput
