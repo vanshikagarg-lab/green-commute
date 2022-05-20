@@ -44,5 +44,39 @@ class JobsSearchTests {
 
         mockMvc.perform(post("/search").contentType(MediaType.APPLICATION_JSON).content(content)).andExpect(jsonPath("$",hasSize(2))).andExpect(jsonPath("$[0].jobId",is(4)));
     }
+    @Test
+    void getAllTheJobs() throws Exception {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer();
+
+        SearchDTO searchDTO = new SearchDTO();
+
+        String content = objectWriter.writeValueAsString(searchDTO);
+
+        mockMvc.perform(post("/search").contentType(MediaType.APPLICATION_JSON).content(content)).andExpect(jsonPath("$",hasSize(8)));
+    }
+
+    @Test
+    void emptyQueryIsPassed() throws Exception {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer();
+
+        DistanceFilter distanceFilter = new DistanceFilter();
+        distanceFilter.setDistance0To10(false);
+        distanceFilter.setDistance11To20(false);
+        distanceFilter.setDistance21To30(false);
+        distanceFilter.setDistance31To40(false);
+
+        SearchDTO searchDTO = new SearchDTO();
+        searchDTO.setLocation("");
+        searchDTO.setSkill("");
+        searchDTO.setDistanceFilter(distanceFilter);
+
+        String content = objectWriter.writeValueAsString(searchDTO);
+
+        mockMvc.perform(post("/search").contentType(MediaType.APPLICATION_JSON).content(content)).andExpect(jsonPath("$",hasSize(8)));
+    }
 
 }

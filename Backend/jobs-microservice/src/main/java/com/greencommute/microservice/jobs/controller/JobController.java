@@ -76,7 +76,10 @@ public class JobController {
         if (distanceFilter.isDistance31To40()) {
             filteredJobs.addAll(jobs.stream().filter(job -> (job.getDistance() >= 31 && job.getDistance() <= 40)).collect(Collectors.toList()));
         }
-        return filteredJobs;
+        if(!filteredJobs.isEmpty()){
+            return filteredJobs;
+        }
+        return jobs;
     }
 
 
