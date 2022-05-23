@@ -1,0 +1,15 @@
+image: maven:latest
+variables:
+  SONAR_TOKEN: "4325d7f7815417b4ef0afd6a1c6838142d95feb4"
+  SONAR_HOST_URL: "https://sonarcloud.io"
+  GIT_DEPTH: 0
+
+sonarcloud-backend-location-microservice:
+  stage: sonar-location
+  script:
+    - cd "${CI_PROJECT_DIR}/Backend/microservice-location"
+    - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Location-microservice
+  allow_failure: true
+  only:
+    - merge_requests
+    - main
