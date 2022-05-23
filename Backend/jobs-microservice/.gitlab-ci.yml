@@ -4,7 +4,7 @@ variables:
   SONAR_HOST_URL: "https://sonarcloud.io"
   GIT_DEPTH: 0
 
-sonarcloud-backend-routes-microservice:
+sonarcloud-backend-jobs-microservice:
   stage: sonar-jobs
   script:
     - cd "${CI_PROJECT_DIR}/Backend/jobs-microservice"
