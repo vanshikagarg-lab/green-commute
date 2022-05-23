@@ -41,45 +41,7 @@ public class JobController {
 
     @PostMapping("/search")
     public List<Job> searchJobs(@RequestBody SearchDTO searchDTO) {
-        List<Job> jobs = jobService.getJobs();
-        if (searchDTO.getLocation() != null && searchDTO.getLocation().length() > 0) {
-            jobs = filterJobsByLocation(jobs, searchDTO.getLocation());
-        }
-        if (searchDTO.getSkill() != null && searchDTO.getSkill().length() > 0) {
-            jobs = filterJobsBySkill(jobs, searchDTO.getSkill());
-        }
-        if (searchDTO.getDistanceFilter() != null) {
-            jobs = filterJobsByDistance(jobs, searchDTO.getDistanceFilter());
-        }
-        return jobs;
-    }
-
-    private List<Job> filterJobsByLocation(List<Job> jobs, String location) {
-        return jobs.stream().filter(job -> (job.getLocation().getName().equals(location))).collect(Collectors.toList());
-    }
-
-    private List<Job> filterJobsBySkill(List<Job> jobs, String skill) {
-        return jobs.stream().filter(job -> (job.getSkill().getName().equals(skill))).collect(Collectors.toList());
-    }
-
-    private List<Job> filterJobsByDistance(List<Job> jobs, DistanceFilter distanceFilter) {
-        List<Job> filteredJobs = new ArrayList<>();
-        if (distanceFilter.isDistance0To10()) {
-            filteredJobs.addAll(jobs.stream().filter(job -> (job.getDistance() >= 0 && job.getDistance() <= 10)).collect(Collectors.toList()));
-        }
-        if (distanceFilter.isDistance11To20()) {
-            filteredJobs.addAll(jobs.stream().filter(job -> (job.getDistance() >= 11 && job.getDistance() <= 20)).collect(Collectors.toList()));
-        }
-        if (distanceFilter.isDistance21To30()) {
-            filteredJobs.addAll(jobs.stream().filter(job -> (job.getDistance() >= 21 && job.getDistance() <= 30)).collect(Collectors.toList()));
-        }
-        if (distanceFilter.isDistance31To40()) {
-            filteredJobs.addAll(jobs.stream().filter(job -> (job.getDistance() >= 31 && job.getDistance() <= 40)).collect(Collectors.toList()));
-        }
-        if(!filteredJobs.isEmpty()){
-            return filteredJobs;
-        }
-        return jobs;
+        return jobService.searchJobs(searchDTO);
     }
 
 
