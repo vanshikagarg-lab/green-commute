@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Image from "../../atoms/Image";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Typography from "../../atoms/typography";
@@ -52,6 +52,44 @@ const JobDescriptionCard = ({
   vehicle,
 }: JobDescriptionCardProps) => {
   const [displayRoutes, setDisplayRoutes] = useState<boolean>(false);
+  const [routes,setRoutes] = useState<{
+    bike: boolean,
+    bus: boolean,
+    train: boolean,
+    car: boolean,
+  }>({
+    bike: false,
+    bus: false,
+    train: false,
+    car: false,
+  })
+
+  useEffect(()=>{
+    const tempRoutes = {
+      bike: false,
+      bus: false,
+      train: false,
+      car: false,
+    }
+    vehicle.map((route: any) => {
+      if(route.routeName === "Bike"){
+        tempRoutes.bike = true;
+      }
+      if(route.routeName === "Car"){
+        tempRoutes.car = true;
+      }
+      if(route.routeName === "Train"){
+        tempRoutes.train = true;
+      }
+      if(route.routeName === "Bus"){
+        tempRoutes.bus = true;
+      }
+    })
+
+    setRoutes(tempRoutes);
+
+  },[vehicle]);
+
   return (
     <Box
       height={height}
@@ -206,7 +244,7 @@ const JobDescriptionCard = ({
               onBackButtonClick={() => {
                 setDisplayRoutes(false);
               }}
-              vehicle={vehicle}
+              vehicle={routes}
             />
           </Box>
         )}

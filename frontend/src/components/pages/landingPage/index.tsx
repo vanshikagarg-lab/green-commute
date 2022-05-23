@@ -55,7 +55,7 @@ const LandingPage = () => {
       const foundJobs = data.jobs.slice().filter((job: any) => {
         let flag;
         for (const skill of value) {
-          flag = job.skill.includes(skill.skill);
+          flag = job.skill.name.includes(skill.skill);
           if (flag) {
             break;
           }
@@ -75,7 +75,7 @@ const LandingPage = () => {
         jobs: data.jobs.slice().filter((job: any) => {
           let flag;
           for (const location of jobLocation) {
-            if (job.location.includes(location.location)) {
+            if (job.location.name.includes(location.location)) {
               flag = true;
               break;
             }

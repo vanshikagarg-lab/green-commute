@@ -23,6 +23,7 @@ const ParentStyle = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignContent: "center",
+  cursor: "pointer",
   backgroundColor: theme.palette.structural.main
 });
 

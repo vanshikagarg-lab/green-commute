@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Grid,
@@ -28,6 +28,7 @@ interface Props extends GridProps {
   openStatus: boolean;
   openStatusHandler: any;
   setFilters: any;
+  filters?: any;
 }
 
 const StyledBox = styled(Box)({
@@ -50,6 +51,7 @@ const FilterDialog = ({
   openStatus,
   openStatusHandler,
   setFilters,
+  filters,
   ...remProps
 }: Props) => {
   const [formData, setFormData] = useState<boolean[]>([
@@ -58,6 +60,33 @@ const FilterDialog = ({
     false,
     false,
   ]);
+  useEffect(()=>{
+    const distanceFilter = [
+     filters.find(
+        (filter: FilterType) => filter.label === "0-10 kms"
+      )
+        ? true
+        : false,
+    filters.find(
+        (filter: FilterType) => filter.label === "11-20 kms"
+      )
+        ? true
+        : false,
+
+      filters.find(
+        (filter: FilterType) => filter.label === "21-30 kms"
+      )
+        ? true
+        : false,
+     filters.find(
+        (filter: FilterType) => filter.label === "31-40 kms"
+      )
+        ? true
+        : false,
+      ];
+
+      setFormData(distanceFilter);
+  },[filters])
   const filter = () => {
     return data.slice().filter((curr, currIndex) => {
       return curr !== null && formData[currIndex];

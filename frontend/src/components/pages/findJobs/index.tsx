@@ -8,7 +8,7 @@ import { Box, DialogContent, Dialog } from "@mui/material";
 import FilterBox from "../../organisms/filterDialog";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { getJobsUrl } from "../../../constants";
+import { getJobsUrl,getSearchUrl } from "../../../constants";
 
 interface FilterType {
   label: string;
@@ -31,6 +31,10 @@ const FindJobs = () => {
     dataList: [],
     currLocation: "",
   });
+  const [searchQuery, setSearchQuery] = useState<{
+    location: string;
+    skill: string;
+  }>({ location: "", skill: "" });
 
   const landingData: any = useLocation();
 
@@ -44,7 +48,7 @@ const FindJobs = () => {
       const locFilteredJobs = tempJobs.slice().filter((job: any) => {
         let flag;
         for (const location of tempJobLocation) {
-          if (job.location.includes(location.location)) {
+          if (job.location.name.includes(location.location)) {
             flag = true;
             break;
           }
@@ -54,7 +58,7 @@ const FindJobs = () => {
       const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
         let flag;
         for (const skill of tempJobSkills) {
-          flag = job.skill.includes(skill.skill);
+          flag = job.skill.name.includes(skill.skill);
           if (flag) {
             break;
           }
@@ -67,26 +71,29 @@ const FindJobs = () => {
         currLocation: landingData.state.currLocation,
         dataList: skillsFilteredJobs,
       });
+      console.log(skillsFilteredJobs);
     });
   }, []);
 
   const searchItems = (skillValue: any, locValue: any) => {
-    console.log(skillValue,locValue);
-    const tempJobs = data.dataList;
-    const locFilteredJobs = tempJobs.slice().filter((job: any) => {
-      if (locValue.length<1) {
-        return true;
+    console.log(skillValue, locValue);
+    const searchParams = {
+      location: locValue,
+      skill: skillValue,
+    };
+    axios.post(getSearchUrl, searchParams).then((res) => {
+      console.log(res.data);
+      setFilteredList(res.data);
+      setSearchQuery({
+        location: locValue,
+        skill: skillValue,
+      });
+      if (selectedIndex != -1) {
+        setSelectedIndex(0);
       }
-      return job.location.includes(locValue);
     });
-    const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
-      if (skillValue.length<1) {
-        return true;
-      }
-      return job.skill.includes(skillValue);
-    });
-    setFilteredList(skillsFilteredJobs);
   };
+
   const filterHandler = () => {
     setFilterBoxStatus(true);
   };
@@ -100,6 +107,47 @@ const FindJobs = () => {
       },
     });
   };
+
+  const setFiltersWrapper = (filters: any) => {
+    console.log(filters);
+    const distanceFilter = {
+      distance0To10: filters.find(
+        (filter: FilterType) => filter.label === "0-10 kms"
+      )
+        ? true
+        : false,
+      distance11To20: filters.find(
+        (filter: FilterType) => filter.label === "11-20 kms"
+      )
+        ? true
+        : false,
+
+      distance21To30: filters.find(
+        (filter: FilterType) => filter.label === "21-30 kms"
+      )
+        ? true
+        : false,
+      distance31To40: filters.find(
+        (filter: FilterType) => filter.label === "31-40 kms"
+      )
+        ? true
+        : false,
+    };
+    const searchParams = {
+      location: searchQuery.location,
+      skill: searchQuery.skill,
+      distanceFilter: distanceFilter,
+    };
+    console.log(distanceFilter);
+    axios.post(getSearchUrl, searchParams).then((res) => {
+      setFilters(filters);
+      setFilteredList(res.data);
+      if (selectedIndex != -1) {
+        setSelectedIndex(0);
+      }
+    });
+  };
+
   return (
     <GreenComute
       currentLocation={data.currLocation}
@@ -120,8 +168,9 @@ const FindJobs = () => {
           <JobList
             cardProps={filteredList.length > 0 ? filteredList : data.dataList}
             filterProps={filters}
-            setFilters={setFilters}
+            setFilters={setFiltersWrapper}
             selectedIndex={selectedIndex}
+            currentLocation={data.currLocation}
           />
         )}
       </Box>
@@ -173,8 +222,9 @@ const FindJobs = () => {
           <FilterBox
             openStatus={filterBoxStatus}
             openStatusHandler={setFilterBoxStatus}
-            setFilters={setFilters}
+            setFilters={setFiltersWrapper}
             data-testid="filter-box"
+            filters={filters}
           />
         </DialogContent>
       </Dialog>

@@ -12,12 +12,13 @@ import axios from "axios";
 import { getJobsUrl } from "../../../constants";
 
 interface CardProps {
-  id: number | string;
+  jobId: number | string;
   designation: string;
   companyLogo: string;
   companyName: string;
-  location: string;
+  companyAddress: string;
   posted: string;
+  location?: any;
   routes: {
     bike: boolean;
     bus: boolean;
@@ -34,6 +35,7 @@ interface MainProps {
   filterProps: Array<Props>;
   setFilters: any;
   selectedIndex?: number;
+  currentLocation: string;
 }
 
 export const WrapCardStyle = styled(Box)({
@@ -105,8 +107,9 @@ const JobList = (props: MainProps) => {
     }));
     const tempDesc = description;
     tempDesc.saved = description.saved ? false : true;
+    console.log(tempDesc);
     axios
-      .put(`${getJobsUrl}/${description.id}`, {
+      .put(`${getJobsUrl}`, {
         ...tempDesc,
       })
       .then((res) => {
@@ -124,26 +127,46 @@ const JobList = (props: MainProps) => {
   };
 
   const deleteFilterChip = (index: number) => {
-    console.log(filters.slice(index - 1, 1));
     setFilters(
       filters.slice().filter((curr, currIndex) => {
-        console.log(curr);
         return index !== currIndex;
       })
     );
   };
 
   const renderJobCard = (card: any, index: number) => {
+    const routes = {
+      bike: false,
+      bus: false,
+      train: false,
+      car: false,
+    }
+
+    card.routes.map((route: any) => {
+      if(route.routeName === "Bike"){
+        routes.bike = true;
+      }
+      if(route.routeName === "Car"){
+        routes.car = true;
+      }
+      if(route.routeName === "Train"){
+        routes.train = true;
+      }
+      if(route.routeName === "Bus"){
+        routes.bus = true;
+      }
+    })
+    
     return (
       <JobListCard
         key={index}
-        jobId={card.id}
+        jobId={card.jobId}
         logo={card.companyLogo}
         jobName={card.designation}
         companyName={card.companyName}
-        companyAddress={card.location}
-        time={`${card.posted} ago`}
-        vehicle={card.routes}
+        companyAddress={card.location.name}
+        time={`${card.posted}`}
+        vehicle={routes}
         height="159px"
         width="auto"
         selected={select === index ? true : false}
@@ -154,31 +177,36 @@ const JobList = (props: MainProps) => {
   };
 
   const RenderFilteredList = () => {
-    const filteredList = props.cardProps?.filter((curr: any) => {
-      if (filters.length === 0) {
-        return true;
-      }
-      return (
-        filters?.filter((filter: any) => {
-          const range = filter?.label.split(" ")[0].split("-");
-          return (
-            range.length == 2 &&
-            parseInt(range[0]) <= curr?.distance &&
-            parseInt(range[1]) >= curr?.distance
-          );
-        }).length > 0
-      );
-    });
-    if (filteredList.length > 0) {
-      return filteredList.map((card, index) => {
-        return renderJobCard(card, index);
-      });
-    } else {
-      return props.cardProps.map((card, index) => {
-        return renderJobCard(card, index);
-      });
-    }
+    // const filteredList = props.cardProps?.filter((curr: any) => {
+    //   if (filters.length === 0) {
+    //     return true;
+    //   }
+    //   return (
+    //     filters?.filter((filter: any) => {
+    //       const range = filter?.label.split(" ")[0].split("-");
+    //       return (
+    //         range.length == 2 &&
+    //         parseInt(range[0]) <= curr?.distance &&
+    //         parseInt(range[1]) >= curr?.distance
+    //       );
+    //     }).length > 0
+    //   );
+    // });
+    // if (filteredList.length > 0) {
+    //   return filteredList.map((card, index) => {
+    //     return renderJobCard(card, index);
+    //   });
+    // } else {
+    //   return props.cardProps.map((card, index) => {
+    //     return renderJobCard(card, index);
+    //   });
+    // }
+    return props.cardProps.map((card, index) => {
+     return renderJobCard(card, index);
+           });
   };
+
+
 
   return (
     <>
@@ -254,11 +282,11 @@ const JobList = (props: MainProps) => {
           </CardListStyle>
           <DescriptionStyle>
             <JobDescriptionCard
-              jobId={description?.id}
+              jobId={description?.jobId}
               logo={description.companyLogo}
               jobName={description.designation}
               companyName={description.companyName}
-              companyAddress={description.location}
+              companyAddress={description.companyAddress}
               postTime={description.posted}
               saved={description.saved}
               description="Open Text is seeking a talented, personable interaction designer who
@@ -272,8 +300,8 @@ const JobList = (props: MainProps) => {
               such as Axure, Sketch, InVision, or Experience Design including the
               core Adobe Creative Suite products."
               about2="Excellent written and oral communication and presentation skills"
-              startLocation="E Marredpally, Secunderabad"
-              destination="Hitech City, Telanagana, Hyderabad."
+              startLocation={props.currentLocation}
+              destination={description.location.name}
               cost={100}
               distance={25}
               time="1 hr 20 mins"

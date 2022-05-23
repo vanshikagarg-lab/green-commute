@@ -17,11 +17,11 @@ const filterArray = [
 
 const cardArray = [
   {
-    id: 1,
+    jobId: 1,
     designation: "User Experience Designer",
     companyLogo: MyntraLogo,
     companyName: "Myntra",
-    location: "Hitech city, Hyderabad - 500072",
+    companyAddress: "Hitech city, Hyderabad - 500072",
     posted: "36 min ago",
     routes: {
       bike: true,
@@ -34,11 +34,11 @@ const cardArray = [
     saved: false,
   },
   {
-    id: 2,
+    jobId: 2,
     designation: "Product Designer",
     companyLogo: BMWLogo,
     companyName: "BMW",
-    location: "Hitech city, Hyderabad - 500072",
+    companyAddress: "Hitech city, Hyderabad - 500072",
     posted: "10 days ago",
     routes: {
       bike: true,
@@ -51,11 +51,11 @@ const cardArray = [
     saved: false,
   },
   {
-    id: 3,
+    jobId: 3,
     designation: "User Experience Designer",
     companyLogo: InstagramLogo,
     companyName: "Instagram",
-    location: "Mumbai",
+    companyAddress: "Mumbai",
     posted: "45 days ago",
     routes: {
       bike: true,
@@ -71,7 +71,7 @@ const cardArray = [
 
 test("Should render the title", () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} />
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad" />
   );
 
   const text1 = screen.getByText("Job list");
@@ -86,7 +86,7 @@ test("Should render the title", () => {
 
 test("Should render the cards", () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} />
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad"/>
   );
 
   const cardList = screen.getByTestId("cardId");
@@ -105,7 +105,7 @@ test("Should render the cards", () => {
 
 test("should click on SavejobCard", () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} />
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad"/>
   );
   const saveButton = screen.getByText("Save");
   fireEvent.click(saveButton);
@@ -115,7 +115,7 @@ test("should click on SavejobCard", () => {
 
 test("Should render Description card", () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} />
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad"/>
   );
   const descriptionCard = screen.getByTestId("JobDescriptionCard");
   expect(descriptionCard).toBeInTheDocument();
@@ -127,6 +127,7 @@ test("Should render Filter Chips and Resume Dialog",async () => {
       filterProps={filterArray}
       cardProps={cardArray}
       setFilters={() => {}}
+      currentLocation="Hyderabad"
     />
   );
   const filterChip = screen.getAllByTestId("filter-chip");
