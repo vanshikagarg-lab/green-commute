@@ -9,3 +9,14 @@ spring:
       jdbc:mysql://18.217.145.156:3308/BC32-GreenCommute?useSSL=false&serverTimezone=UTC
     username: root
     password: my-secret-pw
+  application:
+    name: LOCATION-SERVICE
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://18.223.206.231:9006/eureka/
+  instance:
+    hostname: 18.223.206.231
