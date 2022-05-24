@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/location")
 @Log4j2
-@CrossOrigin
 public class LocationController {
 
     @Autowired
