@@ -155,6 +155,8 @@ test("Should change the Aqi frame after entering the skills at stage 3", async (
   const nextButton = await screen.findByText("Next");
   expect(nextButton).toBeInTheDocument();
   const textElement = screen.getByRole("textbox");
+  const imageElement = screen.getByAltText("loading");
+  expect(imageElement).toBeInTheDocument();
   fireEvent.change(textElement, { target: { value: "Hyderabad" } });
   fireEvent.click(nextButton);
   const input = screen.getByRole("combobox");
@@ -163,8 +165,6 @@ test("Should change the Aqi frame after entering the skills at stage 3", async (
   fireEvent.keyDown(input, { key: "ArrowDown" });
   fireEvent.keyDown(input, { key: "Enter" });
   fireEvent.click(nextButton);
-  const imageElement = screen.getByAltText("loading");
-  expect(imageElement).toBeInTheDocument();
   const jobsInput = screen.getByRole("combobox");
   fireEvent.focus(jobsInput);
   fireEvent.change(jobsInput, { target: { value: ["Graphic Designer"] } });

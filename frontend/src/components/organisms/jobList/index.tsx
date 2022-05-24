@@ -19,14 +19,9 @@ interface CardProps {
   companyAddress: string;
   posted: string;
   location?: any;
-  routes: {
-    bike: boolean;
-    bus: boolean;
-    train: boolean;
-    car: boolean;
-  };
+  routes: any;
   distance: number;
-  skill: string;
+  skill: any;
   saved: boolean;
 }
 
@@ -179,7 +174,7 @@ const JobList = (props: MainProps) => {
   const RenderFilteredList = () => {
     return props.cardProps.map((card, index) => {
      return renderJobCard(card, index);
-           });
+    });
   };
 
 

@@ -87,16 +87,6 @@ const SaveJobsPage = () => {
     setData({ ...data, description: index, select: index });
   };
 
-  const getIndex = (card: JobDescriptionCardProps | undefined) => {
-    let tempIndex: number = -1;
-    data.cardList?.map((item: any, index: number) => {
-      if (card?.jobId === item.jobId) {
-        tempIndex = index;
-      }
-    });
-    return tempIndex;
-  };
-
   const saveJobsHandler = (index: number) => {
     const unsavedCard = data.cardList[index];
     let tempArray = data.cardList?.slice();
@@ -190,7 +180,6 @@ const SaveJobsPage = () => {
                     vehicle={routes}
                     height="159px"
                     width="calc(100vw - 845px)"
-                    // selected={data.select?.id === card.id ? true : false}
                     selected={data.select == index}
                     style={{ cursor: "pointer", backgroundColor: "#FFFFFF" }}
                     onClick={() => handleSelect(index)}

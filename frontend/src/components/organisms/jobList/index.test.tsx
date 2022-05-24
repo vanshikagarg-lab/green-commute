@@ -2,10 +2,8 @@ import { render, screen, fireEvent,within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import JobList from "./index";
-import MyntraLogo from "../../../assets/images/myntraaLogo.svg";
-import BMWLogo from "../../../assets/images/bmwLogo.svg";
-import InstagramLogo from "../../../assets/images/instagramLogo.svg";
-import { FilterSharp } from "@mui/icons-material";
+import {cardArray} from "../../../constants/index";
+
 
 const filterArray = [
   { label: "10-20 kms", deleteHandler: () => {} },
@@ -13,60 +11,6 @@ const filterArray = [
   { label: "Full time", deleteHandler: () => {} },
   { label: "Fresher", deleteHandler: () => {} },
   { label: "Green Commute Routes", deleteHandler: () => {} },
-];
-
-const cardArray = [
-  {
-    jobId: 1,
-    designation: "User Experience Designer",
-    companyLogo: MyntraLogo,
-    companyName: "Myntra",
-    companyAddress: "Hitech city, Hyderabad - 500072",
-    posted: "36 min ago",
-    routes: {
-      bike: true,
-      bus: true,
-      train: true,
-      car: false,
-    },
-    distance: 5,
-    skill: "Graphic Designer",
-    saved: false,
-  },
-  {
-    jobId: 2,
-    designation: "Product Designer",
-    companyLogo: BMWLogo,
-    companyName: "BMW",
-    companyAddress: "Hitech city, Hyderabad - 500072",
-    posted: "10 days ago",
-    routes: {
-      bike: true,
-      bus: true,
-      car: true,
-      train: true,
-    },
-    distance: 5,
-    skill: "Graphic Designer",
-    saved: false,
-  },
-  {
-    jobId: 3,
-    designation: "User Experience Designer",
-    companyLogo: InstagramLogo,
-    companyName: "Instagram",
-    companyAddress: "Mumbai",
-    posted: "45 days ago",
-    routes: {
-      bike: true,
-      car: true,
-      bus: false,
-      train: false,
-    },
-    distance: 15,
-    skill: "Graphic Designer",
-    saved: false,
-  },
 ];
 
 test("Should render the title", () => {
@@ -103,14 +47,15 @@ test("Should render the cards", () => {
   });
 });
 
-test("should click on SavejobCard", () => {
+test("should click on SavejobCard", async () => {
   render(
     <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad"/>
   );
-  const saveButton = screen.getByText("Save");
-  fireEvent.click(saveButton);
   const unSaveButton = screen.getByText("Unsave");
   expect(unSaveButton).toBeInTheDocument();
+  fireEvent.click(unSaveButton);
+  const saveButton = screen.getByText("Save");
+  expect(saveButton).toBeInTheDocument();
 });
 
 test("Should render Description card", () => {

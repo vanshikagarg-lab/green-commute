@@ -4,6 +4,7 @@ import "@testing-library/jest-dom";
 import axios, { AxiosResponse } from "axios";
 import SaveJobsPage from ".";
 import { BrowserRouter } from "react-router-dom";
+import {cardArray} from "../../../constants";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -34,20 +35,7 @@ afterEach(() => {
 
 beforeEach(() => {
   const mAxiosResponse = {
-    data: [
-      {
-        id: 1,
-        designation: "User Experience Designer",
-        companyLogo: "./images/myntraLogo.svg",
-        companyName: "Myntra",
-        location: "Hitech city, Hyderabad - 500072",
-        posted: "36 min ago",
-        routes: { bike: true, bus: true, train: true, car: false },
-        distance: 5,
-        skill: "Graphic Designer",
-        saved: true,
-      },
-    ],
+    data: cardArray,
   } as AxiosResponse;
   jest.spyOn(axios, "get").mockResolvedValueOnce(mAxiosResponse);
 });
@@ -104,10 +92,9 @@ test("Should change the border after clicking the card", async () => {
   );
 
   const cardList = await screen.getByTestId("cardList");
-  const cards = cardList.children;
-  expect(cards[0]).toBeInTheDocument();
-  fireEvent.click(cards[0]);
-  expect(cards[0]).toHaveStyle({
-    border: "2px solid #77EDDF",
-  });
+  expect(cardList).toBeInTheDocument();
+  fireEvent.click(cardList);
+  expect(cardList).toHaveStyle(
+    `border: "2px solid #77eddf"`,
+  );
 });

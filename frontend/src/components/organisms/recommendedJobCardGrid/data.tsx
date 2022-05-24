@@ -13,12 +13,7 @@ export const Data = [
     companyName: "HP",
     location: "Hyderabad, Telangana, India",
     routesTitle: "Commute routes available :",
-    routes: {
-      bus: true,
-      train: true,
-      car: true,
-      bike: true,
-    },
+    routes: [{routeName: "Bike"},{routeName: "Car"},{routeName: "Train"},{routeName: "Bus"}],
     posted: "1hr 36 mins ago",
   },
   {
@@ -28,12 +23,7 @@ export const Data = [
     companyName: "Instagram",
     location: "Hyderabad, Telangana, India",
     routesTitle: "Commute routes available :",
-    routes: {
-      bus: true,
-      train: true,
-      car: true,
-      bike: true,
-    },
+    routes: [{routeName: "Bike"},{routeName: "Car"},{routeName: "Train"},{routeName: "Bus"}],
     posted: "45 min ago",
   },
   {
@@ -43,12 +33,7 @@ export const Data = [
     companyName: "BMW",
     location: "Hyderabad, Telangana, India",
     routesTitle: "Commute routes available :",
-    routes: {
-      bus: true,
-      train: true,
-      car: true,
-      bike: true,
-    },
+    routes: [{routeName: "Bike"},{routeName: "Car"},{routeName: "Train"},{routeName: "Bus"}],
     posted: "3 days ago",
   },
   {
@@ -58,12 +43,7 @@ export const Data = [
     companyName: "Myntra",
     location: "Hyderabad, Telangana, India",
     routesTitle: "Commute routes available :",
-    routes: {
-      bus: true,
-      train: false,
-      car: true,
-      bike: true,
-    },
+    routes: [{routeName: "Bike"},{routeName: "Car"},{routeName: "Bus"}],
     posted: "4 days ago",
   },
   {
@@ -73,12 +53,7 @@ export const Data = [
     companyName: "Twitter",
     location: "Hyderabad, Telangana, India",
     routesTitle: "Commute routes available :",
-    routes: {
-      bus: true,
-      train: true,
-      car: true,
-      bike: true,
-    },
+    routes: [{routeName: "Bike"},{routeName: "Car"},{routeName: "Train"},{routeName: "Bus"}],
     posted: "1 week ago",
   },
   {
@@ -88,12 +63,7 @@ export const Data = [
     companyName: "Wipro",
     location: "Hyderabad, Telangana, India",
     routesTitle: "Commute routes available :",
-    routes: {
-      bus: true,
-      train: true,
-      car: true,
-      bike: true,
-    },
+    routes: [{routeName: "Bike"},{routeName: "Car"},{routeName: "Train"},{routeName: "Bus"}],
     posted: "10 days ago",
   },
 ];

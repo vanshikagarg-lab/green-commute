@@ -48,7 +48,7 @@ const FindJobs = () => {
       const locFilteredJobs = tempJobs.slice().filter((job: any) => {
         let flag;
         for (const location of tempJobLocation) {
-          if (job.location.name.includes(location.location)) {
+          if (job.location.name?.includes(location.location)) {
             flag = true;
             break;
           }
@@ -71,7 +71,10 @@ const FindJobs = () => {
         currLocation: landingData.state.currLocation,
         dataList: skillsFilteredJobs,
       });
-      console.log(skillsFilteredJobs);
+      console.log(tempJobs);
+      console.log(landingData.state.jobLocation);
+      console.log(landingData.state.jobSkills);
+      console.log(locFilteredJobs)
     });
   }, []);
 

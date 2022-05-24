@@ -40,5 +40,5 @@ Default.args = {
   distance: 25,
   time: "1 hr 20 mins",
   transitOptions: transitOptions,
-  vehicle: { bike: true, car: true, bus: true, train: true },
+  vehicle: [{routeName: "Bike"},{routeName: "Car"},{routeName: "Train"},{routeName: "Bus"}],
 };
