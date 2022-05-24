@@ -38,11 +38,9 @@ const Org = ({ stage }: props) => {
   };
 
   const deleteOption = (index: number) => {
-    console.log(index);
     let tempValue = inputVal.slice();
     tempValue.splice(index, 1);
     setInputVal(tempValue);
-    console.log(inputVal);
   };
 
   const getOptions = (option: any) => option.title;

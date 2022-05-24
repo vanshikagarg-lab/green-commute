@@ -59,7 +59,6 @@ const SaveJobsPage = () => {
   }, []);
 
   const handleSelect = (index: number) => {
-    console.log(index);
     const selectedCard = data.cardList?.find((card: any) => card.id === index);
     setData({ ...data, description: selectedCard, select: selectedCard });
   };
@@ -85,10 +84,7 @@ const SaveJobsPage = () => {
       select: tempArray?.find((card: any) => card.saved === true),
     });
     unsavedCard.saved = false;
-    axios.put(`${getJobsUrl}/${id}`, { ...unsavedCard }).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    axios.put(`${getJobsUrl}/${id}`, { ...unsavedCard }).then();
   };
 
   const applyJobsHandler = () => {

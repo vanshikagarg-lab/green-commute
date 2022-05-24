@@ -110,8 +110,6 @@ const JobList = (props: MainProps) => {
         ...tempDesc,
       })
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
       });
   };
 
@@ -124,10 +122,8 @@ const JobList = (props: MainProps) => {
   };
 
   const deleteFilterChip = (index: number) => {
-    console.log(filters.slice(index - 1, 1));
     setFilters(
       filters.slice().filter((curr, currIndex) => {
-        console.log(curr);
         return index !== currIndex;
       })
     );

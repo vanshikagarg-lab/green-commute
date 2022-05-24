@@ -25,6 +25,5 @@ Default.args = {
   label: "10-20 kms",
   backgroundColor: false,
   deleteHandler: () => {
-    console.log("working");
   },
 };

@@ -48,7 +48,7 @@ const AutocompleteComponent = ({
           <FilterChip
             deleteHandler={() => deleteOptions(index)}
             variant="outlined"
-            label={option.location ? option.location : option.skill}
+            label={option.location ? option.location : option.name}
             size="small"
             backgroundColor={true}
             {...getTagProps({ index })}
