@@ -3,10 +3,11 @@ include:
   - '/Backend/Skills-microservice/.gitlab-ci.yml'
   - "/Backend/routes-microservice/.gitlab-ci.yml"
   - "/Backend/microservice-location/.gitlab-ci.yml"
+  - "/Backend/jobs-microservice/.gitlab-ci.yml"
 stages:
+  - sonar-jobs
   - sonar-location
   - sonar-skills
   - sonar-routes
-  - sonar-backend
   - sonar-frontend
   - netlify
