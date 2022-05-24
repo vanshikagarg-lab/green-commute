@@ -24,7 +24,6 @@ const RecommendedJobsGrid = (props: PropsType) => {
           <RecommendedJobCard
             onClick={() => {
               props.setIndex(index);
-              console.log(index);
             }}
             routesTitle={"Commute routes available :"}
             jobId={value.id}

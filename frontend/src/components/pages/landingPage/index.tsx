@@ -12,6 +12,7 @@ import theme from "../../../theme";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getJobsUrl, getLocationsUrl, getSkillsUrl } from "../../../constants";
+import { skill } from "../../../interfaces";
 
 const LandingPage = () => {
   const [inputVal, setInputVal] = React.useState<any>([]);
@@ -52,16 +53,8 @@ const LandingPage = () => {
       setJobLocation(value);
     } else if (stage === 3) {
       setJobSkills(value);
-      const foundJobs = data.jobs.slice().filter((job: any) => {
-        let flag;
-        for (const skill of value) {
-          flag = job.skill.includes(skill.name);
-          if (flag) {
-            break;
-          }
-        }
-        return flag;
-      });
+      const tempSkills = value.map((skill: skill) => (skill.name));
+      const foundJobs = data.jobs.slice().filter((job: any) => (tempSkills.includes(job.skill)));
       setJobCount(foundJobs.length);
     }
   };
@@ -225,7 +218,7 @@ const LandingPage = () => {
         onChange(null, tempValue);
       };
 
-      const getOptions = (option: any) => option.name;
+      const getOptions = (option: skill) => option.name;
 
       landingInputComponent = (
         <LandingInput

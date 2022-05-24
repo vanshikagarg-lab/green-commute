@@ -11,6 +11,7 @@ import { Divider, styled } from "@mui/material";
 import SkillSearch from "../../molecules/skillSearch";
 import workIcon from "../../../assets/icons/work.svg";
 import locIcon from "../../../assets/icons/location.svg";
+import {skill} from "../../../interfaces";
 
 type Props = {
   filterClick?: any;
@@ -46,21 +47,24 @@ const JobSearch = ({
   const [locValue, setLocValue] = useState("");
   const [skillValue, setSkillValue] = useState("");
 
-  const onLocTextFieldChange = (_e: any,value:string) => {
+  const onLocTextFieldChange = (_e: any, value: string) => {
     setLocValue(value);
   };
 
-  const onLocAutoCompleteChange = (_e:any,value:any)=>{
+  const onLocAutoCompleteChange = (_e: any, value: any) => {
     setLocValue(value.location);
-  }
+  };
 
-  const onSkillTextFieldChange = (_e: any,value:string) => {
+  const onSkillTextFieldChange = (_e: any, value: string) => {
     setSkillValue(value);
   };
 
-  const onSkillAutoCompleteChange = (_e:any,value:any)=>{
+  const onSkillAutoCompleteChange = (
+    _e: any,
+    value: skill
+  ) => {
     setSkillValue(value.name);
-  }
+  };
 
   return (
     <Box data-testid="jobSearch" {...remProps}>

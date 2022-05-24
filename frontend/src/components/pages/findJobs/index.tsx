@@ -9,6 +9,7 @@ import FilterBox from "../../organisms/filterDialog";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getJobsUrl } from "../../../constants";
+import { skill } from "../../../interfaces";
 
 interface FilterType {
   label: string;
@@ -51,16 +52,10 @@ const FindJobs = () => {
         }
         return flag;
       });
-      const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
-        let flag;
-        for (const skill of tempJobSkills) {
-          flag = job.skill.includes(skill.name);
-          if (flag) {
-            break;
-          }
-        }
-        return flag;
-      });
+      const tempSkills = tempJobSkills.map((skill: skill) => skill.name);
+      const skillsFilteredJobs = locFilteredJobs
+        .slice()
+        .filter((job: any) => tempSkills.includes(job.skill));
       setData({
         jobLocations: landingData.state.jobLocation,
         jobSkills: landingData.state.jobSkills,
@@ -71,16 +66,15 @@ const FindJobs = () => {
   }, []);
 
   const searchItems = (skillValue: any, locValue: any) => {
-    console.log(skillValue,locValue);
     const tempJobs = data.dataList;
     const locFilteredJobs = tempJobs.slice().filter((job: any) => {
-      if (locValue.length<1) {
+      if (locValue.length < 1) {
         return true;
       }
       return job.location.includes(locValue);
     });
     const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
-      if (skillValue.length<1) {
+      if (skillValue.length < 1) {
         return true;
       }
       return job.skill.includes(skillValue);
@@ -114,7 +108,7 @@ const FindJobs = () => {
           locationOptions={data.jobLocations}
           skillsOptions={data.jobSkills}
           getLocationLabel={(option: any) => option.location}
-          getSkillLabel={(option: any) => option.name}
+          getSkillLabel={(option: skill) => option.name}
         />
         {selectedIndex >= 0 && (
           <JobList

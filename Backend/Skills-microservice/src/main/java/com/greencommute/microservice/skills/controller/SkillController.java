@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/skills")
 @Log4j2
-@CrossOrigin
 public class SkillController {
 
     @Autowired
