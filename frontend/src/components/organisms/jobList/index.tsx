@@ -177,35 +177,10 @@ const JobList = (props: MainProps) => {
   };
 
   const RenderFilteredList = () => {
-    // const filteredList = props.cardProps?.filter((curr: any) => {
-    //   if (filters.length === 0) {
-    //     return true;
-    //   }
-    //   return (
-    //     filters?.filter((filter: any) => {
-    //       const range = filter?.label.split(" ")[0].split("-");
-    //       return (
-    //         range.length == 2 &&
-    //         parseInt(range[0]) <= curr?.distance &&
-    //         parseInt(range[1]) >= curr?.distance
-    //       );
-    //     }).length > 0
-    //   );
-    // });
-    // if (filteredList.length > 0) {
-    //   return filteredList.map((card, index) => {
-    //     return renderJobCard(card, index);
-    //   });
-    // } else {
-    //   return props.cardProps.map((card, index) => {
-    //     return renderJobCard(card, index);
-    //   });
-    // }
     return props.cardProps.map((card, index) => {
      return renderJobCard(card, index);
            });
   };
-
 
 
   return (
