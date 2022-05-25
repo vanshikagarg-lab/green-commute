@@ -29,7 +29,7 @@ interface MainProps {
   cardProps: Array<CardProps>;
   filterProps: Array<Props>;
   setFilters: any;
-  selectedIndex?: number;
+  selectedIndex: number;
   currentLocation: string;
 }
 
@@ -247,10 +247,10 @@ const JobList = (props: MainProps) => {
           </CardListStyle>
           <DescriptionStyle>
             <JobDescriptionCard
-              {...description}
-              logo={description.companyLogo}
-              jobName={description.designation}
-              postTime={description.posted}
+              {...props.cardProps[select]}
+              logo={props.cardProps[select].companyLogo}
+              jobName={props.cardProps[select].designation}
+              postTime={props.cardProps[select].posted}
               description="Open Text is seeking a talented, personable interaction designer who
               can assist the User Experience Design team by working with other
               designers and development teams on a variety of projects. The
@@ -263,7 +263,7 @@ const JobList = (props: MainProps) => {
               core Adobe Creative Suite products."
               about2="Excellent written and oral communication and presentation skills"
               startLocation={props.currentLocation}
-              destination={description.location.name}
+              destination={props.cardProps[select].location.name}
               cost={100}
               distance={25}
               time="1 hr 20 mins"
@@ -271,7 +271,7 @@ const JobList = (props: MainProps) => {
               onSaveClick={() => saveJobsHandler()}
               onApplyClick={() => applyJobsHandler()}
               data-testid={"card-1"}
-              vehicle={description.routes}
+              vehicle={props.cardProps[select].routes}
             />
           </DescriptionStyle>
         </WrapCardStyle>

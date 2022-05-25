@@ -15,7 +15,7 @@ const filterArray = [
 
 test("Should render the title", () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad" />
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad" selectedIndex={0}/>
   );
 
   const text1 = screen.getByText("Job list");
@@ -30,7 +30,7 @@ test("Should render the title", () => {
 
 test("Should render the cards", () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad"/>
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad" selectedIndex={0}/>
   );
 
   const cardList = screen.getByTestId("cardId");
@@ -49,7 +49,7 @@ test("Should render the cards", () => {
 
 test("should click on SavejobCard", async () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad"/>
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad" selectedIndex={0}/>
   );
   const unSaveButton = screen.getByText("Unsave");
   expect(unSaveButton).toBeInTheDocument();
@@ -60,7 +60,7 @@ test("should click on SavejobCard", async () => {
 
 test("Should render Description card", () => {
   render(
-    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad"/>
+    <JobList filterProps={[]} cardProps={cardArray} setFilters={() => {}} currentLocation="Hyderabad" selectedIndex={0}/>
   );
   const descriptionCard = screen.getByTestId("JobDescriptionCard");
   expect(descriptionCard).toBeInTheDocument();
@@ -73,6 +73,7 @@ test("Should render Filter Chips and Resume Dialog",async () => {
       cardProps={cardArray}
       setFilters={() => {}}
       currentLocation="Hyderabad"
+      selectedIndex={0}
     />
   );
   const filterChip = screen.getAllByTestId("filter-chip");

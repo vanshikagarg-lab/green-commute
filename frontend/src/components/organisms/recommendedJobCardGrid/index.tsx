@@ -40,6 +40,10 @@ const RecommendedJobsGrid = (props: PropsType) => {
             routes.bus = true;
           }
         })
+        value.logo = value.companyLogo 
+        value.jobName = value.designation
+        value.companyAddress = value.location.name
+        value.time = value.posted
         return (
           <RecommendedJobCard
             onClick={() => {
@@ -47,10 +51,6 @@ const RecommendedJobsGrid = (props: PropsType) => {
             }}
             {...value}
             routesTitle={"Commute routes available :"}
-            logo={value.companyLogo}
-            jobName={value.designation}
-            companyAddress={value.location.name}
-            time={value.posted}
             vehicle={routes}
             height={""}
             width={""}

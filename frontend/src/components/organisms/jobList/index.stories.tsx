@@ -76,6 +76,7 @@ JobListFilters.args = {
       { label: "Green Commute Routes", deleteHandler: () => {} },
     ],
     currentLocation: "Hyderabad",
+    selectedIndex: 0
 };
 
 export const Default = Template.bind({});
@@ -133,4 +134,5 @@ Default.args = {
   }],
   filterProps:[],
   currentLocation: "Hyderabad",
+  selectedIndex: 0
 };
