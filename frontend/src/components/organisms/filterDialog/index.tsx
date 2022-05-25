@@ -35,8 +35,8 @@ const StyledBox = styled(Box)({
   position: "absolute",
   top: "10px",
   right: "10px",
-  height: "24px",
-  width: "24px",
+  height: theme.spacing(3),
+  width: theme.spacing(3),
   cursor: "pointer",
 });
 
@@ -170,8 +170,8 @@ const FilterDialog = ({
 
   return (
     <Grid
-      width="546px"
-      height="464px"
+      width={theme.spacing(68.25)}
+      height={theme.spacing(58)}
       container
       justifyContent="center"
       sx={{

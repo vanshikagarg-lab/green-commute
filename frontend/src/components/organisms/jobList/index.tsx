@@ -36,31 +36,31 @@ interface MainProps {
 export const WrapCardStyle = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  gap: "16px",
+  gap: theme.spacing(2),
   flexWrap: "wrap",
 });
 
 export const DescriptionStyle = styled(Box)({
-  width: "404px",
-  height: "734px",
+  width: theme.spacing(50.5),
+  height: theme.spacing(91.75),
 });
 
 const ParentStyle = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  gap: "21px",
+  gap: theme.spacing(2.62),
 });
 
 const TextStyle = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  gap: "4px",
+  gap: theme.spacing(0.5),
 });
 
 const CardListStyle = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  gap: "15px",
+  gap: theme.spacing(1.87),
   width: "calc(100vw - 845px)",
 });
 
@@ -68,7 +68,7 @@ const FilterChipsStyle = styled(Box)({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  gap: "8px",
+  gap: theme.spacing(1),
 });
 
 const WrapFilterStyle = styled(Box)({
@@ -148,17 +148,16 @@ const JobList = (props: MainProps) => {
         routes.bus = true;
       }
     })
-    
+    card.logo = card.companyLogo
+    card.jobName = card.designation
+    card.companyAddress = card.location.name
+    card.time = card.posted
     return (
       <JobListCard
         key={index}
         {...card}
-        logo={card.companyLogo}
-        jobName={card.designation}
-        companyAddress={card.location.name}
-        time={`${card.posted}`}
         vehicle={routes}
-        height="159px"
+        height={theme.spacing(19.87)}
         width="auto"
         selected={select === index ? true : false}
         style={{ cursor: "pointer" }}
@@ -183,9 +182,9 @@ const JobList = (props: MainProps) => {
           "& .MuiDialog-container": {
             "& .MuiPaper-root": {
               width: "100%",
-              maxWidth: "700px",
+              maxWidth: theme.spacing(87.5),
               height: "100%",
-              maxHeight: "400px",
+              maxHeight: theme.spacing(50),
             },
           },
         }}
@@ -232,7 +231,7 @@ const JobList = (props: MainProps) => {
               variant="text"
               style={{
                 color: theme.palette.primary.main300,
-                height: "22px",
+                height: theme.spacing(2.75),
                 padding: "6px 0px",
                 textTransform: "none",
                 borderRadius: "0px",
@@ -252,7 +251,6 @@ const JobList = (props: MainProps) => {
               logo={description.companyLogo}
               jobName={description.designation}
               postTime={description.posted}
-              saved={description.saved}
               description="Open Text is seeking a talented, personable interaction designer who
               can assist the User Experience Design team by working with other
               designers and development teams on a variety of projects. The

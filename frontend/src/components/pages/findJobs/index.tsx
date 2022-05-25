@@ -9,6 +9,7 @@ import FilterBox from "../../organisms/filterDialog";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getJobsUrl,getSearchUrl } from "../../../constants";
+import theme from "../../../theme";
 
 interface FilterType {
   label: string;
@@ -149,9 +150,9 @@ const FindJobs = () => {
       savedJobsOnClick={onSavedJobClick}
       selected={1}
     >
-      <Box marginLeft={"46px"}>
+      <Box marginLeft={theme.spacing(5.75)}>
         <JobSearch
-          mb="40px"
+          mb={theme.spacing(5)}
           filterClick={filterHandler}
           searchButtonClick={searchItems}
           locationOptions={data.jobLocations}

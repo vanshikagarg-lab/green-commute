@@ -3,15 +3,14 @@ import { Box, Dialog, DialogContent } from "@mui/material";
 import GreenCommute from "../../templates/greenComute";
 import Typography from "../../atoms/typography";
 import JobListCard from "../../molecules/jobListCard";
-import JobDescriptionCard, {
-  JobDescriptionCardProps,
-} from "../../organisms/jobDescriptionCard";
+import JobDescriptionCard from "../../organisms/jobDescriptionCard";
 import { WrapCardStyle, DescriptionStyle } from "../../organisms/jobList";
 import UploadResume from "../../organisms/uploadResume";
 import axios from "axios";
 import { CardDataList } from "../../organisms/jobList/cardData";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getJobsUrl } from "../../../constants";
+import theme from "../../../theme";
 
 const SaveJobsPage = () => {
   const [showResumeDialog, setShowResumeDialog] = useState(false);
@@ -69,6 +68,9 @@ const SaveJobsPage = () => {
         }
         return routes;
       });
+      card.logo = card.companyLogo
+      card.jobName = card.designation
+      card.postTime = card.posted
       return card;
       })
       setData({
@@ -119,9 +121,9 @@ const SaveJobsPage = () => {
             "& .MuiDialog-container": {
               "& .MuiPaper-root": {
                 width: "100%",
-                maxWidth: "700px",
+                maxWidth: theme.spacing(87.5),
                 height: "100%",
-                maxHeight: "400px",
+                maxHeight: theme.spacing(50),
               },
             },
           }}
@@ -138,8 +140,8 @@ const SaveJobsPage = () => {
             <UploadResume setDisplay={() => setShowResumeDialog(false)} />
           </DialogContent>
         </Dialog>
-        <Box sx={{ marginLeft: "45px" }}>
-          <Box sx={{ marginBottom: "20px" }}>
+        <Box sx={{ marginLeft: theme.spacing(5.62) }}>
+          <Box sx={{ marginBottom: theme.spacing(2.5) }}>
             <Typography variant="heading2" children="Saved Jobs" />
           </Box>
           <WrapCardStyle>
@@ -165,14 +167,14 @@ const SaveJobsPage = () => {
                   routes.bus = true;
                 }
               })
+              card.logo = card.companyLogo
+              card.jobName = card.designation;
+              card.companyAddress = card.location.name;
+              card.time = card.posted
                 return (
                   <JobListCard
                     key={index}
                     {...card}
-                    logo={card.companyLogo}
-                    jobName={card.designation}
-                    companyAddress={card.location.name}
-                    time={`${card.posted}`}
                     vehicle={routes}
                     height="159px"
                     width="calc(100vw - 845px)"
@@ -191,9 +193,6 @@ const SaveJobsPage = () => {
               >
                 <JobDescriptionCard
                   {...data.cardList[data.select]}
-                  logo={data.cardList[data.select].companyLogo}
-                  jobName={data.cardList[data.select].designation}
-                  postTime={data.cardList[data.select].posted}
                   description={CardDataList[0].description}
                   about1={CardDataList[0].about1}
                   about2={CardDataList[0].about2}

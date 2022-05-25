@@ -142,8 +142,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -195,8 +195,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -211,8 +211,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -254,8 +254,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -271,8 +271,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
