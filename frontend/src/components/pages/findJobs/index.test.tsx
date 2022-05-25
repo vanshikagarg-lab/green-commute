@@ -14,7 +14,7 @@ jest.mock("react-router-dom", () => ({
       jobLocation: [
         {
           id: 1,
-          location: "Hyderabad",
+          name: "Hyderabad",
           aqi: 894,
         },
       ],

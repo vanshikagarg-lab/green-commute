@@ -21,12 +21,12 @@ beforeEach(() => {
     data: [
       {
         id: 1,
-        location: "Hyderabad",
+        name: "Hyderabad",
         aqi: 894,
       },
       {
         id: 2,
-        location: "Mumbai",
+        name: "Mumbai",
         aqi: 953,
       },
     ],
@@ -62,7 +62,7 @@ beforeEach(() => {
   };
   const mockGet = jest.spyOn(axios, "get");
   mockGet.mockImplementation((url) => {
-    if (url == "http://18.217.145.156:3004/locations") {
+    if (url == "http://18.223.206.231:9005/location") {
       return Promise.resolve(locations);
     } else if (url == "http://18.217.145.156:3004/skills") {
       return Promise.resolve(skills);
