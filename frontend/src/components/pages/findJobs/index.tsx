@@ -10,6 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getJobsUrl,getSearchUrl } from "../../../constants";
 import theme from "../../../theme";
+import { skill } from "../../../interfaces";
 
 interface FilterType {
   label: string;
@@ -56,16 +57,11 @@ const FindJobs = () => {
         }
         return flag;
       });
-      const skillsFilteredJobs = locFilteredJobs.slice().filter((job: any) => {
-        let flag;
-        for (const skill of tempJobSkills) {
-          flag = job.skill.name.includes(skill.skill);
-          if (flag) {
-            break;
-          }
-        }
-        return flag;
-      });
+
+      const tempSkills = tempJobSkills.map((skill: skill) => skill.name);
+      const skillsFilteredJobs = locFilteredJobs
+        .slice()
+        .filter((job: any) => tempSkills.includes(job.skill));
       setData({
         jobLocations: landingData.state.jobLocation,
         jobSkills: landingData.state.jobSkills,
@@ -158,7 +154,7 @@ const FindJobs = () => {
           locationOptions={data.jobLocations}
           skillsOptions={data.jobSkills}
           getLocationLabel={(option: any) => option.location}
-          getSkillLabel={(option: any) => option.skill}
+          getSkillLabel={(option: skill) => option.name}
         />
         {selectedIndex >= 0 && (
           <JobList

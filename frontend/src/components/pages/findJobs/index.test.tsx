@@ -21,7 +21,7 @@ jest.mock("react-router-dom", () => ({
       jobSkills: [
         {
           id: 1,
-          skill: "Graphic Designer",
+          name: "Graphic Designer",
         },
       ],
       currLocation: "Delhi",

@@ -24,7 +24,6 @@ const sideBar = ({
   const list1Clicked = (index: number) => {
     setList1Selected(index);
     setList2Selected(-1);
-    console.log(index);
     if (index == 1) {
       findJobsOnClick();
     } else if (index == 2) {

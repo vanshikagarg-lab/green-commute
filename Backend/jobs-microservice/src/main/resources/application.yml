@@ -8,3 +8,12 @@ spring:
     password: my-secret-pw
   application:
     name: JOB-SERVICE
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://18.223.206.231:9006/eureka/
+  instance:
+    hostname: 18.223.206.231
