@@ -71,21 +71,15 @@ const FindJobs = () => {
         currLocation: landingData.state.currLocation,
         dataList: skillsFilteredJobs,
       });
-      console.log(tempJobs);
-      console.log(landingData.state.jobLocation);
-      console.log(landingData.state.jobSkills);
-      console.log(locFilteredJobs)
     });
   }, []);
 
   const searchItems = (skillValue: any, locValue: any) => {
-    console.log(skillValue, locValue);
     const searchParams = {
       location: locValue,
       skill: skillValue,
     };
     axios.post(getSearchUrl, searchParams).then((res) => {
-      console.log(res.data);
       setFilteredList(res.data);
       setSearchQuery({
         location: locValue,
@@ -112,7 +106,6 @@ const FindJobs = () => {
   };
 
   const setFiltersWrapper = (filters: any) => {
-    console.log(filters);
     const distanceFilter = {
       distance0To10: filters.find(
         (filter: FilterType) => filter.label === "0-10 kms"
@@ -141,7 +134,6 @@ const FindJobs = () => {
       skill: searchQuery.skill,
       distanceFilter: distanceFilter,
     };
-    console.log(distanceFilter);
     axios.post(getSearchUrl, searchParams).then((res) => {
       setFilters(filters);
       setFilteredList(res.data);

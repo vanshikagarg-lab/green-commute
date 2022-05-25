@@ -102,14 +102,11 @@ const JobList = (props: MainProps) => {
     }));
     const tempDesc = description;
     tempDesc.saved = description.saved ? false : true;
-    console.log(tempDesc);
     axios
       .put(`${getJobsUrl}`, {
         ...tempDesc,
       })
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
       });
   };
 
@@ -138,16 +135,16 @@ const JobList = (props: MainProps) => {
     }
 
     card.routes.map((route: any) => {
-      if(route.routeName === "Bike"){
+      if(route.routeName.includes("Bike")){
         routes.bike = true;
       }
-      if(route.routeName === "Car"){
+      if(route.routeName.includes("Car")){
         routes.car = true;
       }
-      if(route.routeName === "Train"){
+      if(route.routeName.includes("Train")){
         routes.train = true;
       }
-      if(route.routeName === "Bus"){
+      if(route.routeName.includes("Bus")){
         routes.bus = true;
       }
     })
@@ -155,10 +152,9 @@ const JobList = (props: MainProps) => {
     return (
       <JobListCard
         key={index}
-        jobId={card.jobId}
+        {...card}
         logo={card.companyLogo}
         jobName={card.designation}
-        companyName={card.companyName}
         companyAddress={card.location.name}
         time={`${card.posted}`}
         vehicle={routes}
@@ -252,11 +248,9 @@ const JobList = (props: MainProps) => {
           </CardListStyle>
           <DescriptionStyle>
             <JobDescriptionCard
-              jobId={description?.jobId}
+              {...description}
               logo={description.companyLogo}
               jobName={description.designation}
-              companyName={description.companyName}
-              companyAddress={description.companyAddress}
               postTime={description.posted}
               saved={description.saved}
               description="Open Text is seeking a talented, personable interaction designer who

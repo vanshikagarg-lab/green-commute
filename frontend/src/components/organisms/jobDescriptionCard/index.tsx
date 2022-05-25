@@ -72,16 +72,16 @@ const JobDescriptionCard = ({
       car: false,
     }
     vehicle.map((route: any) => {
-      if(route.routeName === "Bike"){
+      if(route.routeName.includes("Bike")){
         tempRoutes.bike = true;
       }
-      if(route.routeName === "Car"){
+      if(route.routeName.includes("Car")){
         tempRoutes.car = true;
       }
-      if(route.routeName === "Train"){
+      if(route.routeName.includes("Train")){
         tempRoutes.train = true;
       }
-      if(route.routeName === "Bus"){
+      if(route.routeName.includes("Bus")){
         tempRoutes.bus = true;
       }
     })

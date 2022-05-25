@@ -26,9 +26,9 @@ interface FilterType {
 
 interface Props extends GridProps {
   openStatus: boolean;
-  openStatusHandler: any;
-  setFilters: any;
-  filters?: any;
+  openStatusHandler: (arg0: boolean)=>void;
+  setFilters: (filters: any) => void;
+  filters?: Array<FilterType>;
 }
 
 const StyledBox = styled(Box)({
@@ -62,23 +62,23 @@ const FilterDialog = ({
   ]);
   useEffect(()=>{
     const distanceFilter = [
-     filters.find(
+     filters?.find(
         (filter: FilterType) => filter.label === "0-10 kms"
       )
         ? true
         : false,
-    filters.find(
+    filters?.find(
         (filter: FilterType) => filter.label === "11-20 kms"
       )
         ? true
         : false,
 
-      filters.find(
+      filters?.find(
         (filter: FilterType) => filter.label === "21-30 kms"
       )
         ? true
         : false,
-     filters.find(
+     filters?.find(
         (filter: FilterType) => filter.label === "31-40 kms"
       )
         ? true

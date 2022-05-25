@@ -55,16 +55,16 @@ const SaveJobsPage = () => {
           car: false,
       }
       card.routes.map((route: any) => {
-        if(route.routeName === "Bike"){
+        if(route.routeName.includes("Bike")){
           routes.bike = true;
         }
-        if(route.routeName === "Car"){
+        if(route.routeName.includes("Car")){
           routes.car = true;
         }
-        if(route.routeName === "Train"){
+        if(route.routeName.includes("Train")){
           routes.train = true;
         }
-        if(route.routeName === "Bus"){
+        if(route.routeName.includes("Bus")){
           routes.bus = true;
         }
         return routes;
@@ -83,7 +83,6 @@ const SaveJobsPage = () => {
   }, []);
 
   const handleSelect = (index: number) => {
-    console.log(index);
     setData({ ...data, description: index, select: index });
   };
 
@@ -99,8 +98,6 @@ const SaveJobsPage = () => {
     });
     unsavedCard.saved = false;
     axios.put(`${getJobsUrl}`, { ...unsavedCard }).then((res) => {
-      console.log(res);
-      console.log(res.data);
     });
   };
 
@@ -155,26 +152,25 @@ const SaveJobsPage = () => {
                   car: false,
               }
               card.routes.map((route: any) => {
-                if(route.routeName === "Bike"){
+                if(route.routeName.includes("Bike")){
                   routes.bike = true;
                 }
-                if(route.routeName === "Car"){
+                if(route.routeName.includes("Car")){
                   routes.car = true;
                 }
-                if(route.routeName === "Train"){
+                if(route.routeName.includes("Train")){
                   routes.train = true;
                 }
-                if(route.routeName === "Bus"){
+                if(route.routeName.includes("Bus")){
                   routes.bus = true;
                 }
               })
                 return (
                   <JobListCard
                     key={index}
-                    jobId={card.jobId}
+                    {...card}
                     logo={card.companyLogo}
                     jobName={card.designation}
-                    companyName={card.companyName}
                     companyAddress={card.location.name}
                     time={`${card.posted}`}
                     vehicle={routes}
@@ -194,13 +190,10 @@ const SaveJobsPage = () => {
                 data-testid={"description"}
               >
                 <JobDescriptionCard
-                  jobId={data.cardList[data.select].jobId}
+                  {...data.cardList[data.select]}
                   logo={data.cardList[data.select].companyLogo}
                   jobName={data.cardList[data.select].designation}
-                  companyName={data.cardList[data.select].companyName}
-                  companyAddress={data.cardList[data.select].companyAddress}
                   postTime={data.cardList[data.select].posted}
-                  saved={data.cardList[data.select].saved}
                   description={CardDataList[0].description}
                   about1={CardDataList[0].about1}
                   about2={CardDataList[0].about2}

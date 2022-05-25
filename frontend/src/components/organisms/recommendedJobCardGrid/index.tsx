@@ -9,7 +9,6 @@ interface PropsType {
 }
 
 const RecommendedJobsGrid = (props: PropsType) => {
-  console.log(props.jobsList);
   return (
     <Box
       data-testid="recommendedJobGrid"
@@ -28,16 +27,16 @@ const RecommendedJobsGrid = (props: PropsType) => {
             car: false,
         }
         value.routes.map((route: any) => {
-          if(route.routeName === "Bike"){
+          if(route.routeName.includes("Bike")){
             routes.bike = true;
           }
-          if(route.routeName === "Car"){
+          if(route.routeName.includes("Car")){
             routes.car = true;
           }
-          if(route.routeName === "Train"){
+          if(route.routeName.includes("Train")){
             routes.train = true;
           }
-          if(route.routeName === "Bus"){
+          if(route.routeName.includes("Bus")){
             routes.bus = true;
           }
         })
@@ -45,13 +44,11 @@ const RecommendedJobsGrid = (props: PropsType) => {
           <RecommendedJobCard
             onClick={() => {
               props.setIndex(index);
-              console.log(index);
             }}
+            {...value}
             routesTitle={"Commute routes available :"}
-            jobId={value.jobId}
             logo={value.companyLogo}
             jobName={value.designation}
-            companyName={value.companyName}
             companyAddress={value.location.name}
             time={value.posted}
             vehicle={routes}
