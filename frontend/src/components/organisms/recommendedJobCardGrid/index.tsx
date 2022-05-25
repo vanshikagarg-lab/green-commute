@@ -20,19 +20,38 @@ const RecommendedJobsGrid = (props: PropsType) => {
       }}
     >
       {props.jobsList.map((value: any, index: number) => {
+        const routes = {
+            bike: false,
+            bus: false,
+            train: false,
+            car: false,
+        }
+        value.routes.map((route: any) => {
+          if(route.routeName.includes("Bike")){
+            routes.bike = true;
+          }
+          if(route.routeName.includes("Car")){
+            routes.car = true;
+          }
+          if(route.routeName.includes("Train")){
+            routes.train = true;
+          }
+          if(route.routeName.includes("Bus")){
+            routes.bus = true;
+          }
+        })
+        value.logo = value.companyLogo 
+        value.jobName = value.designation
+        value.companyAddress = value.location.name
+        value.time = value.posted
         return (
           <RecommendedJobCard
             onClick={() => {
               props.setIndex(index);
             }}
+            {...value}
             routesTitle={"Commute routes available :"}
-            jobId={value.id}
-            logo={value.companyLogo}
-            jobName={value.designation}
-            companyName={value.companyName}
-            companyAddress={value.location}
-            time={value.posted}
-            vehicle={value.routes}
+            vehicle={routes}
             height={""}
             width={""}
           ></RecommendedJobCard>

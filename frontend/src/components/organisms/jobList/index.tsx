@@ -12,20 +12,16 @@ import axios from "axios";
 import { getJobsUrl } from "../../../constants";
 
 interface CardProps {
-  id: number | string;
+  jobId: number | string;
   designation: string;
   companyLogo: string;
   companyName: string;
-  location: string;
+  companyAddress: string;
   posted: string;
-  routes: {
-    bike: boolean;
-    bus: boolean;
-    train: boolean;
-    car: boolean;
-  };
+  location?: any;
+  routes: any;
   distance: number;
-  skill: string;
+  skill: any;
   saved: boolean;
 }
 
@@ -33,37 +29,38 @@ interface MainProps {
   cardProps: Array<CardProps>;
   filterProps: Array<Props>;
   setFilters: any;
-  selectedIndex?: number;
+  selectedIndex: number;
+  currentLocation: string;
 }
 
 export const WrapCardStyle = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  gap: "16px",
+  gap: theme.spacing(2),
   flexWrap: "wrap",
 });
 
 export const DescriptionStyle = styled(Box)({
-  width: "404px",
-  height: "734px",
+  width: theme.spacing(50.5),
+  height: theme.spacing(91.75),
 });
 
 const ParentStyle = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  gap: "21px",
+  gap: theme.spacing(2.62),
 });
 
 const TextStyle = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  gap: "4px",
+  gap: theme.spacing(0.5),
 });
 
 const CardListStyle = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  gap: "15px",
+  gap: theme.spacing(1.87),
   width: "calc(100vw - 845px)",
 });
 
@@ -71,7 +68,7 @@ const FilterChipsStyle = styled(Box)({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  gap: "8px",
+  gap: theme.spacing(1),
 });
 
 const WrapFilterStyle = styled(Box)({
@@ -106,7 +103,7 @@ const JobList = (props: MainProps) => {
     const tempDesc = description;
     tempDesc.saved = description.saved ? false : true;
     axios
-      .put(`${getJobsUrl}/${description.id}`, {
+      .put(`${getJobsUrl}`, {
         ...tempDesc,
       })
       .then((res) => {
@@ -130,17 +127,37 @@ const JobList = (props: MainProps) => {
   };
 
   const renderJobCard = (card: any, index: number) => {
+    const routes = {
+      bike: false,
+      bus: false,
+      train: false,
+      car: false,
+    }
+
+    card.routes.map((route: any) => {
+      if(route.routeName.includes("Bike")){
+        routes.bike = true;
+      }
+      if(route.routeName.includes("Car")){
+        routes.car = true;
+      }
+      if(route.routeName.includes("Train")){
+        routes.train = true;
+      }
+      if(route.routeName.includes("Bus")){
+        routes.bus = true;
+      }
+    })
+    card.logo = card.companyLogo
+    card.jobName = card.designation
+    card.companyAddress = card.location.name
+    card.time = card.posted
     return (
       <JobListCard
         key={index}
-        jobId={card.id}
-        logo={card.companyLogo}
-        jobName={card.designation}
-        companyName={card.companyName}
-        companyAddress={card.location}
-        time={`${card.posted} ago`}
-        vehicle={card.routes}
-        height="159px"
+        {...card}
+        vehicle={routes}
+        height={theme.spacing(19.87)}
         width="auto"
         selected={select === index ? true : false}
         style={{ cursor: "pointer" }}
@@ -150,31 +167,11 @@ const JobList = (props: MainProps) => {
   };
 
   const RenderFilteredList = () => {
-    const filteredList = props.cardProps?.filter((curr: any) => {
-      if (filters.length === 0) {
-        return true;
-      }
-      return (
-        filters?.filter((filter: any) => {
-          const range = filter?.label.split(" ")[0].split("-");
-          return (
-            range.length == 2 &&
-            parseInt(range[0]) <= curr?.distance &&
-            parseInt(range[1]) >= curr?.distance
-          );
-        }).length > 0
-      );
+    return props.cardProps.map((card, index) => {
+     return renderJobCard(card, index);
     });
-    if (filteredList.length > 0) {
-      return filteredList.map((card, index) => {
-        return renderJobCard(card, index);
-      });
-    } else {
-      return props.cardProps.map((card, index) => {
-        return renderJobCard(card, index);
-      });
-    }
   };
+
 
   return (
     <>
@@ -185,9 +182,9 @@ const JobList = (props: MainProps) => {
           "& .MuiDialog-container": {
             "& .MuiPaper-root": {
               width: "100%",
-              maxWidth: "700px",
+              maxWidth: theme.spacing(87.5),
               height: "100%",
-              maxHeight: "400px",
+              maxHeight: theme.spacing(50),
             },
           },
         }}
@@ -234,7 +231,7 @@ const JobList = (props: MainProps) => {
               variant="text"
               style={{
                 color: theme.palette.primary.main300,
-                height: "22px",
+                height: theme.spacing(2.75),
                 padding: "6px 0px",
                 textTransform: "none",
                 borderRadius: "0px",
@@ -250,13 +247,10 @@ const JobList = (props: MainProps) => {
           </CardListStyle>
           <DescriptionStyle>
             <JobDescriptionCard
-              jobId={description?.id}
-              logo={description.companyLogo}
-              jobName={description.designation}
-              companyName={description.companyName}
-              companyAddress={description.location}
-              postTime={description.posted}
-              saved={description.saved}
+              {...props.cardProps[select]}
+              logo={props.cardProps[select].companyLogo}
+              jobName={props.cardProps[select].designation}
+              postTime={props.cardProps[select].posted}
               description="Open Text is seeking a talented, personable interaction designer who
               can assist the User Experience Design team by working with other
               designers and development teams on a variety of projects. The
@@ -268,8 +262,8 @@ const JobList = (props: MainProps) => {
               such as Axure, Sketch, InVision, or Experience Design including the
               core Adobe Creative Suite products."
               about2="Excellent written and oral communication and presentation skills"
-              startLocation="E Marredpally, Secunderabad"
-              destination="Hitech City, Telanagana, Hyderabad."
+              startLocation={props.currentLocation}
+              destination={props.cardProps[select].location.name}
               cost={100}
               distance={25}
               time="1 hr 20 mins"
@@ -277,7 +271,7 @@ const JobList = (props: MainProps) => {
               onSaveClick={() => saveJobsHandler()}
               onApplyClick={() => applyJobsHandler()}
               data-testid={"card-1"}
-              vehicle={description.routes}
+              vehicle={props.cardProps[select].routes}
             />
           </DescriptionStyle>
         </WrapCardStyle>

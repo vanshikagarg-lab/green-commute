@@ -17,12 +17,13 @@ interface PropsType extends JobListCardProps {
 }
 
 const ParentStyle = styled(Box)({
-  width: "320px",
-  height: "271px",
+  width: theme.spacing(40),
+  height: theme.spacing(33.87),
   borderRadius: "12px",
   display: "flex",
   justifyContent: "center",
   alignContent: "center",
+  cursor: "pointer",
   backgroundColor: theme.palette.structural.main
 });
 
@@ -35,8 +36,8 @@ const InnerFrame = styled(Box)({
 });
 
 const HeaderFrame = styled(Box)({
-  width: "283px",
-  height: "63px",
+  width: theme.spacing(35.37),
+  height: theme.spacing(7.87),
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
@@ -52,24 +53,24 @@ const ContentFrame = styled(Box)({
 });
 
 const FooterFrame = styled(Box)({
-  width: "285px",
-  height: "48px",
+  width: theme.spacing(35.62),
+  height: theme.spacing(6),
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
 });
 
 const FooterInnerFrame = styled(Box)({
-  width: "184px",
-  height: "48px",
+  width: theme.spacing(23),
+  height: theme.spacing(6),
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
 });
 
 const IconsFrame = styled(Box)({
-  width: "144px",
-  height: "24px",
+  width: theme.spacing(18),
+  height: theme.spacing(3),
   display: "flex",
   flexDirection: "row",
   justifyContent: "flex-start",

@@ -50,7 +50,7 @@ const AqiLocation = (props: Props) => {
           <Typography
             variant="heading2"
             children={
-              props.location.length > 9
+              props.location?.length > 9
                 ? props.location.substring(0, 9).concat("...")
                 : props.location
             }

@@ -54,7 +54,8 @@ const LandingPage = () => {
     } else if (stage === 3) {
       setJobSkills(value);
       const tempSkills = value.map((skill: skill) => (skill.name));
-      const foundJobs = data.jobs.slice().filter((job: any) => (tempSkills.includes(job.skill)));
+      console.log(data.jobs);
+      const foundJobs = data.jobs.slice().filter((job: any) => (tempSkills.includes(job.skill.name)));
       setJobCount(foundJobs.length);
     }
   };
@@ -68,7 +69,7 @@ const LandingPage = () => {
         jobs: data.jobs.slice().filter((job: any) => {
           let flag;
           for (const location of jobLocation) {
-            if (job.location.includes(location.location)) {
+            if (job.location.name?.includes(location.location)) {
               flag = true;
               break;
             }
@@ -135,8 +136,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -174,7 +175,7 @@ const LandingPage = () => {
                     aqiValue={
                       data.locations.filter((loc: any) => {
                         return loc.location === input.location;
-                      })[0].aqi
+                      })[0]?.aqi
                     }
                     location={input.location}
                     key={index}
@@ -188,8 +189,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -204,8 +205,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -247,8 +248,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />
@@ -264,8 +265,8 @@ const LandingPage = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
-              width: "574px",
-              height: "768px",
+              width: theme.spacing(71.75),
+              height: theme.spacing(96),
               background: theme.palette.structural.linear1,
             }}
           />

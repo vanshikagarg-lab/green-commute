@@ -9,6 +9,7 @@ it("should hide the box display", () => {
         openStatus={true}
         openStatusHandler={() => {}}
         setFilters={() => {}}
+        filters={[]}
     />
   );
   const checkBox = screen.getAllByTestId("checkbox-change");

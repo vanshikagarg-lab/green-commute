@@ -16,11 +16,11 @@ export const JobListFilters = Template.bind({});
 JobListFilters.args = {
   cardProps: [
     {
-      "id": 1,
+      "jobId": 1,
       "designation": "User Experience Designer",
       "companyLogo": MyntraLogo,
       "companyName": "Myntra",
-      "location": "Hitech city, Hyderabad - 500072",
+      "companyAddress": "Hitech city, Hyderabad - 500072",
       "posted": "36 min ago",
       "routes": {
         "bike": true,
@@ -33,11 +33,11 @@ JobListFilters.args = {
       "saved": false
     },
     {
-      "id": 2,
+      "jobId": 2,
       "designation": "Product Designer",
       "companyLogo": BMWLogo,
       "companyName": "BMW",
-      "location": "Hitech city, Hyderabad - 500072",
+      "companyAddress": "Hitech city, Hyderabad - 500072",
       "posted": "10 days ago",
       "routes": {
         "bike": true,
@@ -50,11 +50,11 @@ JobListFilters.args = {
       "saved": false
     },
     {
-      "id": 3,
+      "jobId": 3,
       "designation": "User Experience Designer",
       "companyLogo": InstagramLogo,
       "companyName": "Instagram",
-      "location": "Mumbai",
+      "companyAddress": "Mumbai",
       "posted": "45 days ago",
       "routes": {
         "bike": true,
@@ -74,17 +74,19 @@ JobListFilters.args = {
       { label: "Full time", deleteHandler: () => {} },
       { label: "Fresher", deleteHandler: () => {} },
       { label: "Green Commute Routes", deleteHandler: () => {} },
-    ]
+    ],
+    currentLocation: "Hyderabad",
+    selectedIndex: 0
 };
 
 export const Default = Template.bind({});
 Default.args = {
   cardProps: [ {
-    "id": 1,
+    "jobId": 1,
     "designation": "User Experience Designer",
     "companyLogo": MyntraLogo,
     "companyName": "Myntra",
-    "location": "Hitech city, Hyderabad - 500072",
+    "companyAddress": "Hitech city, Hyderabad - 500072",
     "posted": "36 min ago",
     "routes": {
       "bike": true,
@@ -97,11 +99,11 @@ Default.args = {
     "saved": false
   },
   {
-    "id": 2,
+    "jobId": 2,
     "designation": "Product Designer",
     "companyLogo": BMWLogo,
     "companyName": "BMW",
-    "location": "Hitech city, Hyderabad - 500072",
+    "companyAddress": "Hitech city, Hyderabad - 500072",
     "posted": "10 days ago",
     "routes": {
       "bike": true,
@@ -114,11 +116,11 @@ Default.args = {
     "saved": false
   },
   {
-    "id": 3,
+    "jobId": 3,
     "designation": "User Experience Designer",
     "companyLogo": InstagramLogo,
     "companyName": "Instagram",
-    "location": "Mumbai",
+    "companyAddress": "Mumbai",
     "posted": "45 days ago",
     "routes": {
       "bike": true,
@@ -130,5 +132,7 @@ Default.args = {
     "skill": "Graphic Designer",
     "saved": false
   }],
-  filterProps:[]
+  filterProps:[],
+  currentLocation: "Hyderabad",
+  selectedIndex: 0
 };
