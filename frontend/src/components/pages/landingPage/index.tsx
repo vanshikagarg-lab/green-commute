@@ -12,7 +12,7 @@ import theme from "../../../theme";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getJobsUrl, getLocationsUrl, getSkillsUrl } from "../../../constants";
-import { skill } from "../../../interfaces";
+import { location, skill } from "../../../interfaces";
 
 const LandingPage = () => {
   const [inputVal, setInputVal] = React.useState<any>([]);
@@ -69,7 +69,7 @@ const LandingPage = () => {
         jobs: data.jobs.slice().filter((job: any) => {
           let flag;
           for (const location of jobLocation) {
-            if (job.location.name?.includes(location.location)) {
+            if (job.location.name?.includes(location.name)) {
               flag = true;
               break;
             }
@@ -150,7 +150,7 @@ const LandingPage = () => {
         onChange(null, tempValue);
       };
 
-      const getOptions = (option: any) => option.location;
+      const getOptions = (option: location) => option.name;
 
       landingInputComponent = (
         <LandingInput
@@ -174,10 +174,10 @@ const LandingPage = () => {
                   <AqiLocation
                     aqiValue={
                       data.locations.filter((loc: any) => {
-                        return loc.location === input.location;
+                        return loc.name === input.name;
                       })[0]?.aqi
                     }
-                    location={input.location}
+                    location={input.name}
                     key={index}
                   />
                 );
@@ -240,8 +240,8 @@ const LandingPage = () => {
             aqiValue={`${jobCount}`}
             description={
               jobLocation.length == 1
-                ? `Jobs found in ${jobLocation[0].location}.`
-                : `Jobs found in ${jobLocation[0].location} and ${jobLocation[1].location}.`
+                ? `Jobs found in ${jobLocation[0].name}.`
+                : `Jobs found in ${jobLocation[0].name} and ${jobLocation[1].name}.`
             }
             style={{
               display: "flex",
