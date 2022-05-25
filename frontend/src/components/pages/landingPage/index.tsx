@@ -54,7 +54,8 @@ const LandingPage = () => {
     } else if (stage === 3) {
       setJobSkills(value);
       const tempSkills = value.map((skill: skill) => (skill.name));
-      const foundJobs = data.jobs.slice().filter((job: any) => (tempSkills.includes(job.skill)));
+      console.log(data.jobs);
+      const foundJobs = data.jobs.slice().filter((job: any) => (tempSkills.includes(job.skill.name)));
       setJobCount(foundJobs.length);
     }
   };

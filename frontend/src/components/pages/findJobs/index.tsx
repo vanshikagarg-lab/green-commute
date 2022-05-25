@@ -61,7 +61,7 @@ const FindJobs = () => {
       const tempSkills = tempJobSkills.map((skill: skill) => skill.name);
       const skillsFilteredJobs = locFilteredJobs
         .slice()
-        .filter((job: any) => tempSkills.includes(job.skill));
+        .filter((job: any) => tempSkills.includes(job.skill.name));
       setData({
         jobLocations: landingData.state.jobLocation,
         jobSkills: landingData.state.jobSkills,
