@@ -110,10 +110,14 @@ const LandingPage = () => {
           onNextClick={nextHandleChange}
         />
       );
-      if (inputVal.length >= 1) {
+      if (inputVal.length >= 1 && (inputVal.includes("Hyderabad") || inputVal.includes("Mumbai"))) {
         aqiFrame = (
           <AqiField
-            aqiValue="894"
+            aqiValue={
+              data.locations.filter((loc: any) => {
+                return loc.name.includes(inputVal);
+              })[0]?.aqi
+            }
             description="Real Time Air Quality Index (AQI) in this location"
             style={{
               display: "flex",
