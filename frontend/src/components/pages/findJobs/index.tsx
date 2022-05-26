@@ -77,14 +77,14 @@ const FindJobs = () => {
       skill: skillValue,
     };
     axios.post(getSearchUrl, searchParams).then((res) => {
+      if (selectedIndex != -1) {
+        setSelectedIndex(0);
+      }
       setFilteredList(res.data);
       setSearchQuery({
         location: locValue,
         skill: skillValue,
       });
-      if (selectedIndex != -1) {
-        setSelectedIndex(0);
-      }
     });
   };
 
@@ -132,11 +132,11 @@ const FindJobs = () => {
       distanceFilter: distanceFilter,
     };
     axios.post(getSearchUrl, searchParams).then((res) => {
-      setFilters(filters);
-      setFilteredList(res.data);
       if (selectedIndex != -1) {
         setSelectedIndex(0);
       }
+      setFilters(filters);
+      setFilteredList(res.data);
     });
   };
 
