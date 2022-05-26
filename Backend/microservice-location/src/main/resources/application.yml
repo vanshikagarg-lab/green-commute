@@ -11,6 +11,8 @@ spring:
     password: my-secret-pw
   application:
     name: LOCATION-SERVICE
+  flyway:
+    baselineOnMigrate: true
 
 eureka:
   client:
@@ -20,3 +22,4 @@ eureka:
       defaultZone: http://18.223.206.231:9006/eureka/
   instance:
     hostname: 18.223.206.231
+  

@@ -8,6 +8,8 @@ spring:
     password: my-secret-pw
   application:
     name: SKILL-SERVICE
+  flyway:
+    baseLineOnMigrate: true
 
 eureka:
   client:
