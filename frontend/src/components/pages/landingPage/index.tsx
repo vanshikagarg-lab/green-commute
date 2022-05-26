@@ -110,7 +110,8 @@ const LandingPage = () => {
           onNextClick={nextHandleChange}
         />
       );
-      if (inputVal.length >= 1 && (inputVal.includes("Hyderabad") || inputVal.includes("Mumbai"))) {
+      
+      if (inputVal && ["Hyderabad","Mumbai"].includes(inputVal)) {
         aqiFrame = (
           <AqiField
             aqiValue={
