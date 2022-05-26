@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import React from "react";
 import JobList from "./index";
 import {cardArray} from "../../../constants/index";
+import axios, { AxiosResponse } from "axios";
 
 
 const filterArray = [
@@ -12,6 +13,17 @@ const filterArray = [
   { label: "Fresher", deleteHandler: () => {} },
   { label: "Green Commute Routes", deleteHandler: () => {} },
 ];
+
+beforeEach(() => {
+  const mAxiosResponse = {
+    data: cardArray[0],
+  } as AxiosResponse;
+  jest.spyOn(axios, "put").mockResolvedValueOnce(mAxiosResponse);
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
 
 test("Should render the title", () => {
   render(

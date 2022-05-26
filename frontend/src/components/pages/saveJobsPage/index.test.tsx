@@ -34,10 +34,14 @@ afterEach(() => {
 });
 
 beforeEach(() => {
-  const mAxiosResponse = {
+  const mAxiosGetResponse = {
     data: cardArray,
   } as AxiosResponse;
-  jest.spyOn(axios, "get").mockResolvedValueOnce(mAxiosResponse);
+  const mAxiosPutResponse = {
+    data: cardArray[0],
+  } as AxiosResponse;
+  jest.spyOn(axios, "get").mockResolvedValueOnce(mAxiosGetResponse);
+  jest.spyOn(axios, "put").mockResolvedValueOnce(mAxiosPutResponse);
 });
 
 test("Should render saved cards and description", async () => {
