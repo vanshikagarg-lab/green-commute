@@ -72,7 +72,7 @@ beforeEach(() => {
   });
 });
 
-test("Should change the Aqi frame while entering the location at stage 1", () => {
+test("Should change the Aqi frame while entering the location at stage 1", async () => {
   render(
     <Router>
       <LandingPage />
@@ -94,7 +94,7 @@ test("Should change the Aqi frame while entering the location at stage 1", () =>
     "Real Time Air Quality Index (AQI) in this location"
   );
   expect(descriptionElement1).toBeInTheDocument();
-  const aqiValue = screen.getByText("894");
+  const aqiValue = await screen.findByText("894");
   expect(aqiValue).toBeInTheDocument();
 });
 
