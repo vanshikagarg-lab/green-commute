@@ -41,7 +41,7 @@ beforeEach(() => {
     data: cardArray[0],
   } as AxiosResponse;
   jest.spyOn(axios, "get").mockResolvedValueOnce(mAxiosGetResponse);
-  jest.spyOn(axios, "put").mockResolvedValueOnce(mAxiosPutResponse);
+  jest.spyOn(axios, "post").mockResolvedValueOnce(mAxiosPutResponse);
 });
 
 test("Should render saved cards and description", async () => {
@@ -85,7 +85,8 @@ test("Should remove the card when clicked on unsave", async () => {
   const unsaveButton = screen.getByText("Unsave");
   expect(unsaveButton).toBeInTheDocument();
   fireEvent.click(unsaveButton);
-  expect(cardListElement.children.length).toBe(0);
+  const newCardListElement = await screen.findByTestId("cardList");
+  expect(newCardListElement.children.length).toBe(0);
 });
 
 test("Should change the border after clicking the card", async () => {

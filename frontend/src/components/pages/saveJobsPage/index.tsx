@@ -93,7 +93,7 @@ const SaveJobsPage = () => {
     let tempArray = data.cardList?.slice();
     tempArray?.splice(index, 1);
     unsavedCard.saved = false;
-    axios.put(`${getJobsUrl}`, { ...unsavedCard }).then(() => {
+    axios.post(`${getJobsUrl}`, { ...unsavedCard }).then(() => {
       setData({
         ...data,
         cardList: tempArray,
