@@ -1,6 +1,5 @@
 package com.greencommute.microservice.jobs.controller;
 
-import com.greencommute.microservice.jobs.dto.DistanceFilter;
 import com.greencommute.microservice.jobs.dto.JobDTO;
 import com.greencommute.microservice.jobs.dto.SearchDTO;
 import com.greencommute.microservice.jobs.entity.Job;
@@ -9,11 +8,10 @@ import com.greencommute.microservice.jobs.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 public class JobController {
 
     @Autowired
