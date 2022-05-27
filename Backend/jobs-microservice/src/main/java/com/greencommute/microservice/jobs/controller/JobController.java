@@ -31,7 +31,7 @@ public class JobController {
         return job;
     }
 
-    @PutMapping("/jobs")
+    @PostMapping("/jobs")
     public Job updateJob(@RequestBody JobDTO theJob){
         return jobService.saveJob(theJob);
     }

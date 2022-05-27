@@ -3,8 +3,8 @@ import BMWLogo from "../assets/images/bmwLogo.svg";
 import InstagramLogo from "../assets/images/instagramLogo.svg";
 
 
-export const getJobsUrl = "http://18.223.206.231:9004/jobs/";
-export const getSearchUrl = "http://18.223.206.231:9004/search/"
+export const getJobsUrl = "http://18.223.206.231:9005/jobs/";
+export const getSearchUrl = "http://18.223.206.231:9005/search/"
 export const getSkillsUrl = "http://18.223.206.231:9005/skills";
 export const getLocationsUrl = "http://18.223.206.231:9005/location";
 

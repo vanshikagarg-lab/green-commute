@@ -99,7 +99,7 @@ const SaveJobsPage = () => {
       select: 0,
     });
     unsavedCard.saved = false;
-    axios.put(`${getJobsUrl}`, { ...unsavedCard }).then((res) => {
+    axios.post(`${getJobsUrl}`, { ...unsavedCard }).then((res) => {
     });
   };
 

@@ -103,7 +103,7 @@ const JobList = (props: MainProps) => {
     const tempDesc = description;
     tempDesc.saved = description.saved ? false : true;
     axios
-      .put(`${getJobsUrl}`, {
+      .post(`${getJobsUrl}`, {
         ...tempDesc,
       })
       .then((res) => {
