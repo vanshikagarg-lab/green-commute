@@ -92,14 +92,14 @@ const SaveJobsPage = () => {
     const unsavedCard = data.cardList[index];
     let tempArray = data.cardList?.slice();
     tempArray?.splice(index, 1);
-    setData({
-      ...data,
-      cardList: tempArray,
-      description: 0,
-      select: 0,
-    });
     unsavedCard.saved = false;
-    axios.post(`${getJobsUrl}`, { ...unsavedCard }).then((res) => {
+    axios.post(`${getJobsUrl}`, { ...unsavedCard }).then(() => {
+      setData({
+        ...data,
+        cardList: tempArray,
+        description: 0,
+        select: 0,
+      });
     });
   };
 

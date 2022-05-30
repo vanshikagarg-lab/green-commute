@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, Box, Dialog, DialogContent } from "@mui/material";
 import Typography from "../../atoms/typography";
 import theme from "../../../theme";
@@ -80,15 +80,17 @@ const WrapFilterStyle = styled(Box)({
 });
 
 const JobList = (props: MainProps) => {
-  const [select, setSelect] = useState<number>(
-    props.selectedIndex ? props.selectedIndex : 0
-  );
-  const [description, setDescription] = useState<CardProps>(
-    props.cardProps[props.selectedIndex ? props.selectedIndex : 0]
-  );
+  const [select, setSelect] = useState<number>(0);
+  const [description, setDescription] = useState<CardProps>(props.cardProps[0]);
   const [showResumeDialog, setShowResumeDialog] = useState(false);
   const filters = props.filterProps || [];
   const setFilters = props.setFilters;
+
+  useEffect(() => {
+    setSelect(props.selectedIndex);
+    setDescription(props.cardProps[props.selectedIndex]);
+  }, [props.filterProps, props.selectedIndex]);
+
 
   const handleSelect = (index: number) => {
     setSelect(index);
@@ -96,17 +98,17 @@ const JobList = (props: MainProps) => {
   };
 
   const saveJobsHandler = () => {
-    setDescription((prevState) => ({
-      ...prevState,
-      saved: prevState.saved ? false : true,
-    }));
     const tempDesc = description;
     tempDesc.saved = description.saved ? false : true;
     axios
       .post(`${getJobsUrl}`, {
         ...tempDesc,
       })
-      .then((res) => {
+      .then(() => {
+        setDescription((prevState) => ({
+          ...prevState,
+          saved: prevState.saved ? false : true,
+        }));
       });
   };
 

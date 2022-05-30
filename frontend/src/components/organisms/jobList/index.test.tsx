@@ -18,7 +18,7 @@ beforeEach(() => {
   const mAxiosResponse = {
     data: cardArray[0],
   } as AxiosResponse;
-  jest.spyOn(axios, "put").mockResolvedValueOnce(mAxiosResponse);
+  jest.spyOn(axios, "post").mockResolvedValueOnce(mAxiosResponse);
 });
 
 afterEach(() => {
@@ -66,7 +66,7 @@ test("should click on SavejobCard", async () => {
   const unSaveButton = screen.getByText("Unsave");
   expect(unSaveButton).toBeInTheDocument();
   fireEvent.click(unSaveButton);
-  const saveButton = screen.getByText("Save");
+  const saveButton = await screen.findByText("Save");
   expect(saveButton).toBeInTheDocument();
 });
 

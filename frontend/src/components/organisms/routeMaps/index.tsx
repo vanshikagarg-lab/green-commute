@@ -54,7 +54,7 @@ const RouteMaps = ({
     } else if (vehicle.car) {
       setSelectedOption([false, true]);
     }
-  }, []);
+  }, [vehicle.bus,vehicle.car]);
 
   return (
     <Box pt={3.25} pb={3}>
