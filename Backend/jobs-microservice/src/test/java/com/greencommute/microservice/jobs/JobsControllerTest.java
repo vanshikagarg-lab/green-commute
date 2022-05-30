@@ -102,7 +102,7 @@ class JobsControllerTest {
 
         String content = objectWriter.writeValueAsString(job4);
 
-        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/jobs")
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/jobs")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(content);
