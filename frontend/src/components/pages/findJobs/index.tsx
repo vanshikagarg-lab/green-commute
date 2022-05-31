@@ -8,9 +8,9 @@ import { Box, DialogContent, Dialog } from "@mui/material";
 import FilterBox from "../../organisms/filterDialog";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { getJobsUrl,getSearchUrl } from "../../../constants";
+import { getJobsUrl, getSearchUrl } from "../../../constants";
 import theme from "../../../theme";
-import { skill, location } from "../../../interfaces";
+import { Skill, Location } from "../../../interfaces";
 
 interface FilterType {
   label: string;
@@ -49,8 +49,8 @@ const FindJobs = () => {
       const tempJobs = res.data;
       const locFilteredJobs = tempJobs.slice().filter((job: any) => {
         let flag;
-        for (const location of tempJobLocation) {
-          if (job.location.name?.includes(location.name)) {
+        for (const tempLocation of tempJobLocation) {
+          if (job.location.name?.includes(tempLocation.name)) {
             flag = true;
             break;
           }
@@ -58,7 +58,7 @@ const FindJobs = () => {
         return flag;
       });
 
-      const tempSkills = tempJobSkills.map((skill: skill) => skill.name);
+      const tempSkills = tempJobSkills.map((tempSkill: Skill) => tempSkill.name);
       const skillsFilteredJobs = locFilteredJobs
         .slice()
         .filter((job: any) => tempSkills.includes(job.skill.name));
@@ -102,25 +102,25 @@ const FindJobs = () => {
     });
   };
 
-  const setFiltersWrapper = (filters: any) => {
+  const setFiltersWrapper = (tempFilters: any) => {
     const distanceFilter = {
-      distance0To10: filters.find(
+      distance0To10: tempFilters.find(
         (filter: FilterType) => filter.label === "0-10 kms"
       )
         ? true
         : false,
-      distance11To20: filters.find(
+      distance11To20: tempFilters.find(
         (filter: FilterType) => filter.label === "11-20 kms"
       )
         ? true
         : false,
 
-      distance21To30: filters.find(
+      distance21To30: tempFilters.find(
         (filter: FilterType) => filter.label === "21-30 kms"
       )
         ? true
         : false,
-      distance31To40: filters.find(
+      distance31To40: tempFilters.find(
         (filter: FilterType) => filter.label === "31-40 kms"
       )
         ? true
@@ -153,8 +153,8 @@ const FindJobs = () => {
           searchButtonClick={searchItems}
           locationOptions={data.jobLocations}
           skillsOptions={data.jobSkills}
-          getSkillLabel={(option: skill) => option.name}
-          getLocationLabel={(option: location) => option.name}
+          getSkillLabel={(option: Skill) => option.name}
+          getLocationLabel={(option: Location) => option.name}
         />
         {selectedIndex >= 0 && (
           <JobList

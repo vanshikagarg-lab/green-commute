@@ -2,7 +2,7 @@ import React from "react";
 import { Autocomplete } from "@mui/material";
 import TextField from "../../atoms/textField";
 import FilterChip from "../../molecules/filterChip";
-import { skill, location } from "../../../interfaces";
+import { Skill, Location } from "../../../interfaces";
 type PropsType = {
   options: Object[];
   getOptionLabel: any;
@@ -45,11 +45,11 @@ const AutocompleteComponent = ({
         />
       )}
       renderTags={(values, getTagProps) =>
-        values.map((option: location|skill, index: number) => (
+        values.map((option: Location|Skill, index: number) => (
           <FilterChip
             deleteHandler={() => deleteOptions(index)}
             variant="outlined"
-            label={option.name ? option.name : option.name}
+            label={option.name}
             size="small"
             backgroundColor={true}
             {...getTagProps({ index })}

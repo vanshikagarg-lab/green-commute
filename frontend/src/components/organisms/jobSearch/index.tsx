@@ -11,7 +11,7 @@ import { Divider, styled } from "@mui/material";
 import SkillSearch from "../../molecules/skillSearch";
 import workIcon from "../../../assets/icons/work.svg";
 import locIcon from "../../../assets/icons/location.svg";
-import {location, skill} from "../../../interfaces";
+import {Location, Skill} from "../../../interfaces";
 
 type Props = {
   filterClick?: any;
@@ -51,7 +51,7 @@ const JobSearch = ({
     setLocValue(value);
   };
 
-  const onLocAutoCompleteChange = (_e: any, value: location)=>{
+  const onLocAutoCompleteChange = (_e: any, value: Location)=>{
     setLocValue(value.name);
   }
 
@@ -61,7 +61,7 @@ const JobSearch = ({
 
   const onSkillAutoCompleteChange = (
     _e: any,
-    value: skill
+    value: Skill
   ) => {
     setSkillValue(value.name);
   };

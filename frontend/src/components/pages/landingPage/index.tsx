@@ -12,7 +12,7 @@ import theme from "../../../theme";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getJobsUrl, getLocationsUrl, getSkillsUrl } from "../../../constants";
-import { location, skill } from "../../../interfaces";
+import { Location, Skill } from "../../../interfaces";
 
 const LandingPage = () => {
   const [inputVal, setInputVal] = React.useState<any>([]);
@@ -53,7 +53,7 @@ const LandingPage = () => {
       setJobLocation(value);
     } else if (stage === 3) {
       setJobSkills(value);
-      const tempSkills = value.map((skill: skill) => (skill.name));
+      const tempSkills = value.map((tempSkill: Skill) => (tempSkill.name));
       console.log(data.jobs);
       const foundJobs = data.jobs.slice().filter((job: any) => (tempSkills.includes(job.skill.name)));
       setJobCount(foundJobs.length);
@@ -68,8 +68,8 @@ const LandingPage = () => {
         ...data,
         jobs: data.jobs.slice().filter((job: any) => {
           let flag;
-          for (const location of jobLocation) {
-            if (job.location.name?.includes(location.name)) {
+          for (const tempLocation of jobLocation) {
+            if (job.location.name?.includes(tempLocation.name)) {
               flag = true;
               break;
             }
@@ -155,7 +155,7 @@ const LandingPage = () => {
         onChange(null, tempValue);
       };
 
-      const getOptions = (option: location) => option.name;
+      const getOptions = (option: Location) => option.name;
 
       landingInputComponent = (
         <LandingInput
@@ -224,7 +224,7 @@ const LandingPage = () => {
         onChange(null, tempValue);
       };
 
-      const getOptions = (option: skill) => option.name;
+      const getOptions = (option: Skill) => option.name;
 
       landingInputComponent = (
         <LandingInput
