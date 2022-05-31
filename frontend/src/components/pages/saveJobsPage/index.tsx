@@ -11,6 +11,7 @@ import { CardDataList } from "../../organisms/jobList/cardData";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getJobsUrl } from "../../../constants";
 import theme from "../../../theme";
+import { mapRoutes } from "../../../utils";
 
 const SaveJobsPage = () => {
   const [showResumeDialog, setShowResumeDialog] = useState(false);
@@ -46,33 +47,12 @@ const SaveJobsPage = () => {
   useEffect(() => {
     axios.get(getJobsUrl).then((res) => {
       const cardDataList = res.data;
-      const mapCardList = cardDataList.map((card:any)=> {
-        const routes = {
-          bike: false,
-          bus: false,
-          train: false,
-          car: false,
-      }
-      card.routes.map((route: any) => {
-        if(route.routeName.includes("Bike")){
-          routes.bike = true;
-        }
-        if(route.routeName.includes("Car")){
-          routes.car = true;
-        }
-        if(route.routeName.includes("Train")){
-          routes.train = true;
-        }
-        if(route.routeName.includes("Bus")){
-          routes.bus = true;
-        }
-        return routes;
+      const mapCardList = cardDataList.map((card: any) => {
+        card.logo = card.companyLogo;
+        card.jobName = card.designation;
+        card.postTime = card.posted;
+        return card;
       });
-      card.logo = card.companyLogo
-      card.jobName = card.designation
-      card.postTime = card.posted
-      return card;
-      })
       setData({
         cardList: mapCardList.filter((card: any) => card.saved === true),
         description: 0,
@@ -147,35 +127,15 @@ const SaveJobsPage = () => {
           <WrapCardStyle>
             <Box data-testid={"cardList"}>
               {data.cardList?.map((card: any, index: number) => {
-                const routes = {
-                  bike: false,
-                  bus: false,
-                  train: false,
-                  car: false,
-              }
-              card.routes.map((route: any) => {
-                if(route.routeName.includes("Bike")){
-                  routes.bike = true;
-                }
-                if(route.routeName.includes("Car")){
-                  routes.car = true;
-                }
-                if(route.routeName.includes("Train")){
-                  routes.train = true;
-                }
-                if(route.routeName.includes("Bus")){
-                  routes.bus = true;
-                }
-              })
-              card.logo = card.companyLogo
-              card.jobName = card.designation;
-              card.companyAddress = card.location.name;
-              card.time = card.posted
+                card.logo = card.companyLogo;
+                card.jobName = card.designation;
+                card.companyAddress = card.location.name;
+                card.time = card.posted;
                 return (
                   <JobListCard
                     key={index}
                     {...card}
-                    vehicle={routes}
+                    vehicle={mapRoutes(card.routes)}
                     height="159px"
                     width="calc(100vw - 845px)"
                     selected={data.select == index}

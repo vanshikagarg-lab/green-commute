@@ -63,23 +63,23 @@ const FilterDialog = ({
   useEffect(()=>{
     const distanceFilter = [
      filters?.find(
-        (filter: FilterType) => filter.label === "0-10 kms"
+        (filterObject: FilterType) => filterObject.label === "0-10 kms"
       )
         ? true
         : false,
     filters?.find(
-        (filter: FilterType) => filter.label === "11-20 kms"
+        (filterObject: FilterType) => filterObject.label === "11-20 kms"
       )
         ? true
         : false,
 
       filters?.find(
-        (filter: FilterType) => filter.label === "21-30 kms"
+        (filterObject: FilterType) => filterObject.label === "21-30 kms"
       )
         ? true
         : false,
      filters?.find(
-        (filter: FilterType) => filter.label === "31-40 kms"
+        (filterObject: FilterType) => filterObject.label === "31-40 kms"
       )
         ? true
         : false,

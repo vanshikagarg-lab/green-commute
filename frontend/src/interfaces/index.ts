@@ -1,9 +1,9 @@
-export interface skill{
+export interface Skill{
     id:number;
     name:string;
   }
 
-  export interface location {
+  export interface Location {
     id: number;
     name: string;
     aqi: number;

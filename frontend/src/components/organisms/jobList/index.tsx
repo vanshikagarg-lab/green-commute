@@ -10,6 +10,7 @@ import FilterChip, { Props } from "../../molecules/filterChip";
 import { transitOptions } from "../routeMaps/dataList";
 import axios from "axios";
 import { getJobsUrl } from "../../../constants";
+import { mapRoutes } from "../../../utils";
 
 interface CardProps {
   jobId: number | string;
@@ -91,7 +92,6 @@ const JobList = (props: MainProps) => {
     setDescription(props.cardProps[props.selectedIndex]);
   }, [props.filterProps, props.selectedIndex]);
 
-
   const handleSelect = (index: number) => {
     setSelect(index);
     setDescription(props.cardProps[index]);
@@ -122,43 +122,22 @@ const JobList = (props: MainProps) => {
 
   const deleteFilterChip = (index: number) => {
     setFilters(
-      filters.slice().filter((curr, currIndex) => {
+      filters.slice().filter((_curr, currIndex) => {
         return index !== currIndex;
       })
     );
   };
 
   const renderJobCard = (card: any, index: number) => {
-    const routes = {
-      bike: false,
-      bus: false,
-      train: false,
-      car: false,
-    }
-
-    card.routes.map((route: any) => {
-      if(route.routeName.includes("Bike")){
-        routes.bike = true;
-      }
-      if(route.routeName.includes("Car")){
-        routes.car = true;
-      }
-      if(route.routeName.includes("Train")){
-        routes.train = true;
-      }
-      if(route.routeName.includes("Bus")){
-        routes.bus = true;
-      }
-    })
-    card.logo = card.companyLogo
-    card.jobName = card.designation
-    card.companyAddress = card.location.name
-    card.time = card.posted
+    card.logo = card.companyLogo;
+    card.jobName = card.designation;
+    card.companyAddress = card.location.name;
+    card.time = card.posted;
     return (
       <JobListCard
         key={index}
         {...card}
-        vehicle={routes}
+        vehicle={mapRoutes(card.routes)}
         height={theme.spacing(19.87)}
         width="auto"
         selected={select === index ? true : false}
@@ -170,10 +149,9 @@ const JobList = (props: MainProps) => {
 
   const RenderFilteredList = () => {
     return props.cardProps.map((card, index) => {
-     return renderJobCard(card, index);
+      return renderJobCard(card, index);
     });
   };
-
 
   return (
     <>
