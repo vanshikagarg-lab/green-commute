@@ -3,7 +3,6 @@ variables:
   GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar" # Defines the location of the analysis task cache
   GIT_DEPTH: "0" # Tells git to fetch all the branches of the project, required by the analysis task
-  SONAR_TOKEN: "9f95ed7cd025ef603f2c526155f32db8a729800a"
   SONAR_HOST_URL: "https://sonarcloud.io"
 
 sonarcloud-check-frontend:

@@ -1,0 +1,16 @@
+# Build outputs
+**/target/
+**/build/
+**/node_modules/
+**/coverage/
+**/dist/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Local environment files
+.env
+.env.*
+!.env.example

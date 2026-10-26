@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://18.217.145.156:3308/BC32-GreenCommute?useSSL=false&serverTimezone=UTC
-    username: root
-    password: my-secret-pw
+    url: "${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/BC32-GreenCommute?useSSL=false&serverTimezone=UTC}"
+    username: "${SPRING_DATASOURCE_USERNAME:root}"
+    password: "${SPRING_DATASOURCE_PASSWORD:}"
   application:
     name: SKILL-SERVICE
   flyway:
@@ -16,6 +16,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://18.223.206.231:9006/eureka/
+      defaultZone: "${EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE:http://localhost:9006/eureka/}"
   instance:
-    hostname: 18.223.206.231
+    hostname: "${EUREKA_INSTANCE_HOSTNAME:localhost}"

@@ -1,6 +1,5 @@
 image: maven:latest
 variables:
-  SONAR_TOKEN: "12e04100031fb2d2adafc1aac7e8affe8b336116"
   SONAR_HOST_URL: "https://sonarcloud.io"
   GIT_DEPTH: 0
 

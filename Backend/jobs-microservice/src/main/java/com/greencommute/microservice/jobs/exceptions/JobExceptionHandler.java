@@ -1,4 +1,4 @@
-package com.greencommute.microservice.jobs.exceptions;
+UUpackage com.greencommute.microservice.jobs.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
